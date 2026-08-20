@@ -1,10 +1,5 @@
 """Shared utilities used by every pipeline stage: config loading, Unity
 Catalog setup, and reading/writing Delta tables.
-
-Everything here is a pure function of its arguments -- no hardcoded paths,
-no session creation of its own. `spark` is always passed in, because this
-pipeline runs on Databricks (see notebooks/00_run_pipeline.py), which
-already provides one with Delta Lake built in before any of this code runs.
 """
 import os
 

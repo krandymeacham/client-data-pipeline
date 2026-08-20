@@ -1,4 +1,8 @@
 # Databricks notebook source
+# /// script
+# [tool.databricks.environment]
+# environment_version = "5"
+# ///
 # MAGIC %md
 # MAGIC # Client Ingestion Pipeline: Bronze -> Silver -> Gold
 # MAGIC
@@ -161,8 +165,7 @@ display(spark.table(f"{GOLD_SCHEMA}.transactions"))
 # MAGIC %md
 # MAGIC ## 7. Quarantine summary
 # MAGIC
-# MAGIC What got set aside during refine, and why -- the data-quality visibility
-# MAGIC the assignment asks for, rather than rows silently vanishing.
+# MAGIC What got set aside during refine, and why - These could be records prompted for business review. 
 
 # COMMAND ----------
 

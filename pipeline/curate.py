@@ -1,11 +1,9 @@
 """Gold / curated layer: one standardized table per entity, unioned across
 every client into a single consistent schema.
 
-The canonical column lists below *are* the answer to "what does a customer
-(or transaction) look like?" for this pipeline: the union of the meaningful
-attributes any client reports. A field only client_b has (is_vip) or only
+ A field only client_b has (is_vip) or only
 client_c has (age, marketing_opt_in) still gets a real column -- just null
-for the clients that don't report it -- rather than being dropped or forced
+for the clients that don't report it rather than being dropped or forced
 into an unrelated field. Concepts that only look similar (client_b's VIP
 tier, client_c's marketing consent, client_a's account status) are kept as
 separate columns instead of collapsed into one, since merging them would
@@ -21,7 +19,7 @@ from pyspark.sql.window import Window
 
 from pipeline.common import read_table, write_table
 
-# {canonical column: Spark SQL type}. A type is required (not just a name)
+# {canonical column: Spark SQL type}. A type is required
 # so a column absent from *every* client's silver table -- e.g. a brand
 # new client that hasn't started reporting `age` yet -- can still be
 # materialized as a properly typed null column instead of breaking the
