@@ -95,6 +95,33 @@ def resolve_paths(base_path, source_path=None):
     }
 
 
+def ensure_volume(spark, catalog, schema, volume):
+    """Idempotently ensure a Unity Catalog schema and volume exist, and
+    return the /Volumes path pipeline output should be written to.
+
+    Volumes are the portable replacement for a DBFS root path
+    (`dbfs:/tmp/...` / `/dbfs/tmp/...`) for pipeline *output*: newer
+    workspaces -- serverless-only and free-tier ones especially -- disable
+    public DBFS root entirely (`[DBFS_DISABLED] Public DBFS root is
+    disabled`), while Volumes work the same way on serverless compute and
+    classic clusters alike. Every statement here is IF NOT EXISTS, so
+    calling this on every run is safe and assumes no pre-existing state,
+    same as the rest of the pipeline.
+    """
+    try:
+        spark.sql(f"CREATE CATALOG IF NOT EXISTS `{catalog}`")
+    except Exception:
+        # Creating a catalog needs metastore-admin privilege most
+        # workspace users won't have. If `catalog` already exists -- the
+        # common case, e.g. the "workspace"/"main" catalog every Unity
+        # Catalog workspace is provisioned with -- that's fine, and
+        # schema/volume creation below still works against it.
+        pass
+    spark.sql(f"CREATE SCHEMA IF NOT EXISTS `{catalog}`.`{schema}`")
+    spark.sql(f"CREATE VOLUME IF NOT EXISTS `{catalog}`.`{schema}`.`{volume}`")
+    return f"/Volumes/{catalog}/{schema}/{volume}"
+
+
 def write_table(df, path, output_format="delta", mode="overwrite"):
     writer = df.write.format(output_format).mode(mode)
     if output_format == "delta":

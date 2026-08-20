@@ -44,22 +44,28 @@ real Delta tables.
 
 ## Running in a fresh Databricks workspace
 
-1. **Repos > Add Repo**, point it at this repository's Git URL.
+1. Add this repo as a Git folder under your Workspace (Repos > Add Repo, or
+   the newer "Git folder" flow — either way it lands under `/Workspace/...`).
 2. Open `notebooks/00_run_pipeline.py`. Nothing to attach or configure —
    it runs on **serverless compute**, which provides `spark` (Delta Lake
    already built in) before the first cell runs; `pipeline/*.py` never
    builds its own SparkSession, it just takes the notebook's `spark` as a
    plain argument (see `run.py:main()`).
-3. **Run All.** The notebook copies `configs/` and `input_files/` from the
-   repo checkout onto `BASE_PATH` (`/dbfs/tmp/client_ingestion` by default,
-   overridable via the `base_path` widget), then calls `run.py`'s `main()`.
-4. Re-running is safe — every layer writes with `mode("overwrite")`, and
-   nothing depends on pre-existing state.
+3. **Run All.** The notebook reads `configs/` and `input_files/` straight
+   from the repo checkout (auto-detected from the notebook's own path), and
+   writes pipeline output to a Unity Catalog Volume it creates if missing
+   (`workspace.client_ingestion.client_ingestion` by default — the
+   catalog/schema/volume widgets override this), then calls `run.py`'s
+   `main()`.
+4. Re-running is safe — every layer writes with `mode("overwrite")`, the
+   volume/schema creation is `IF NOT EXISTS`, and nothing depends on
+   pre-existing state.
 
-Preparing input data manually (instead of via the notebook's `dbutils.fs.cp`
-step) is just as simple: upload the six files under `input_files/<client>/`
-to `<BASE_PATH>/input_files/<client>/`, and the three YAML files under
-`configs/` to `<BASE_PATH>/configs/`, preserving the directory structure.
+Preparing input data manually (instead of running from a Git folder) is
+just as simple: upload the six files under `input_files/<client>/` and the
+three YAML files under `configs/` to matching paths under any directory —
+local disk, a Volume, DBFS — and pass that directory as `--base-path` (CLI)
+or `source_path=` (notebook/`run.py main()`).
 
 ### Running locally (no Databricks)
 
@@ -143,6 +149,19 @@ notebook's first cell runs. `notebooks/00_run_pipeline.py` passes that
 ambient `spark` straight into `main()`, so the exact same `pipeline/*.py`
 code runs unchanged whether `spark` came from serverless, a classic
 cluster, or a local `SparkSession.builder` call in a test.
+
+**Output lives on a Unity Catalog Volume, not DBFS root.** Newer
+workspaces — serverless-only and free-tier ones especially — reject writes
+to the public DBFS root outright (`[DBFS_DISABLED] Public DBFS root is
+disabled`). `pipeline/common.py:ensure_volume()` creates the target
+schema/volume with `CREATE ... IF NOT EXISTS` (catalog creation is
+attempted too, but failures there are swallowed — that needs
+metastore-admin privilege most users won't have, and the default
+`workspace` catalog already exists) and hands back a `/Volumes/...` path
+that behaves the same on serverless and classic clusters. `BASE_PATH` for
+configs/input_files (`source_path` in `resolve_paths()`) stays completely
+separate from this — it reads straight from the repo checkout instead, so
+neither path depends on DBFS at all.
 
 ## How this handles change
 

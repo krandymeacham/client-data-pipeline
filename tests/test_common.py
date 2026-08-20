@@ -8,9 +8,11 @@ which surfaced several calls later as a generic
 "TypeError: argument of type 'NoneType' is not iterable" instead of
 pointing at the actual problem.
 """
+from unittest.mock import MagicMock
+
 import pytest
 
-from pipeline.common import load_client_config, resolve_paths
+from pipeline.common import ensure_volume, load_client_config, resolve_paths
 
 
 def test_load_client_config_empty_file_raises_clear_error(tmp_path):
@@ -40,3 +42,27 @@ def test_resolve_paths_source_path_only_affects_configs_and_input():
     assert paths["input"] == "/Workspace/Users/me/repo/input_files"
     assert paths["raw"] == "dbfs:/tmp/client_ingestion/output/raw"
     assert paths["curated"] == "dbfs:/tmp/client_ingestion/output/curated"
+
+
+def test_ensure_volume_creates_catalog_schema_volume_and_returns_path():
+    spark = MagicMock()
+    path = ensure_volume(spark, "workspace", "client_ingestion", "client_ingestion")
+
+    assert path == "/Volumes/workspace/client_ingestion/client_ingestion"
+    statements = [call.args[0] for call in spark.sql.call_args_list]
+    assert any("CREATE CATALOG IF NOT EXISTS" in s for s in statements)
+    assert any("CREATE SCHEMA IF NOT EXISTS" in s and "`workspace`.`client_ingestion`" in s for s in statements)
+    assert any("CREATE VOLUME IF NOT EXISTS" in s for s in statements)
+
+
+def test_ensure_volume_tolerates_catalog_creation_failure():
+    # Creating a catalog needs metastore-admin privilege most workspace
+    # users won't have -- ensure_volume should still succeed against an
+    # already-existing catalog (e.g. the default "workspace" catalog).
+    spark = MagicMock()
+    spark.sql.side_effect = [Exception("PERMISSION_DENIED"), None, None]
+
+    path = ensure_volume(spark, "workspace", "s", "v")
+
+    assert path == "/Volumes/workspace/s/v"
+    assert spark.sql.call_count == 3
