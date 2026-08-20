@@ -129,21 +129,23 @@ def refine_entity(bronze_df, entity_cfg):
     return clean_df, quarantine_df
 
 
-def run_refine(spark, client_configs, raw_dir, refined_dir, quarantine_dir):
-    """Refine every entity for every client. Returns result dicts for
+def run_refine(spark, client_configs, bronze_schema, silver_schema):
+    """Refine every entity for every client into `{silver_schema}.
+    {client_id}_{entity_name}` (clean) and `{silver_schema}.
+    {client_id}_{entity_name}_quarantine`. Returns result dicts for
     reporting/logging."""
     results = []
     for client_id, cfg in client_configs.items():
         for entity_name in ("customers", "transactions"):
             if entity_name not in cfg:
                 continue
-            bronze_df = read_table(spark, f"{raw_dir}/{client_id}/{entity_name}")
+            bronze_df = read_table(spark, f"{bronze_schema}.{client_id}_{entity_name}")
             clean_df, quarantine_df = refine_entity(bronze_df, cfg[entity_name])
 
-            clean_path = f"{refined_dir}/{client_id}/{entity_name}"
-            quarantine_path = f"{quarantine_dir}/{client_id}/{entity_name}"
-            write_table(clean_df, clean_path)
-            write_table(quarantine_df, quarantine_path)
+            clean_table = f"{silver_schema}.{client_id}_{entity_name}"
+            quarantine_table = f"{silver_schema}.{client_id}_{entity_name}_quarantine"
+            write_table(clean_df, clean_table)
+            write_table(quarantine_df, quarantine_table)
 
             results.append(
                 {
