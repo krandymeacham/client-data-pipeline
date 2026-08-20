@@ -165,7 +165,9 @@ display(spark.table(f"{GOLD_SCHEMA}.transactions"))
 # MAGIC %md
 # MAGIC ## 7. Quarantine summary
 # MAGIC
-# MAGIC What got set aside during refine, and why - These could be records prompted for business review. 
+# MAGIC What got set aside during refine, and why -- the data-quality visibility
+# MAGIC the assignment asks for, rather than rows silently vanishing. These are
+# MAGIC good candidates for a business-review queue rather than a hard failure.
 
 # COMMAND ----------
 
