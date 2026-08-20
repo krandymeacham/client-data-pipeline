@@ -1,9 +1,11 @@
-"""Shared utilities used by every pipeline stage: Spark session creation,
-config loading, and path resolution.
+"""Shared utilities used by every pipeline stage: local Spark session
+creation (for non-Databricks use only -- see get_spark below), config
+loading, and path resolution.
 
-Everything here is a pure function of its arguments (no hardcoded paths),
-so the same code runs unchanged on a laptop, in a pytest fixture, or inside
-a fresh Databricks workspace -- only BASE_PATH changes.
+Everything here is a pure function of its arguments (no hardcoded paths,
+no dependency on a pre-existing SparkSession), so the same code runs
+unchanged on a laptop, in a pytest fixture, or on Databricks -- classic
+clusters and serverless compute alike -- with only BASE_PATH changing.
 """
 import os
 
@@ -15,11 +17,17 @@ CORRUPT_COL = "_corrupt_record"
 
 
 def get_spark(app_name="client-ingestion-pipeline", use_delta=True):
-    """Build (or fetch) the active SparkSession.
+    """Build a local SparkSession for running outside Databricks (the CLI
+    entry point in run.py, and the pytest fixture in tests/conftest.py).
 
-    use_delta=True configures the Delta Lake extensions locally via
-    delta-spark. On Databricks, Delta support is built into the runtime, so
-    this path is skipped there in favor of the cluster's native support.
+    Never called on Databricks. Serverless compute doesn't support building
+    or reconfiguring a session at all -- a SparkSession (with Delta already
+    built in) is provided by the notebook before any of this code runs, and
+    every pipeline function takes `spark` as a plain argument, so
+    notebooks/00_run_pipeline.py just passes that one through instead of
+    calling this function. use_delta=True here configures the Delta Lake
+    extensions locally via delta-spark, since -- unlike on Databricks --
+    nothing provides them by default.
     """
     builder = SparkSession.builder.appName(app_name).master(
         os.environ.get("SPARK_MASTER", "local[*]")

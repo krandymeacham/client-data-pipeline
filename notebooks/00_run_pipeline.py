@@ -8,8 +8,11 @@
 # MAGIC
 # MAGIC **Setup in a fresh workspace**
 # MAGIC 1. Repos > Add Repo > this repository's Git URL (branch `main`).
-# MAGIC 2. Attach this notebook to any cluster (Delta Lake ships with the
-# MAGIC    Databricks Runtime already -- nothing extra to install).
+# MAGIC 2. Open this notebook. No cluster to attach or configure -- it runs on
+# MAGIC    serverless compute, which provides `spark` (with Delta Lake already
+# MAGIC    built in) before the first cell even runs. `pipeline/*.py` never
+# MAGIC    builds its own SparkSession; it just takes this notebook's `spark`
+# MAGIC    as a plain argument.
 # MAGIC 3. Run All. `BASE_PATH` below is the only thing you'd change to point
 # MAGIC    this at a different location; every other path is derived from it.
 
@@ -57,7 +60,12 @@ dbutils.fs.cp(f"file:{repo_root}/input_files", f"{BASE_PATH}/input_files", recur
 
 # COMMAND ----------
 
-# MAGIC %md ## 2. Run bronze -> silver -> gold
+# MAGIC %md
+# MAGIC ## 2. Run bronze -> silver -> gold
+# MAGIC
+# MAGIC `spark` here is the session serverless compute already started for
+# MAGIC this notebook -- passed straight into `main()` rather than having
+# MAGIC `run.py` build (or serverless refuse to let it build) one of its own.
 
 # COMMAND ----------
 
@@ -67,7 +75,7 @@ sys.path.insert(0, repo_root)
 
 from run import main
 
-gold_counts = main(BASE_PATH, output_format="delta")
+gold_counts = main(BASE_PATH, output_format="delta", spark=spark)
 gold_counts
 
 # COMMAND ----------

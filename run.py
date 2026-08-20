@@ -6,6 +6,13 @@ The only thing that changes between a laptop, pytest, and a fresh Databricks
 workspace is --base-path (equivalently the BASE_PATH env var); every other
 path is derived from it (see pipeline/common.py:resolve_paths). Re-running
 is safe -- every layer is written with mode("overwrite").
+
+On Databricks -- including serverless compute -- a SparkSession is already
+running before this module is even imported, so main() accepts one via the
+`spark` argument instead of creating its own (see notebooks/00_run_pipeline.py,
+which passes the notebook's ambient `spark`). Building a session with
+pipeline.common.get_spark() only happens here, and only when nothing was
+passed in -- i.e. for the local CLI / pytest path below, not on Databricks.
 """
 import argparse
 import os
@@ -19,9 +26,10 @@ from pipeline.ingest import run_ingest
 from pipeline.refine import run_refine
 
 
-def main(base_path, output_format="delta"):
+def main(base_path, output_format="delta", spark=None):
     paths = resolve_paths(base_path)
-    spark = get_spark(use_delta=(output_format == "delta"))
+    if spark is None:
+        spark = get_spark(use_delta=(output_format == "delta"))
 
     client_ids = list_client_ids(paths["configs"])
     client_configs = {cid: load_client_config(paths["configs"], cid) for cid in client_ids}
