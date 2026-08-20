@@ -15,9 +15,9 @@
 # MAGIC    built in) before the first cell even runs. `pipeline/*.py` never
 # MAGIC    builds its own SparkSession; it just takes this notebook's `spark`
 # MAGIC    as a plain argument.
-# MAGIC 3. Run All. The catalog/schema/volume widgets below (for pipeline
-# MAGIC    *output* only) are the one thing you'd normally change; everything
-# MAGIC    else is derived from them or auto-detected.
+# MAGIC 3. Run All. The catalog/schema/volume widgets below are the one thing
+# MAGIC    you'd normally change; everything else is derived from them or
+# MAGIC    auto-detected.
 
 # COMMAND ----------
 
@@ -35,10 +35,6 @@ REPO_ROOT_OVERRIDE = dbutils.widgets.get("repo_root").strip()
 
 # MAGIC %md
 # MAGIC ## 1. Locate the repo checkout
-# MAGIC
-# MAGIC `configs/` and `input_files/` are read directly from here: plain
-# MAGIC Python for the tiny YAML configs, Spark's normal file reader for the
-# MAGIC CSVs. Nothing gets copied anywhere first -- one less moving part.
 
 # COMMAND ----------
 
@@ -83,7 +79,28 @@ print("BASE_PATH:", BASE_PATH)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 3. Sanity-check the configs before running anything
+# MAGIC ## 3. Stage configs + input_files onto the Volume
+# MAGIC
+# MAGIC Serverless compute runs Spark's actual query execution on separate
+# MAGIC infrastructure from the notebook's own Python process, so `spark.read`
+# MAGIC can't see `/Workspace/...` files at all -- no scheme fixes that,
+# MAGIC because it isn't a path-format problem (`FAILED_READ_FILE` even with
+# MAGIC an explicit `file:` prefix). `dbutils.fs.cp`, unlike `spark.read`, is a
+# MAGIC driver-side utility rather than a distributed Spark job, so it *can*
+# MAGIC see Workspace files -- copying them onto the Volume, which both
+# MAGIC `dbutils.fs` and `spark.read` reliably read from, is what actually
+# MAGIC fixes it. `recurse=True` overwrites, so this is safe to re-run.
+
+# COMMAND ----------
+
+SOURCE_PATH = f"{BASE_PATH}/_source"
+dbutils.fs.cp(f"file:{repo_root}/configs", f"{SOURCE_PATH}/configs", recurse=True)
+dbutils.fs.cp(f"file:{repo_root}/input_files", f"{SOURCE_PATH}/input_files", recurse=True)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## 4. Sanity-check the configs before running anything
 # MAGIC
 # MAGIC Loads each client's YAML the exact same way `run.py` will, so a bad
 # MAGIC path or an empty file fails here with a clear message instead of a
@@ -93,33 +110,31 @@ print("BASE_PATH:", BASE_PATH)
 
 from pipeline.common import list_client_ids, load_client_config
 
-client_ids = list_client_ids(f"{repo_root}/configs")
+client_ids = list_client_ids(f"{SOURCE_PATH}/configs")
 print("clients found:", client_ids)
 for client_id in client_ids:
-    cfg = load_client_config(f"{repo_root}/configs", client_id)
+    cfg = load_client_config(f"{SOURCE_PATH}/configs", client_id)
     print(f"  {client_id}: entities={list(cfg.keys())}")
 
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 4. Run bronze -> silver -> gold
+# MAGIC ## 5. Run bronze -> silver -> gold
 # MAGIC
 # MAGIC `spark` here is the session serverless compute already started for
 # MAGIC this notebook -- passed straight into `main()` rather than having
 # MAGIC `run.py` build (or serverless refuse to let it build) one of its own.
-# MAGIC `source_path=repo_root` is what points configs/input_files at the repo
-# MAGIC checkout instead of BASE_PATH; see `pipeline/common.py:resolve_paths`.
 
 # COMMAND ----------
 
 from run import main
 
-gold_counts = main(BASE_PATH, spark, source_path=repo_root)
+gold_counts = main(BASE_PATH, spark, source_path=SOURCE_PATH)
 gold_counts
 
 # COMMAND ----------
 
-# MAGIC %md ## 5. Curated (gold) tables
+# MAGIC %md ## 6. Curated (gold) tables
 
 # COMMAND ----------
 
@@ -132,7 +147,7 @@ display(spark.read.format("delta").load(f"{BASE_PATH}/output/curated/transaction
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 6. Quarantine summary
+# MAGIC ## 7. Quarantine summary
 # MAGIC
 # MAGIC What got set aside during refine, and why -- the data-quality visibility
 # MAGIC the assignment asks for, rather than rows silently vanishing.

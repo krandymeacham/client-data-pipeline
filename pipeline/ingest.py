@@ -17,7 +17,7 @@ back to exactly where it came from.
 from pyspark.sql import functions as F
 from pyspark.sql.types import StringType, StructField, StructType
 
-from pipeline.common import CORRUPT_COL, spark_local_path, write_table
+from pipeline.common import CORRUPT_COL, write_table
 
 
 def _raw_schema(columns):
@@ -29,7 +29,7 @@ def _raw_schema(columns):
 def read_raw(spark, client_id, entity_name, entity_cfg, input_dir):
     """Read one client/entity file into a bronze DataFrame with lineage columns."""
     schema = _raw_schema(entity_cfg["columns"])
-    file_path = spark_local_path(f"{input_dir}/{client_id}/{entity_cfg['file']}")
+    file_path = f"{input_dir}/{client_id}/{entity_cfg['file']}"
 
     df = (
         spark.read.format("csv")

@@ -43,9 +43,11 @@ def resolve_paths(base_path, source_path=None):
     when given, which defaults to BASE_PATH for the common case where
     everything lives together.
 
-    The Databricks notebook passes source_path=<repo checkout path> and
-    points BASE_PATH at a Unity Catalog Volume instead, so configs/
-    input_files are read straight from the checkout with no copy step.
+    The Databricks notebook stages configs/input_files onto the Volume
+    (BASE_PATH) first and passes that staged location as source_path --
+    Spark's distributed execution on serverless compute can't read
+    /Workspace/... files directly, only the notebook's own Python process
+    can, so they have to land somewhere Spark can actually reach.
     """
     source_path = source_path or base_path
     return {
@@ -56,20 +58,6 @@ def resolve_paths(base_path, source_path=None):
         "quarantine": f"{base_path}/output/refined_quarantine",
         "curated": f"{base_path}/output/curated",
     }
-
-
-def spark_local_path(path):
-    """Prefix a bare /Workspace/... path with the file: scheme Spark needs
-    to read it as a local file (without it, Spark fails with
-    FAILED_READ_FILE trying to read a Repo/Git-folder checkout).
-    /Workspace/ is an unambiguous, Databricks-reserved prefix, so this
-    never touches any other kind of path -- only Spark's *read* of a
-    Workspace checkout needs it; plain Python file I/O (config loading)
-    already handles /Workspace/... paths correctly with no prefix at all.
-    """
-    if path.startswith("/Workspace/"):
-        return f"file:{path}"
-    return path
 
 
 def ensure_volume(spark, catalog, schema, volume):
