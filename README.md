@@ -45,9 +45,11 @@ real Delta tables.
 ## Running in a fresh Databricks workspace
 
 1. **Repos > Add Repo**, point it at this repository's Git URL.
-2. Open `notebooks/00_run_pipeline.py` and attach it to any cluster. Delta
-   Lake ships with the Databricks Runtime, so there's nothing extra to
-   install.
+2. Open `notebooks/00_run_pipeline.py`. Nothing to attach or configure —
+   it runs on **serverless compute**, which provides `spark` (Delta Lake
+   already built in) before the first cell runs; `pipeline/*.py` never
+   builds its own SparkSession, it just takes the notebook's `spark` as a
+   plain argument (see `run.py:main()`).
 3. **Run All.** The notebook copies `configs/` and `input_files/` from the
    repo checkout onto `BASE_PATH` (`/dbfs/tmp/client_ingestion` by default,
    overridable via the `base_path` widget), then calls `run.py`'s `main()`.
@@ -128,6 +130,19 @@ step). Locally, this environment's network policy blocked resolving the
 `--format parquet` as a fallback; the pipeline code itself is unaware of
 which format it's writing (`pipeline/common.py:write_table`/`read_table`
 take `output_format` as a parameter).
+
+**No pipeline code manages the Spark session.** Every function in
+`pipeline/*.py` takes `spark` as a plain argument rather than creating one
+internally. `pipeline/common.py:get_spark()` — the only place a
+SparkSession actually gets built — is called solely from `run.py`'s CLI
+entry point and the pytest fixture, and even then only if nothing was
+passed in. On Databricks serverless compute this matters beyond style:
+serverless doesn't let you build or reconfigure a session at all, and
+doesn't need to — one (with Delta already available) exists before the
+notebook's first cell runs. `notebooks/00_run_pipeline.py` passes that
+ambient `spark` straight into `main()`, so the exact same `pipeline/*.py`
+code runs unchanged whether `spark` came from serverless, a classic
+cluster, or a local `SparkSession.builder` call in a test.
 
 ## How this handles change
 
