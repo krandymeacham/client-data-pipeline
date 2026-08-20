@@ -6,6 +6,14 @@
 # MAGIC actual ingestion/refine/curate logic lives in plain, testable Python
 # MAGIC modules (see `tests/`).
 # MAGIC
+# MAGIC Output is Unity Catalog managed tables, one schema per medallion layer:
+# MAGIC `{catalog}.{schema}_bronze`, `{schema}_silver`, `{schema}_gold`. Bronze and
+# MAGIC silver hold one table per client per entity (`client_a_customers`,
+# MAGIC `client_a_transactions`, ...) since each entity has a genuinely different
+# MAGIC schema; silver also holds a `..._quarantine` table alongside each clean
+# MAGIC one. Gold holds exactly two tables -- `customers` and `transactions` --
+# MAGIC aggregated across every client.
+# MAGIC
 # MAGIC **Setup in a fresh workspace**
 # MAGIC 1. Add this repo as a Git folder under your Workspace (Repos > Add Repo,
 # MAGIC    or the newer "Git folder" flow -- either way it lands under
@@ -15,15 +23,14 @@
 # MAGIC    built in) before the first cell even runs. `pipeline/*.py` never
 # MAGIC    builds its own SparkSession; it just takes this notebook's `spark`
 # MAGIC    as a plain argument.
-# MAGIC 3. Run All. The catalog/schema/volume widgets below are the one thing
-# MAGIC    you'd normally change; everything else is derived from them or
-# MAGIC    auto-detected.
+# MAGIC 3. Run All. The catalog/schema widgets below are the one thing you'd
+# MAGIC    normally change; everything else is derived from them or auto-detected.
 
 # COMMAND ----------
 
 dbutils.widgets.text("catalog", "workspace", "Unity Catalog catalog")
-dbutils.widgets.text("schema", "client_ingestion", "Schema (created if missing)")
-dbutils.widgets.text("volume", "client_ingestion", "Volume (created if missing)")
+dbutils.widgets.text("schema", "client_ingestion", "Schema prefix (bronze/silver/gold appended)")
+dbutils.widgets.text("volume", "source_files", "Staging volume (created if missing)")
 dbutils.widgets.text("repo_root", "", "Repo root (blank = auto-detect)")
 
 CATALOG = dbutils.widgets.get("catalog")
@@ -59,43 +66,48 @@ sys.path.insert(0, repo_root)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 2. Point pipeline output at a Unity Catalog Volume
+# MAGIC ## 2. Create the bronze/silver/gold schemas and a staging volume
 # MAGIC
-# MAGIC Volumes work the same way on serverless compute and classic clusters,
-# MAGIC so this is where every run writes bronze/silver/gold. The schema and
-# MAGIC volume are created with `IF NOT EXISTS`, so this is safe to re-run.
-# MAGIC (Catalog creation is attempted too but silently skipped on failure --
-# MAGIC that needs metastore-admin privilege most users won't have, and the
-# MAGIC default `workspace` catalog already exists in any Unity Catalog
-# MAGIC workspace.)
+# MAGIC Everything here is `IF NOT EXISTS`, so this is safe to re-run. (Catalog
+# MAGIC creation is attempted too but silently skipped on failure -- that needs
+# MAGIC metastore-admin privilege most users won't have, and the default
+# MAGIC `workspace` catalog already exists in any Unity Catalog workspace.)
+# MAGIC
+# MAGIC The volume holds only staged `configs`/`input_files` -- pipeline output
+# MAGIC is tables now, not files.
 
 # COMMAND ----------
 
-from pipeline.common import ensure_volume
+from pipeline.common import ensure_schema, ensure_volume
 
-BASE_PATH = ensure_volume(spark, CATALOG, SCHEMA, VOLUME)
-print("BASE_PATH:", BASE_PATH)
+BRONZE_SCHEMA = ensure_schema(spark, CATALOG, f"{SCHEMA}_bronze")
+SILVER_SCHEMA = ensure_schema(spark, CATALOG, f"{SCHEMA}_silver")
+GOLD_SCHEMA = ensure_schema(spark, CATALOG, f"{SCHEMA}_gold")
+STAGING_PATH = ensure_volume(spark, CATALOG, SCHEMA, VOLUME)
+
+print("bronze schema:", BRONZE_SCHEMA)
+print("silver schema:", SILVER_SCHEMA)
+print("gold schema:  ", GOLD_SCHEMA)
+print("staging path: ", STAGING_PATH)
 
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 3. Stage configs + input_files onto the Volume
+# MAGIC ## 3. Stage configs + input_files onto the volume
 # MAGIC
 # MAGIC Serverless compute runs Spark's actual query execution on separate
 # MAGIC infrastructure from the notebook's own Python process, so `spark.read`
-# MAGIC can't see `/Workspace/...` files at all -- no scheme fixes that,
-# MAGIC because it isn't a path-format problem (`FAILED_READ_FILE` even with
-# MAGIC an explicit `file:` prefix). `dbutils.fs.cp`, unlike `spark.read`, is a
-# MAGIC driver-side utility rather than a distributed Spark job, so it *can*
-# MAGIC see Workspace files -- copying them onto the Volume, which both
-# MAGIC `dbutils.fs` and `spark.read` reliably read from, is what actually
-# MAGIC fixes it. `recurse=True` overwrites, so this is safe to re-run.
+# MAGIC can't see `/Workspace/...` files at all -- no scheme fixes that, because
+# MAGIC it isn't a path-format problem. `dbutils.fs.cp`, unlike `spark.read`, is
+# MAGIC a driver-side utility rather than a distributed Spark job, so it *can*
+# MAGIC see Workspace files -- copying them onto the volume, which both
+# MAGIC `dbutils.fs` and `spark.read` reliably reach, is what actually fixes it.
+# MAGIC `recurse=True` overwrites, so this is safe to re-run.
 
 # COMMAND ----------
 
-SOURCE_PATH = f"{BASE_PATH}/_source"
-dbutils.fs.cp(f"file:{repo_root}/configs", f"{SOURCE_PATH}/configs", recurse=True)
-dbutils.fs.cp(f"file:{repo_root}/input_files", f"{SOURCE_PATH}/input_files", recurse=True)
+dbutils.fs.cp(f"file:{repo_root}/configs", f"{STAGING_PATH}/configs", recurse=True)
+dbutils.fs.cp(f"file:{repo_root}/input_files", f"{STAGING_PATH}/input_files", recurse=True)
 
 # COMMAND ----------
 
@@ -110,10 +122,10 @@ dbutils.fs.cp(f"file:{repo_root}/input_files", f"{SOURCE_PATH}/input_files", rec
 
 from pipeline.common import list_client_ids, load_client_config
 
-client_ids = list_client_ids(f"{SOURCE_PATH}/configs")
+client_ids = list_client_ids(f"{STAGING_PATH}/configs")
+client_configs = {cid: load_client_config(f"{STAGING_PATH}/configs", cid) for cid in client_ids}
 print("clients found:", client_ids)
-for client_id in client_ids:
-    cfg = load_client_config(f"{SOURCE_PATH}/configs", client_id)
+for client_id, cfg in client_configs.items():
     print(f"  {client_id}: entities={list(cfg.keys())}")
 
 # COMMAND ----------
@@ -129,7 +141,7 @@ for client_id in client_ids:
 
 from run import main
 
-gold_counts = main(BASE_PATH, spark, source_path=SOURCE_PATH)
+gold_counts = main(BRONZE_SCHEMA, SILVER_SCHEMA, GOLD_SCHEMA, spark, source_path=STAGING_PATH)
 gold_counts
 
 # COMMAND ----------
@@ -138,11 +150,11 @@ gold_counts
 
 # COMMAND ----------
 
-display(spark.read.format("delta").load(f"{BASE_PATH}/output/curated/customers"))
+display(spark.table(f"{GOLD_SCHEMA}.customers"))
 
 # COMMAND ----------
 
-display(spark.read.format("delta").load(f"{BASE_PATH}/output/curated/transactions"))
+display(spark.table(f"{GOLD_SCHEMA}.transactions"))
 
 # COMMAND ----------
 
@@ -154,9 +166,12 @@ display(spark.read.format("delta").load(f"{BASE_PATH}/output/curated/transaction
 
 # COMMAND ----------
 
-quarantine_root = f"{BASE_PATH}/output/refined_quarantine"
-for client_dir in dbutils.fs.ls(quarantine_root):
-    for entity_dir in dbutils.fs.ls(client_dir.path):
-        df = spark.read.format("delta").load(entity_dir.path)
-        print(entity_dir.path)
-        df.groupBy("_quarantine_reason").count().orderBy("count", ascending=False).show(truncate=80)
+for client_id, cfg in client_configs.items():
+    for entity_name in ("customers", "transactions"):
+        if entity_name not in cfg:
+            continue
+        table = f"{SILVER_SCHEMA}.{client_id}_{entity_name}_quarantine"
+        print(table)
+        spark.table(table).groupBy("_quarantine_reason").count().orderBy(
+            "count", ascending=False
+        ).show(truncate=80)

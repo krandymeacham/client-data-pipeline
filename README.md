@@ -10,7 +10,9 @@ into a bronze / silver / gold (raw / refined / curated) Delta Lake model.
 input_files/{client}/{file}.txt
         |
         v
-  BRONZE (output/raw/{client}/{entity})
+  BRONZE ({catalog}.{schema}_bronze.{client}_{entity})
+    - one table per client per entity -- customers and transactions have
+      genuinely different raw schemas, so this is where that split lives
     - read with the client's own delimiter/header/quote settings
     - every column read as a string; nothing parsed or dropped
     - Spark's PERMISSIVE CSV mode captures anything that doesn't match the
@@ -18,7 +20,8 @@ input_files/{client}/{file}.txt
     - lineage columns: _client_id, _entity, _source_file, _ingestion_ts
         |
         v
-  SILVER (output/refined/{client}/{entity} + output/refined_quarantine/...)
+  SILVER ({catalog}.{schema}_silver.{client}_{entity}
+          + {catalog}.{schema}_silver.{client}_{entity}_quarantine)
     - config-driven column rename, type casts, null-token normalization
     - one non-declarative transform (splitting client_b's combined name
       field), registered by name from config
@@ -27,7 +30,7 @@ input_files/{client}/{file}.txt
       a _quarantine_reason instead of being dropped or silently coerced
         |
         v
-  GOLD (output/curated/{customers,transactions})
+  GOLD ({catalog}.{schema}_gold.{customers,transactions})
     - one canonical, typed schema per entity, unioned across all clients
     - a client missing a field just gets null in that column, typed
       correctly, rather than being dropped from the schema
@@ -39,7 +42,7 @@ input_files/{client}/{file}.txt
 silver, and gold, and each exposes small, pure functions that operate on
 DataFrames in memory (`read_raw`, `refine_entity`, `build_gold_customers`,
 `build_gold_transactions`) plus a thin `run_*` wrapper that adds the actual
-file I/O. `run.py` orchestrates all three in order; `notebooks/00_run_pipeline.py`
+table I/O. `run.py` orchestrates all three in order; `notebooks/00_run_pipeline.py`
 is the Databricks-native driver that calls it.
 
 ## Running in a fresh Databricks workspace
@@ -49,12 +52,14 @@ is the Databricks-native driver that calls it.
 2. Open `notebooks/00_run_pipeline.py`. Nothing to attach or configure —
    it runs on **serverless compute**, which provides `spark` (Delta Lake
    already built in) before the first cell runs.
-3. **Run All.** The notebook creates a Unity Catalog Volume if missing
-   (`workspace.client_ingestion.client_ingestion` by default — the
-   catalog/schema/volume widgets override this), stages `configs/` and
-   `input_files/` from the repo checkout (auto-detected from the
-   notebook's own path) onto it, and writes pipeline output there too.
-4. Re-running is safe — every layer writes with `mode("overwrite")`, the
+3. **Run All.** The notebook creates three schemas if missing —
+   `workspace.client_ingestion_bronze`, `_silver`, `_gold` by default (the
+   catalog/schema widgets override the `workspace`/`client_ingestion`
+   parts) — plus a staging volume, stages `configs/` and `input_files/`
+   from the repo checkout (auto-detected from the notebook's own path)
+   onto that volume, and writes every bronze/silver/gold table into its
+   schema.
+4. Re-running is safe — every table writes with `mode("overwrite")`, the
    schema/volume creation is `IF NOT EXISTS`, and nothing depends on
    pre-existing state.
 
@@ -130,21 +135,28 @@ nothing for this pipeline to set up — `notebooks/00_run_pipeline.py` just
 passes that session straight through. `tests/conftest.py` builds its own
 throwaway local session purely for pytest, entirely separately.
 
-**Pipeline output — and its input — lives on a Unity Catalog Volume, not
-the repo checkout.** `pipeline/common.py:ensure_volume()` creates the
-target schema/volume with `CREATE ... IF NOT EXISTS` (catalog creation is
-attempted too, but failures are swallowed — that needs metastore-admin
-privilege most users won't have, and the default `workspace` catalog
-already exists) and hands back a `/Volumes/...` path that behaves the same
-on serverless compute and classic clusters. Serverless compute runs
-Spark's actual query execution on separate infrastructure from the
-notebook's own Python process, so `spark.read` can't see `/Workspace/...`
-files at all — only the notebook's own Python calls (config loading) can.
-The notebook stages `configs/`/`input_files/` onto the Volume with
-`dbutils.fs.cp` first (a driver-side utility, not a distributed Spark job,
-so it *can* see Workspace files) and passes that staged location as
-`source_path`, so everything Spark reads — source and output alike — comes
-from the one place it can reliably reach.
+**Pipeline output is Unity Catalog managed tables, one schema per medallion
+layer.** `pipeline/common.py:ensure_schema()` creates `{catalog}.
+{schema}_bronze`/`_silver`/`_gold` with `CREATE SCHEMA IF NOT EXISTS`
+(catalog creation is attempted too, but failures are swallowed — that
+needs metastore-admin privilege most users won't have, and the default
+`workspace` catalog already exists), and `write_table`/`read_table` use
+`saveAsTable`/`spark.table` rather than a path. That's what makes the
+tables directly queryable in Catalog Explorer or any SQL client — no path
+to know, just `catalog.schema.table` — and it's a cleaner mapping onto the
+assignment's bronze/silver/gold vocabulary than a folder structure was.
+
+**Pipeline input still lives on a Unity Catalog Volume, staged there
+first.** Serverless compute runs Spark's actual query execution on
+infrastructure separate from the notebook's own Python process, so
+`spark.read` can't see `/Workspace/...` files at all — only the notebook's
+own Python calls (config loading) can. `pipeline/common.py:ensure_volume()`
+creates a volume the same `IF NOT EXISTS` way as the table schemas; the
+notebook stages `configs/`/`input_files/` onto it with `dbutils.fs.cp`
+first (a driver-side utility, not a distributed Spark job, so it *can* see
+Workspace files) and passes that staged location as `source_path`, so
+everything Spark reads for input comes from the one place it can reliably
+reach.
 
 ## How this handles change
 

@@ -52,32 +52,35 @@ def read_raw(spark, client_id, entity_name, entity_cfg, input_dir):
     )
 
 
-def ingest_client_entity(spark, client_id, entity_name, entity_cfg, input_dir, raw_dir):
-    """Read one client/entity file and write it to the bronze layer. Returns
-    (dataframe, output_path, row_count) for the caller to log/inspect."""
+def ingest_client_entity(spark, client_id, entity_name, entity_cfg, input_dir, table_name):
+    """Read one client/entity file and write it to its bronze table (one
+    table per client per entity -- customers and transactions have
+    genuinely different raw schemas, so merging them into a single table
+    per client would mean a sparse, harder-to-query table for no benefit).
+    Returns (dataframe, table_name, row_count) for the caller to log/inspect."""
     df = read_raw(spark, client_id, entity_name, entity_cfg, input_dir)
-    out_path = f"{raw_dir}/{client_id}/{entity_name}"
-    write_table(df, out_path)
-    return df, out_path, df.count()
+    write_table(df, table_name)
+    return df, table_name, df.count()
 
 
-def run_ingest(spark, client_configs, input_dir, raw_dir):
-    """Ingest every entity for every client. client_configs is
-    {client_id: full_yaml_config}. Returns a list of result dicts for
-    reporting/logging."""
+def run_ingest(spark, client_configs, input_dir, bronze_schema):
+    """Ingest every entity for every client into `{bronze_schema}.
+    {client_id}_{entity_name}`. client_configs is {client_id:
+    full_yaml_config}. Returns a list of result dicts for reporting/logging."""
     results = []
     for client_id, cfg in client_configs.items():
         for entity_name in ("customers", "transactions"):
             if entity_name not in cfg:
                 continue
-            _, out_path, row_count = ingest_client_entity(
-                spark, client_id, entity_name, cfg[entity_name], input_dir, raw_dir
+            table_name = f"{bronze_schema}.{client_id}_{entity_name}"
+            _, _, row_count = ingest_client_entity(
+                spark, client_id, entity_name, cfg[entity_name], input_dir, table_name
             )
             results.append(
                 {
                     "client_id": client_id,
                     "entity": entity_name,
-                    "path": out_path,
+                    "table": table_name,
                     "row_count": row_count,
                 }
             )

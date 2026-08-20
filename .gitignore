@@ -2,14 +2,6 @@ venv/
 __pycache__/
 *.pyc
 .pytest_cache/
-output/raw/*
-output/refined/*
-output/refined_quarantine/*
-output/curated/*
-!output/raw/.gitkeep
-!output/refined/.gitkeep
-!output/refined_quarantine/.gitkeep
-!output/curated/.gitkeep
 *.crc
 _SUCCESS
 .vscode/

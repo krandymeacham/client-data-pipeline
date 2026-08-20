@@ -101,21 +101,23 @@ def build_gold_transactions(silver_dfs):
     )
 
 
-def run_curate(spark, client_configs, refined_dir, curated_dir):
+def run_curate(spark, client_configs, silver_schema, gold_schema):
+    """Union every client's silver tables into `{gold_schema}.customers`
+    and `{gold_schema}.transactions`."""
     customer_dfs, transaction_dfs = {}, {}
     for client_id, cfg in client_configs.items():
         if "customers" in cfg:
-            customer_dfs[client_id] = read_table(spark, f"{refined_dir}/{client_id}/customers")
+            customer_dfs[client_id] = read_table(spark, f"{silver_schema}.{client_id}_customers")
         if "transactions" in cfg:
-            transaction_dfs[client_id] = read_table(spark, f"{refined_dir}/{client_id}/transactions")
+            transaction_dfs[client_id] = read_table(spark, f"{silver_schema}.{client_id}_transactions")
 
     results = {}
     if customer_dfs:
         gold_customers = build_gold_customers(customer_dfs)
-        write_table(gold_customers, f"{curated_dir}/customers")
+        write_table(gold_customers, f"{gold_schema}.customers")
         results["customers"] = gold_customers.count()
     if transaction_dfs:
         gold_transactions = build_gold_transactions(transaction_dfs)
-        write_table(gold_transactions, f"{curated_dir}/transactions")
+        write_table(gold_transactions, f"{gold_schema}.transactions")
         results["transactions"] = gold_transactions.count()
     return results
