@@ -19,11 +19,11 @@ from pyspark.sql.window import Window
 
 from pipeline.common import read_table, write_table
 
-# {canonical column: Spark SQL type}. A type is required
-# so a column absent from *every* client's silver table -- e.g. a brand
-# new client that hasn't started reporting `age` yet -- can still be
-# materialized as a properly typed null column instead of breaking the
-# final select or producing an unwritable NullType column.
+# Canonical schema for the unified customers table.
+# Maps column names to Spark SQL types. Every column here will exist in the
+# final gold table, even if no client currently provides it -- missing columns
+# are materialized as typed nulls. This prevents schema drift and ensures
+# new clients can add fields without breaking existing queries.
 GOLD_CUSTOMER_SCHEMA = {
     "client_id": "STRING", "source_customer_id": "STRING", "first_name": "STRING",
     "last_name": "STRING", "email": "STRING", "phone": "STRING", "country": "STRING",
@@ -31,8 +31,11 @@ GOLD_CUSTOMER_SCHEMA = {
     "age": "INT", "loyalty_points": "INT", "is_vip": "BOOLEAN", "marketing_opt_in": "BOOLEAN",
     "_source_file": "STRING", "_silver_refined_ts": "TIMESTAMP",
 }
+# List of canonical column names (derived from schema keys for convenience)
 GOLD_CUSTOMER_COLUMNS = list(GOLD_CUSTOMER_SCHEMA)
 
+# Canonical schema for the unified transactions table.
+# Same principle as customer schema: all columns will exist in the final table.
 GOLD_TRANSACTION_SCHEMA = {
     "client_id": "STRING", "source_transaction_id": "STRING", "source_customer_id": "STRING",
     "transaction_ts": "TIMESTAMP", "amount": "DECIMAL(12,2)", "currency": "STRING",
@@ -40,10 +43,13 @@ GOLD_TRANSACTION_SCHEMA = {
     "is_refund": "BOOLEAN", "tax": "DECIMAL(12,2)", "notes": "STRING",
     "_source_file": "STRING", "_silver_refined_ts": "TIMESTAMP",
 }
+# List of canonical transaction column names
 GOLD_TRANSACTION_COLUMNS = list(GOLD_TRANSACTION_SCHEMA)
 
 
 def _select_known_columns(df, columns):
+    """Project only the columns that exist in this DataFrame from the
+    canonical list. Clients may not provide all canonical fields."""
     return df.select(*[c for c in columns if c in df.columns])
 
 
@@ -53,8 +59,10 @@ def _ensure_schema(df, schema):
     type so clients that happen to agree on a name don't disagree on type."""
     for col, sql_type in schema.items():
         if col not in df.columns:
+            # Column doesn't exist in any client data - add it as typed null
             df = df.withColumn(col, F.lit(None).cast(sql_type))
         else:
+            # Column exists but may have different types across clients - cast to canonical type
             df = df.withColumn(col, F.col(col).cast(sql_type))
     return df
 
@@ -63,30 +71,47 @@ def _dedupe(df, key_col, order_col="_silver_refined_ts"):
     """Keep the most recently refined row per key. Silver already routed
     unparseable/incomplete rows to quarantine, so any duplicate keys here
     are legitimate re-deliveries of the same source record."""
+    # Create window partitioned by key, ordered by timestamp descending (newest first)
     window = Window.partitionBy(key_col).orderBy(F.col(order_col).desc())
     return (
-        df.withColumn("_rn", F.row_number().over(window))
-        .filter(F.col("_rn") == 1)
-        .drop("_rn")
+        df.withColumn("_rn", F.row_number().over(window))  # Assign row number within each key
+        .filter(F.col("_rn") == 1)  # Keep only the first (most recent) row per key
+        .drop("_rn")  # Remove the helper column
     )
 
 
 def build_gold_customers(silver_dfs):
     """silver_dfs: {client_id: refined customers DataFrame}."""
+    # Step 1: Project each client's DataFrame to only include canonical columns it has
     projected = [_select_known_columns(df, GOLD_CUSTOMER_COLUMNS) for df in silver_dfs.values()]
+    
+    # Step 2: Stack all client DataFrames vertically, allowing missing columns
     unioned = functools.reduce(lambda a, b: a.unionByName(b, allowMissingColumns=True), projected)
+    
+    # Step 3: Ensure all canonical columns exist with correct types (add nulls where missing)
     unioned = _ensure_schema(unioned, GOLD_CUSTOMER_SCHEMA)
+    
+    # Step 4: Create a composite key from client_id + source_customer_id for global uniqueness
     unioned = unioned.withColumn(
         "customer_key", F.concat_ws("_", F.col("client_id"), F.col("source_customer_id"))
     )
+    
+    # Step 5: Remove duplicates (keep most recent) and select final column order
     return _dedupe(unioned, "customer_key").select("customer_key", *GOLD_CUSTOMER_COLUMNS)
 
 
 def build_gold_transactions(silver_dfs):
     """silver_dfs: {client_id: refined transactions DataFrame}."""
+    # Step 1: Project each client's DataFrame to only include canonical columns it has
     projected = [_select_known_columns(df, GOLD_TRANSACTION_COLUMNS) for df in silver_dfs.values()]
+    
+    # Step 2: Stack all client DataFrames vertically, allowing missing columns
     unioned = functools.reduce(lambda a, b: a.unionByName(b, allowMissingColumns=True), projected)
+    
+    # Step 3: Ensure all canonical columns exist with correct types (add nulls where missing)
     unioned = _ensure_schema(unioned, GOLD_TRANSACTION_SCHEMA)
+    
+    # Step 4: Create composite keys for global uniqueness and customer relationship
     unioned = (
         unioned.withColumn(
             "transaction_key", F.concat_ws("_", F.col("client_id"), F.col("source_transaction_id"))
@@ -94,6 +119,8 @@ def build_gold_transactions(silver_dfs):
             "customer_key", F.concat_ws("_", F.col("client_id"), F.col("source_customer_id"))
         )
     )
+    
+    # Step 5: Remove duplicates (keep most recent) and select final column order
     return _dedupe(unioned, "transaction_key").select(
         "transaction_key", "customer_key", *GOLD_TRANSACTION_COLUMNS
     )
@@ -102,19 +129,24 @@ def build_gold_transactions(silver_dfs):
 def run_curate(spark, client_configs, silver_schema, gold_schema):
     """Union every client's silver tables into `{gold_schema}.customers`
     and `{gold_schema}.transactions`."""
+    # Step 1: Load all client silver tables into dictionaries
     customer_dfs, transaction_dfs = {}, {}
     for client_id, cfg in client_configs.items():
+        # Only load tables that exist for this client (per config)
         if "customers" in cfg:
             customer_dfs[client_id] = read_table(spark, f"{silver_schema}.{client_id}_customers")
         if "transactions" in cfg:
             transaction_dfs[client_id] = read_table(spark, f"{silver_schema}.{client_id}_transactions")
 
+    # Step 2: Build and write gold tables
     results = {}
     if customer_dfs:
+        # Union all customer data across clients into a single gold table
         gold_customers = build_gold_customers(customer_dfs)
         write_table(gold_customers, f"{gold_schema}.customers")
         results["customers"] = gold_customers.count()
     if transaction_dfs:
+        # Union all transaction data across clients into a single gold table
         gold_transactions = build_gold_transactions(transaction_dfs)
         write_table(gold_transactions, f"{gold_schema}.transactions")
         results["transactions"] = gold_transactions.count()
