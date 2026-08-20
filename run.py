@@ -13,6 +13,11 @@ running before this module is even imported, so main() accepts one via the
 which passes the notebook's ambient `spark`). Building a session with
 pipeline.common.get_spark() only happens here, and only when nothing was
 passed in -- i.e. for the local CLI / pytest path below, not on Databricks.
+
+`source_path` is optional and only needed when configs/input_files should
+be read from somewhere other than BASE_PATH -- e.g. a Databricks notebook
+reading them straight from its Repo/Git-folder checkout while BASE_PATH
+points at DBFS for output only (see pipeline/common.py:resolve_paths).
 """
 import argparse
 import os
@@ -26,8 +31,8 @@ from pipeline.ingest import run_ingest
 from pipeline.refine import run_refine
 
 
-def main(base_path, output_format="delta", spark=None):
-    paths = resolve_paths(base_path)
+def main(base_path, output_format="delta", spark=None, source_path=None):
+    paths = resolve_paths(base_path, source_path=source_path)
     if spark is None:
         spark = get_spark(use_delta=(output_format == "delta"))
 

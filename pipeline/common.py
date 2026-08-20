@@ -49,8 +49,19 @@ def get_spark(app_name="client-ingestion-pipeline", use_delta=True):
 
 
 def load_client_config(configs_dir, client_id):
-    with open(os.path.join(configs_dir, f"{client_id}.yaml"), "r") as f:
-        return yaml.safe_load(f)
+    path = os.path.join(configs_dir, f"{client_id}.yaml")
+    with open(path, "r") as f:
+        config = yaml.safe_load(f)
+    if config is None:
+        # yaml.safe_load returns None (not an error) for an empty file --
+        # most often the result of a copy step that produced a 0-byte file
+        # rather than an actual YAML syntax problem. Failing here with the
+        # exact path, instead of letting `None` propagate into
+        # `"customers" in cfg`-style checks downstream, turns a cryptic
+        # "argument of type 'NoneType' is not iterable" several calls deep
+        # into an immediate, actionable error.
+        raise ValueError(f"{path} loaded as empty/None -- check that the file actually has content.")
+    return config
 
 
 def list_client_ids(configs_dir):
@@ -59,15 +70,24 @@ def list_client_ids(configs_dir):
     )
 
 
-def resolve_paths(base_path):
-    """Every path the pipeline touches, derived from a single BASE_PATH.
+def resolve_paths(base_path, source_path=None):
+    """Every path the pipeline touches. Output (raw/refined/quarantine/
+    curated) always lives under BASE_PATH -- the one thing that has to be
+    writable. configs/ and input_files/ are read from source_path instead
+    when given, which defaults to BASE_PATH for the common case (a local
+    checkout, or a workspace where copying source files onto BASE_PATH
+    first, per the assignment's suggested pattern, works fine).
 
-    Changing BASE_PATH is the only thing required to move this pipeline
-    between environments (local disk, DBFS, a fresh workspace, ...).
+    Databricks notebooks pass source_path=<repo checkout path> and point
+    BASE_PATH at DBFS instead, reading configs/input_files straight from
+    the Repo/Git-folder checkout: serverless compute has no /dbfs FUSE
+    mount, so copying those onto BASE_PATH first isn't reliable there,
+    and skipping that copy also means one less moving part in general.
     """
+    source_path = source_path or base_path
     return {
-        "configs": f"{base_path}/configs",
-        "input": f"{base_path}/input_files",
+        "configs": f"{source_path}/configs",
+        "input": f"{source_path}/input_files",
         "raw": f"{base_path}/output/raw",
         "refined": f"{base_path}/output/refined",
         "quarantine": f"{base_path}/output/refined_quarantine",
