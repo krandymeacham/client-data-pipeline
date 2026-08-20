@@ -1,8 +1,8 @@
 # Client Ingestion Pipeline
 
-A config-driven Databricks/PySpark pipeline that ingests messy, inconsistent
-flat files from three clients and standardizes them into a bronze / silver /
-gold (raw / refined / curated) Delta Lake model.
+A config-driven PySpark pipeline, built to run on Databricks, that ingests
+messy, inconsistent flat files from three clients and standardizes them
+into a bronze / silver / gold (raw / refined / curated) Delta Lake model.
 
 ## Architecture
 
@@ -39,8 +39,8 @@ input_files/{client}/{file}.txt
 silver, and gold, and each exposes small, pure functions that operate on
 DataFrames in memory (`read_raw`, `refine_entity`, `build_gold_customers`,
 `build_gold_transactions`) plus a thin `run_*` wrapper that adds the actual
-file I/O. That split is what makes `tests/` possible without spinning up
-real Delta tables.
+file I/O. `run.py` orchestrates all three in order; `notebooks/00_run_pipeline.py`
+is the Databricks-native driver that calls it.
 
 ## Running in a fresh Databricks workspace
 
@@ -48,36 +48,29 @@ real Delta tables.
    the newer "Git folder" flow — either way it lands under `/Workspace/...`).
 2. Open `notebooks/00_run_pipeline.py`. Nothing to attach or configure —
    it runs on **serverless compute**, which provides `spark` (Delta Lake
-   already built in) before the first cell runs; `pipeline/*.py` never
-   builds its own SparkSession, it just takes the notebook's `spark` as a
-   plain argument (see `run.py:main()`).
+   already built in) before the first cell runs.
 3. **Run All.** The notebook reads `configs/` and `input_files/` straight
    from the repo checkout (auto-detected from the notebook's own path), and
    writes pipeline output to a Unity Catalog Volume it creates if missing
    (`workspace.client_ingestion.client_ingestion` by default — the
-   catalog/schema/volume widgets override this), then calls `run.py`'s
-   `main()`.
+   catalog/schema/volume widgets override this).
 4. Re-running is safe — every layer writes with `mode("overwrite")`, the
-   volume/schema creation is `IF NOT EXISTS`, and nothing depends on
+   schema/volume creation is `IF NOT EXISTS`, and nothing depends on
    pre-existing state.
 
-Preparing input data manually (instead of running from a Git folder) is
-just as simple: upload the six files under `input_files/<client>/` and the
-three YAML files under `configs/` to matching paths under any directory —
-local disk, a Volume, DBFS — and pass that directory as `--base-path` (CLI)
-or `source_path=` (notebook/`run.py main()`).
+## Testing the shared logic
 
-### Running locally (no Databricks)
+`pipeline/*.py`'s parsing, quarantine, and curation logic is plain PySpark
+with no Databricks dependency, so it's covered by `pytest tests/` against a
+local, throwaway SparkSession (`tests/conftest.py`) — no Delta, no cluster,
+just the DataFrame transformations themselves. This isn't a way to run the
+pipeline end to end (that's what the notebook is for); it's what let each
+fix in this README's design history get verified before being pushed.
 
 ```bash
 python -m venv venv && venv/Scripts/pip install -r requirements.txt
-python run.py --base-path . --format delta
 pytest tests/
 ```
-
-`--format parquet` is available as a local fallback for environments that
-can't resolve the `delta-spark` Maven coordinate (e.g. behind an SSL-
-inspecting proxy) — see **Assumptions and limitations**.
 
 ## Key design decisions and tradeoffs
 
@@ -129,39 +122,29 @@ different clients' IDs are drawn from unrelated, colliding numeric ranges
 `transaction_key` and each transaction's `customer_key` FK are built the
 same way, so joins across the curated tables are correct by construction.
 
-**Delta over Parquet, with a documented local fallback.** Delta is
-preferred by the assignment and is native on Databricks (no install
-step). Locally, this environment's network policy blocked resolving the
-`delta-spark` Maven coordinate over SSL, so local dev/testing supports
-`--format parquet` as a fallback; the pipeline code itself is unaware of
-which format it's writing (`pipeline/common.py:write_table`/`read_table`
-take `output_format` as a parameter).
-
 **No pipeline code manages the Spark session.** Every function in
-`pipeline/*.py` takes `spark` as a plain argument rather than creating one
-internally. `pipeline/common.py:get_spark()` — the only place a
-SparkSession actually gets built — is called solely from `run.py`'s CLI
-entry point and the pytest fixture, and even then only if nothing was
-passed in. On Databricks serverless compute this matters beyond style:
-serverless doesn't let you build or reconfigure a session at all, and
-doesn't need to — one (with Delta already available) exists before the
-notebook's first cell runs. `notebooks/00_run_pipeline.py` passes that
-ambient `spark` straight into `main()`, so the exact same `pipeline/*.py`
-code runs unchanged whether `spark` came from serverless, a classic
-cluster, or a local `SparkSession.builder` call in a test.
+`pipeline/*.py` takes `spark` as a plain argument; `run.py:main()` requires
+one rather than building its own. Databricks provides a session (Delta
+already available) before the notebook's first cell runs, so there's
+nothing for this pipeline to set up — `notebooks/00_run_pipeline.py` just
+passes that session straight through. `tests/conftest.py` builds its own
+throwaway local session purely for pytest, entirely separately.
 
-**Output lives on a Unity Catalog Volume, not DBFS root.** Newer
-workspaces — serverless-only and free-tier ones especially — reject writes
-to the public DBFS root outright (`[DBFS_DISABLED] Public DBFS root is
-disabled`). `pipeline/common.py:ensure_volume()` creates the target
-schema/volume with `CREATE ... IF NOT EXISTS` (catalog creation is
-attempted too, but failures there are swallowed — that needs
-metastore-admin privilege most users won't have, and the default
-`workspace` catalog already exists) and hands back a `/Volumes/...` path
-that behaves the same on serverless and classic clusters. `BASE_PATH` for
-configs/input_files (`source_path` in `resolve_paths()`) stays completely
-separate from this — it reads straight from the repo checkout instead, so
-neither path depends on DBFS at all.
+**Pipeline output lives on a Unity Catalog Volume.** `pipeline/common.py:
+ensure_volume()` creates the target schema/volume with `CREATE ... IF NOT
+EXISTS` (catalog creation is attempted too, but failures are swallowed —
+that needs metastore-admin privilege most users won't have, and the
+default `workspace` catalog already exists) and hands back a `/Volumes/...`
+path that behaves the same on serverless compute and classic clusters.
+`source_path` (configs/input_files) stays completely separate from
+`BASE_PATH` (output) — it reads straight from the repo checkout instead.
+
+**Spark reads of a Workspace checkout need an explicit `file:` scheme.**
+Plain Python file I/O (config loading) handles `/Workspace/...` paths
+correctly with no prefix, but Spark's CSV reader needs one explicitly.
+`pipeline/common.py:spark_local_path()` prefixes exactly `/Workspace/...`
+paths with `file:` before Spark reads them — an unambiguous, Databricks-
+reserved prefix, so it never touches any other kind of path.
 
 ## How this handles change
 
@@ -208,8 +191,3 @@ neither path depends on DBFS at all.
   `try_to_timestamp`/`try_to_date`, and the name-splitter uses `F.get`
   instead of plain array indexing, specifically to preserve
   quarantine-not-crash behavior under ANSI mode.
-- **Local Windows dev without a Hadoop `winutils.exe` on PATH** can't
-  exercise Spark's local file *writer* (a well-known Spark-on-Windows
-  limitation, unrelated to this pipeline's code) — unaffected by
-  Databricks, Linux, or macOS. `tests/` avoid this entirely by asserting
-  against in-memory DataFrames rather than round-tripping through disk.

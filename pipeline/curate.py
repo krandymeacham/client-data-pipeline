@@ -101,25 +101,21 @@ def build_gold_transactions(silver_dfs):
     )
 
 
-def run_curate(spark, client_configs, refined_dir, curated_dir, output_format="delta"):
+def run_curate(spark, client_configs, refined_dir, curated_dir):
     customer_dfs, transaction_dfs = {}, {}
     for client_id, cfg in client_configs.items():
         if "customers" in cfg:
-            customer_dfs[client_id] = read_table(
-                spark, f"{refined_dir}/{client_id}/customers", output_format
-            )
+            customer_dfs[client_id] = read_table(spark, f"{refined_dir}/{client_id}/customers")
         if "transactions" in cfg:
-            transaction_dfs[client_id] = read_table(
-                spark, f"{refined_dir}/{client_id}/transactions", output_format
-            )
+            transaction_dfs[client_id] = read_table(spark, f"{refined_dir}/{client_id}/transactions")
 
     results = {}
     if customer_dfs:
         gold_customers = build_gold_customers(customer_dfs)
-        write_table(gold_customers, f"{curated_dir}/customers", output_format=output_format)
+        write_table(gold_customers, f"{curated_dir}/customers")
         results["customers"] = gold_customers.count()
     if transaction_dfs:
         gold_transactions = build_gold_transactions(transaction_dfs)
-        write_table(gold_transactions, f"{curated_dir}/transactions", output_format=output_format)
+        write_table(gold_transactions, f"{curated_dir}/transactions")
         results["transactions"] = gold_transactions.count()
     return results

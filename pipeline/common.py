@@ -1,51 +1,17 @@
-"""Shared utilities used by every pipeline stage: local Spark session
-creation (for non-Databricks use only -- see get_spark below), config
-loading, and path resolution.
+"""Shared utilities used by every pipeline stage: config loading, path
+resolution, and Unity Catalog Volume setup for pipeline output.
 
-Everything here is a pure function of its arguments (no hardcoded paths,
-no dependency on a pre-existing SparkSession), so the same code runs
-unchanged on a laptop, in a pytest fixture, or on Databricks -- classic
-clusters and serverless compute alike -- with only BASE_PATH changing.
+Everything here is a pure function of its arguments -- no hardcoded paths,
+no session creation of its own. `spark` is always passed in, because this
+pipeline runs on Databricks (see notebooks/00_run_pipeline.py), which
+already provides one with Delta Lake built in before any of this code runs.
 """
 import os
 
 import yaml
-from pyspark.sql import SparkSession
 
 NULL_TOKENS = ["", "NULL", "null", "None", "N/A", "n/a"]
 CORRUPT_COL = "_corrupt_record"
-
-
-def get_spark(app_name="client-ingestion-pipeline", use_delta=True):
-    """Build a local SparkSession for running outside Databricks (the CLI
-    entry point in run.py, and the pytest fixture in tests/conftest.py).
-
-    Never called on Databricks. Serverless compute doesn't support building
-    or reconfiguring a session at all -- a SparkSession (with Delta already
-    built in) is provided by the notebook before any of this code runs, and
-    every pipeline function takes `spark` as a plain argument, so
-    notebooks/00_run_pipeline.py just passes that one through instead of
-    calling this function. use_delta=True here configures the Delta Lake
-    extensions locally via delta-spark, since -- unlike on Databricks --
-    nothing provides them by default.
-    """
-    builder = SparkSession.builder.appName(app_name).master(
-        os.environ.get("SPARK_MASTER", "local[*]")
-    )
-    if use_delta:
-        try:
-            from delta import configure_spark_with_delta_pip
-
-            builder = builder.config(
-                "spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension"
-            ).config(
-                "spark.sql.catalog.spark_catalog",
-                "org.apache.spark.sql.delta.catalog.DeltaCatalog",
-            )
-            builder = configure_spark_with_delta_pip(builder)
-        except ImportError:
-            pass
-    return builder.getOrCreate()
 
 
 def load_client_config(configs_dir, client_id):
@@ -74,15 +40,12 @@ def resolve_paths(base_path, source_path=None):
     """Every path the pipeline touches. Output (raw/refined/quarantine/
     curated) always lives under BASE_PATH -- the one thing that has to be
     writable. configs/ and input_files/ are read from source_path instead
-    when given, which defaults to BASE_PATH for the common case (a local
-    checkout, or a workspace where copying source files onto BASE_PATH
-    first, per the assignment's suggested pattern, works fine).
+    when given, which defaults to BASE_PATH for the common case where
+    everything lives together.
 
-    Databricks notebooks pass source_path=<repo checkout path> and point
-    BASE_PATH at DBFS instead, reading configs/input_files straight from
-    the Repo/Git-folder checkout: serverless compute has no /dbfs FUSE
-    mount, so copying those onto BASE_PATH first isn't reliable there,
-    and skipping that copy also means one less moving part in general.
+    The Databricks notebook passes source_path=<repo checkout path> and
+    points BASE_PATH at a Unity Catalog Volume instead, so configs/
+    input_files are read straight from the checkout with no copy step.
     """
     source_path = source_path or base_path
     return {
@@ -95,18 +58,27 @@ def resolve_paths(base_path, source_path=None):
     }
 
 
+def spark_local_path(path):
+    """Prefix a bare /Workspace/... path with the file: scheme Spark needs
+    to read it as a local file (without it, Spark fails with
+    FAILED_READ_FILE trying to read a Repo/Git-folder checkout).
+    /Workspace/ is an unambiguous, Databricks-reserved prefix, so this
+    never touches any other kind of path -- only Spark's *read* of a
+    Workspace checkout needs it; plain Python file I/O (config loading)
+    already handles /Workspace/... paths correctly with no prefix at all.
+    """
+    if path.startswith("/Workspace/"):
+        return f"file:{path}"
+    return path
+
+
 def ensure_volume(spark, catalog, schema, volume):
     """Idempotently ensure a Unity Catalog schema and volume exist, and
-    return the /Volumes path pipeline output should be written to.
-
-    Volumes are the portable replacement for a DBFS root path
-    (`dbfs:/tmp/...` / `/dbfs/tmp/...`) for pipeline *output*: newer
-    workspaces -- serverless-only and free-tier ones especially -- disable
-    public DBFS root entirely (`[DBFS_DISABLED] Public DBFS root is
-    disabled`), while Volumes work the same way on serverless compute and
-    classic clusters alike. Every statement here is IF NOT EXISTS, so
-    calling this on every run is safe and assumes no pre-existing state,
-    same as the rest of the pipeline.
+    return the /Volumes path pipeline output should be written to. Volumes
+    work the same way on serverless compute and classic clusters, so this
+    is the one location every run writes output to. Every statement here
+    is IF NOT EXISTS, so calling this on every run is safe and assumes no
+    pre-existing state, same as the rest of the pipeline.
     """
     try:
         spark.sql(f"CREATE CATALOG IF NOT EXISTS `{catalog}`")
@@ -122,12 +94,9 @@ def ensure_volume(spark, catalog, schema, volume):
     return f"/Volumes/{catalog}/{schema}/{volume}"
 
 
-def write_table(df, path, output_format="delta", mode="overwrite"):
-    writer = df.write.format(output_format).mode(mode)
-    if output_format == "delta":
-        writer = writer.option("overwriteSchema", "true")
-    writer.save(path)
+def write_table(df, path, mode="overwrite"):
+    df.write.format("delta").mode(mode).option("overwriteSchema", "true").save(path)
 
 
-def read_table(spark, path, output_format="delta"):
-    return spark.read.format(output_format).load(path)
+def read_table(spark, path):
+    return spark.read.format("delta").load(path)
