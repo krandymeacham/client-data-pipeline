@@ -15,16 +15,22 @@
 # MAGIC    built in) before the first cell even runs. `pipeline/*.py` never
 # MAGIC    builds its own SparkSession; it just takes this notebook's `spark`
 # MAGIC    as a plain argument.
-# MAGIC 3. Run All. `BASE_PATH` below (DBFS, for pipeline *output* only) is the
-# MAGIC    one thing you'd normally change; everything else is derived from it
-# MAGIC    or auto-detected.
+# MAGIC 3. Run All. The catalog/schema/volume widgets below (for pipeline
+# MAGIC    *output* only) are the one thing you'd normally change; everything
+# MAGIC    else is derived from them or auto-detected.
 
 # COMMAND ----------
 
-dbutils.widgets.text("base_path", "dbfs:/tmp/client_ingestion", "BASE_PATH (output only)")
+dbutils.widgets.text("catalog", "workspace", "Unity Catalog catalog")
+dbutils.widgets.text("schema", "client_ingestion", "Schema (created if missing)")
+dbutils.widgets.text("volume", "client_ingestion", "Volume (created if missing)")
+dbutils.widgets.text("base_path", "", "BASE_PATH override (blank = auto /Volumes path)")
 dbutils.widgets.text("repo_root", "", "Repo root (blank = auto-detect)")
 
-BASE_PATH = dbutils.widgets.get("base_path")
+CATALOG = dbutils.widgets.get("catalog")
+SCHEMA = dbutils.widgets.get("schema")
+VOLUME = dbutils.widgets.get("volume")
+BASE_PATH_OVERRIDE = dbutils.widgets.get("base_path").strip()
 REPO_ROOT_OVERRIDE = dbutils.widgets.get("repo_root").strip()
 
 # COMMAND ----------
@@ -38,12 +44,11 @@ REPO_ROOT_OVERRIDE = dbutils.widgets.get("repo_root").strip()
 # MAGIC silently land as 0-byte files there; reading Workspace files directly
 # MAGIC (plain Python for the tiny YAML configs, Spark's normal file reader for
 # MAGIC the CSVs) sidesteps that entirely and is one less moving part besides.
-# MAGIC BASE_PATH is only used for the pipeline's *output* (bronze/silver/gold),
-# MAGIC which does need a real writable location.
 
 # COMMAND ----------
 
 import os
+import sys
 
 if REPO_ROOT_OVERRIDE:
     repo_root = REPO_ROOT_OVERRIDE
@@ -58,21 +63,44 @@ print("repo_root:", repo_root)
 assert os.path.isdir(f"{repo_root}/pipeline"), (
     f"Couldn't find pipeline/ under {repo_root} -- set the 'Repo root' widget explicitly."
 )
+sys.path.insert(0, repo_root)
 
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 2. Sanity-check the configs before running anything
+# MAGIC ## 2. Point pipeline output at a Unity Catalog Volume
+# MAGIC
+# MAGIC Newer workspaces -- serverless-only and free-tier ones especially --
+# MAGIC disable the public DBFS root entirely (`[DBFS_DISABLED] Public DBFS
+# MAGIC root is disabled`). Volumes are the portable replacement and work the
+# MAGIC same way on serverless compute and classic clusters; creating the
+# MAGIC schema/volume with `IF NOT EXISTS` keeps this safe to re-run, same as
+# MAGIC every other layer. (Catalog creation is attempted too but silently
+# MAGIC skipped on failure -- that needs metastore-admin privilege most users
+# MAGIC won't have, and the default `workspace` catalog already exists in any
+# MAGIC Unity Catalog workspace.)
+
+# COMMAND ----------
+
+from pipeline.common import ensure_volume
+
+if BASE_PATH_OVERRIDE:
+    BASE_PATH = BASE_PATH_OVERRIDE
+else:
+    BASE_PATH = ensure_volume(spark, CATALOG, SCHEMA, VOLUME)
+
+print("BASE_PATH:", BASE_PATH)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## 3. Sanity-check the configs before running anything
 # MAGIC
 # MAGIC Loads each client's YAML the exact same way `run.py` will, so a bad
 # MAGIC path or an empty file fails here with a clear message instead of a
 # MAGIC generic error a few cells later.
 
 # COMMAND ----------
-
-import sys
-
-sys.path.insert(0, repo_root)
 
 from pipeline.common import list_client_ids, load_client_config
 
@@ -85,7 +113,7 @@ for client_id in client_ids:
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 3. Run bronze -> silver -> gold
+# MAGIC ## 4. Run bronze -> silver -> gold
 # MAGIC
 # MAGIC `spark` here is the session serverless compute already started for
 # MAGIC this notebook -- passed straight into `main()` rather than having
@@ -102,7 +130,7 @@ gold_counts
 
 # COMMAND ----------
 
-# MAGIC %md ## 4. Curated (gold) tables
+# MAGIC %md ## 5. Curated (gold) tables
 
 # COMMAND ----------
 
@@ -115,7 +143,7 @@ display(spark.read.format("delta").load(f"{BASE_PATH}/output/curated/transaction
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 5. Quarantine summary
+# MAGIC ## 6. Quarantine summary
 # MAGIC
 # MAGIC What got set aside during refine, and why -- the data-quality visibility
 # MAGIC the assignment asks for, rather than rows silently vanishing.
