@@ -1,0 +1,51 @@
+client_id: client_b
+
+customers:
+  file: customer_dump.txt
+  delimiter: "|"
+  header: true
+  quote: '"'
+  columns: [cust_id, full_name, contact_email, country, address, zip, created_date, vip_flag]
+  column_map:
+    cust_id: source_customer_id
+    contact_email: email
+    country: country
+    address: address
+    zip: postal_code
+  date_fields:
+    created_date:
+      target: signup_date
+      format: "yyyy-MM-dd"
+      type: date
+  boolean_fields:
+    vip_flag:
+      target: is_vip
+      true_values: ["Y", "true"]
+      false_values: ["N", "false"]
+  # full_name arrives as one combined field (occasionally containing a literal
+  # "|" inside quotes) and can't be handled by a straight column rename, so it
+  # is split into first_name/last_name by a registered transform in refine.py.
+  special_transform: split_full_name
+  required_fields: [source_customer_id]
+
+transactions:
+  file: txn_history.txt
+  delimiter: "|"
+  header: true
+  quote: '"'
+  columns: [txn_id, cust_id, total, currency, txn_ts, items, notes]
+  column_map:
+    txn_id: source_transaction_id
+    cust_id: source_customer_id
+    currency: currency
+    notes: notes
+  decimal_fields:
+    total: amount
+  int_fields:
+    items: quantity
+  date_fields:
+    txn_ts:
+      target: transaction_ts
+      format: "yyyy-MM-dd'T'HH:mm:ss"
+      type: timestamp
+  required_fields: [source_transaction_id, source_customer_id, amount]

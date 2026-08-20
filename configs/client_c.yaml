@@ -1,0 +1,47 @@
+client_id: client_c
+
+customers:
+  file: customers.txt
+  delimiter: "\t"
+  header: true
+  quote: '"'
+  columns: [id, fname, lname, signup_date, age, marketing_opt_in]
+  column_map:
+    id: source_customer_id
+    fname: first_name
+    lname: last_name
+  date_fields:
+    signup_date:
+      target: signup_date
+      format: "yyyy-MM-dd"
+      type: date
+  int_fields:
+    # "unknown" appears as a literal sentinel for missing age; casting a
+    # non-numeric string to int naturally yields null, so no extra handling
+    # is required beyond the standard int cast.
+    age: age
+  boolean_fields:
+    marketing_opt_in:
+      target: marketing_opt_in
+      true_values: ["1", "true"]
+      false_values: ["0", "false"]
+  required_fields: [source_customer_id]
+
+transactions:
+  file: transactions.txt
+  delimiter: "\t"
+  header: true
+  quote: '"'
+  columns: [id, user_id, price_usd, tax, final_amount, payment_type]
+  column_map:
+    id: source_transaction_id
+    user_id: source_customer_id
+    payment_type: payment_type
+  decimal_fields:
+    price_usd: price_usd
+    tax: tax
+    final_amount: amount
+  # client_c reports no currency column at all; price_usd's naming makes the
+  # assumption explicit rather than silent.
+  default_currency: "USD"
+  required_fields: [source_transaction_id, source_customer_id, amount]

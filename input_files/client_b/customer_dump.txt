@@ -1,0 +1,1501 @@
+cust_id|full_name|contact_email|country|address|zip|created_date|vip_flag
+1|John Patel|john1@mail.com|AU|677 Main St|20190|2023-12-25|N
+2|"Raj|Johnson"|raj2@mail.com|AU|||2023-01-14|
+3|Tom Johnson|||886 Main St|ABCDE|2023-02-28|
+4|"Chris|White"|chris4@mail.com||452 Main St|ABCDE|2024-05-02|true
+5|Nina Lee||CA||20190|2023-07-29|
+6|Bob Lee|bob6@mail.com|NULL|447 Main St||2023-07-23|true
+7|"Leo|Green"|leo7@mail.com|CA||94105|2023-01-15|true
+8|Jane Brown|jane8@mail.com|NULL|365 Main St|94105|2024-04-26|Y
+9||sara9@mail.com|US|90 Main St|20190|2023-01-10|
+10|Tom Smith|tom10@mail.com|UK|576 Main St|20190|2024-05-02|N
+11|Mike Doe|mike11@mail.com||830 Main St|20190|2024-04-13|
+12|John Brown|john12@mail.com|UK|27 Main St|94105|2023-07-22|N
+13|||US|382 Main St|ABCDE|2023-01-27|N
+14|Nina Johnson|nina14@mail.com||309 Main St|20190|2023-03-14|false
+15|Tom Johnson|tom15@mail.com|NULL|627 Main St|20190|2024-04-08|N
+16|Alice White|alice16@mail.com|||94105|2023-03-02|N
+17|Raj Green||AU|||2024-03-25|N
+18|Nina Doe|nina18@mail.com|CA|106 Main St|20190|2024-05-07|false
+19|"Chris|White"|chris19@mail.com|AU||20190|2024-01-04|true
+20|Emma Doe||CA|293 Main St|20190|2023-10-29|Y
+21|John Doe|john21@mail.com|NULL|||2024-03-28|true
+22|Mike Patel|mike22@mail.com|AU|||2023-12-17|true
+23|Raj Green|raj23@mail.com|UK||ABCDE|2023-05-20|N
+24|Bob Patel|bob24@mail.com|||94105|2023-03-23|N
+25|Jane Brown|jane25@mail.com|AU|805 Main St|ABCDE|2023-03-19|false
+26|Chris Lee|chris26@mail.com|US|522 Main St|ABCDE|2024-01-18|true
+27|Mike Brown||AU||94105|2023-02-19|N
+28|Alice Black|alice28@mail.com||461 Main St|94105|2023-12-15|false
+29|Nina Doe||US|841 Main St|20190|2023-07-29|N
+30||tom30@mail.com|AU|712 Main St|20190|2024-01-15|false
+31||john31@mail.com|NULL||ABCDE|2023-11-21|N
+32|Nina Black||CA|99 Main St|20190|2023-12-14|
+123|MISMATCH|EXTRA|COLS|HERE|oops
+34|Nina Black|nina34@mail.com|NULL|541 Main St|94105|2023-11-17|N
+35|Mike White||UK|200 Main St|ABCDE|2023-08-18|N
+36|Sara Doe|sara36@mail.com||707 Main St||2023-05-09|N
+37|Bob Lee|bob37@mail.com||733 Main St|20190|2023-04-02|N
+38|John Smith|john38@mail.com|UK|21 Main St||2024-04-10|
+39|Chris Black|chris39@mail.com|NULL|964 Main St|94105|2023-12-26|
+40||bob40@mail.com||192 Main St|ABCDE|2024-02-23|true
+41|"Jane|Black"|jane41@mail.com|US|239 Main St||2023-06-17|
+42|Chris Brown||UK|96 Main St|20190|2023-04-17|true
+43|"Sara|Johnson"|sara43@mail.com|CA|337 Main St|94105|2024-03-17|Y
+44|Jane Brown|jane44@mail.com|CA|445 Main St|ABCDE|2023-01-25|Y
+45|"Nina|Patel"|nina45@mail.com|UK|41 Main St||2023-01-29|
+46||chris46@mail.com|US||ABCDE|2023-11-08|Y
+47|Sara Johnson|sara47@mail.com|US||ABCDE|2023-07-30|N
+48||emma48@mail.com|NULL|629 Main St|94105|2023-06-26|false
+49|Nina Brown|||617 Main St|ABCDE|2023-03-12|
+50|Nina Green|nina50@mail.com|US|967 Main St|20190|2023-02-23|N
+51|John Black|john51@mail.com|AU|668 Main St|20190|2023-08-08|Y
+52|"Mike|Green"|mike52@mail.com|CA|376 Main St|94105|2024-04-16|true
+53|Alice Green|alice53@mail.com||490 Main St||2024-04-26|
+54|Bob Green|bob54@mail.com||343 Main St|20190|2023-10-24|N
+55|Raj White|raj55@mail.com||76 Main St|ABCDE|2024-03-13|Y
+56|John Johnson|john56@mail.com|NULL|||2023-03-10|Y
+57||jane57@mail.com|NULL|492 Main St||2023-09-26|Y
+58|Leo Doe|leo58@mail.com|CA|584 Main St|20190|2023-10-23|true
+59|Tom Patel||NULL|807 Main St|20190|2023-04-12|
+60|||AU|903 Main St|ABCDE|2023-11-02|true
+61|Raj White|raj61@mail.com|CA|295 Main St|94105|2023-06-27|true
+62|Leo White|leo62@mail.com||482 Main St|20190|2023-11-04|Y
+63||alice63@mail.com|US|236 Main St|94105|2023-05-02|false
+64|Bob Black|bob64@mail.com|AU|842 Main St||2024-02-11|true
+65|Tom Patel|tom65@mail.com||304 Main St|94105|2024-02-03|
+66|Leo Lee||NULL|206 Main St|ABCDE|2023-09-14|N
+67|Mike Smith||NULL|133 Main St|ABCDE|2023-10-22|true
+68|Sara Green|sara68@mail.com|AU||ABCDE|2024-02-15|N
+69|Chris Green|chris69@mail.com|NULL|339 Main St|94105|2023-03-03|N
+70||john70@mail.com|NULL|409 Main St|ABCDE|2023-04-24|true
+71|Mike Johnson|mike71@mail.com|NULL|964 Main St|94105|2023-09-23|true
+72|Leo Brown|leo72@mail.com|UK|925 Main St||2024-04-14|
+73|Alice Green|alice73@mail.com|||94105|2023-06-18|true
+74|Alice Smith|||91 Main St|94105|2023-05-24|true
+75|Bob Black|bob75@mail.com|US|699 Main St|20190|2023-09-22|Y
+76|Chris Lee|chris76@mail.com|US|521 Main St||2023-02-04|false
+77|Jane Brown|||492 Main St|20190|2024-02-18|N
+78|Leo Smith|leo78@mail.com|CA|261 Main St||2023-05-01|false
+79|Raj Smith|raj79@mail.com|UK||ABCDE|2023-03-29|true
+80|Raj Doe|raj80@mail.com|AU|||2024-03-25|Y
+81|Mike Brown||UK|127 Main St|20190|2023-02-22|false
+82|Nina Patel|nina82@mail.com|US||ABCDE|2023-08-11|Y
+83||emma83@mail.com|AU|440 Main St||2023-12-19|false
+84|"Leo|Smith"|leo84@mail.com|US|347 Main St|94105|2023-04-16|Y
+85|Nina Black|nina85@mail.com||973 Main St|94105|2023-09-01|
+86|||US|254 Main St|94105|2024-03-26|true
+87|Mike Green|mike87@mail.com|NULL|131 Main St|ABCDE|2023-05-13|N
+88|Leo White|leo88@mail.com|UK|464 Main St|94105|2023-01-05|false
+89|Jane Black|jane89@mail.com|AU||ABCDE|2023-03-01|Y
+,,,
+91|Chris Patel|chris91@mail.com|UK|254 Main St|ABCDE|2023-12-09|true
+92|Chris White|chris92@mail.com|||ABCDE|2024-04-12|true
+93|Sara Smith|sara93@mail.com|NULL|992 Main St|20190|2024-03-11|Y
+94|Jane Brown||UK|357 Main St||2024-04-29|
+95|Raj Patel|raj95@mail.com|CA|115 Main St|94105|2023-08-20|N
+96|John Lee|john96@mail.com|AU|357 Main St|94105|2023-07-06|true
+97|Raj Doe|raj97@mail.com|CA|163 Main St|ABCDE|2024-01-22|N
+98|"Chris|Smith"|chris98@mail.com|US|31 Main St|94105|2024-04-25|N
+99|"Raj|Brown"|raj99@mail.com|||20190|2024-03-01|false
+100|||US|633 Main St||2023-05-17|N
+101|Mike Smith|mike101@mail.com||298 Main St|94105|2023-08-29|N
+102|Mike Patel|mike102@mail.com||553 Main St||2023-08-26|N
+103|Nina Johnson|nina103@mail.com|NULL|372 Main St|ABCDE|2023-08-17|false
+104|Alice Johnson|alice104@mail.com|UK|786 Main St|20190|2023-08-27|false
+105|Alice Smith|alice105@mail.com|AU|||2023-01-05|
+106|Tom Black|tom106@mail.com|NULL|465 Main St||2023-04-15|N
+107|Emma White|emma107@mail.com|NULL|547 Main St|20190|2023-03-01|false
+108||raj108@mail.com|UK|345 Main St||2024-04-15|false
+109|Raj Smith|raj109@mail.com|US|294 Main St||2023-07-22|N
+110|Tom White|tom110@mail.com|NULL|562 Main St|20190|2023-10-17|true
+111|Sara Lee|sara111@mail.com|CA|95 Main St||2023-08-15|
+112||mike112@mail.com|US|694 Main St|ABCDE|2024-01-10|false
+113|Nina Brown|nina113@mail.com|AU||94105|2024-04-17|Y
+114|Chris Patel|chris114@mail.com|UK|||2023-06-16|Y
+115|Bob Patel|bob115@mail.com|AU|164 Main St|ABCDE|2024-02-10|
+116|Bob Black|bob116@mail.com|US|945 Main St|94105|2023-02-28|
+117|Raj White|raj117@mail.com|NULL|832 Main St|20190|2024-04-11|false
+,,,
+119|Raj Smith|raj119@mail.com|AU|234 Main St|20190|2023-03-21|
+120|Emma White|emma120@mail.com|US|364 Main St|94105|2023-12-06|false
+121||chris121@mail.com|UK||ABCDE|2024-03-18|true
+122||tom122@mail.com|UK|504 Main St|ABCDE|2023-06-02|true
+123|Leo Black|leo123@mail.com|NULL|407 Main St|20190|2023-05-31|
+124|Chris Doe||US|256 Main St|94105|2023-03-11|Y
+125|Jane Johnson|jane125@mail.com|CA|||2023-03-29|N
+126||raj126@mail.com|UK|565 Main St|20190|2023-09-06|true
+127|Sara Brown||US|231 Main St|94105|2023-07-04|
+128|"Tom|Doe"|tom128@mail.com|CA|232 Main St|20190|2023-11-19|N
+"unterminated,quote,here
+130|Nina Black|nina130@mail.com|UK|331 Main St||2023-02-12|false
+131|"Nina|White"|nina131@mail.com||317 Main St||2024-04-14|true
+132|Emma Doe||CA|893 Main St|94105|2024-02-10|Y
+133||bob133@mail.com|CA|610 Main St|ABCDE|2023-05-03|Y
+134|Bob Green|bob134@mail.com|US|800 Main St||2023-10-11|Y
+135||jane135@mail.com|US|543 Main St|20190|2023-03-10|N
+136|Sara White|sara136@mail.com|NULL|400 Main St|ABCDE|2023-06-22|
+137||mike137@mail.com||550 Main St|94105|2023-06-21|Y
+138|Tom Brown||NULL|249 Main St|ABCDE|2023-08-23|Y
+139|Mike Smith|mike139@mail.com|UK||ABCDE|2023-04-11|N
+140||raj140@mail.com|AU|93 Main St|ABCDE|2023-04-13|
+141|Jane Patel|jane141@mail.com||604 Main St|20190|2023-04-03|N
+142|Leo Brown||NULL|553 Main St||2023-01-10|N
+143||alice143@mail.com|UK|914 Main St|ABCDE|2023-07-21|true
+144|||UK|811 Main St|20190|2023-05-12|Y
+145|Bob Green||US|581 Main St|94105|2023-12-12|
+146|Bob Johnson|bob146@mail.com|CA|636 Main St|94105|2024-01-15|false
+147|Sara Doe||UK|942 Main St|20190|2023-03-01|false
+148|Chris Doe|chris148@mail.com||979 Main St|94105|2023-05-16|true
+149|Alice Green|alice149@mail.com|AU|115 Main St|ABCDE|2024-01-03|Y
+150|Chris White|chris150@mail.com|UK|683 Main St||2024-04-27|false
+151|Nina Patel|nina151@mail.com|US|527 Main St|20190|2023-10-24|Y
+152|Tom Doe|tom152@mail.com|US|332 Main St||2023-05-28|
+153|Chris Black|chris153@mail.com||856 Main St|94105|2023-06-15|N
+154|John Brown||CA|717 Main St|20190|2023-11-13|N
+155|Jane Patel|jane155@mail.com|NULL|725 Main St|94105|2023-05-22|false
+156|Leo Johnson||AU|450 Main St|20190|2023-06-07|false
+157|Mike Black|mike157@mail.com|CA|329 Main St|20190|2023-05-11|N
+158|John Brown|john158@mail.com|UK|221 Main St||2023-06-30|true
+159|Mike Patel|mike159@mail.com|AU|313 Main St|20190|2023-02-23|true
+160||bob160@mail.com|NULL|207 Main St|ABCDE|2023-08-21|true
+161||mike161@mail.com|US|580 Main St|ABCDE|2024-03-04|false
+162|Nina Smith|nina162@mail.com|US|421 Main St|20190|2023-05-31|false
+163|Bob Black|bob163@mail.com|NULL|883 Main St|ABCDE|2023-06-26|N
+164|Bob Lee||UK|381 Main St||2024-03-09|
+165|Raj Patel|raj165@mail.com|US|675 Main St|ABCDE|2023-06-24|false
+166|Leo Patel|leo166@mail.com||697 Main St|20190|2024-02-24|false
+167||mike167@mail.com|AU||20190|2023-09-23|true
+168|Raj Smith|raj168@mail.com||388 Main St||2023-01-19|true
+169|"Sara|Green"|sara169@mail.com|US|170 Main St||2023-07-04|
+170||john170@mail.com|UK|398 Main St|94105|2023-12-09|true
+171|Chris Lee|chris171@mail.com||89 Main St|ABCDE|2023-11-25|
+172|Mike Smith|mike172@mail.com|US|937 Main St|ABCDE|2023-10-11|Y
+173|Emma Lee|emma173@mail.com|NULL||20190|2023-12-25|Y
+174|Tom Doe|tom174@mail.com|UK|809 Main St|ABCDE|2023-03-14|
+175|Raj Johnson|raj175@mail.com|CA|904 Main St|20190|2024-02-17|
+176|John Black|john176@mail.com|AU|359 Main St|20190|2023-05-09|Y
+177|Raj Johnson||AU|||2024-05-05|Y
+178|Raj Smith|raj178@mail.com|CA|399 Main St|94105|2023-11-15|true
+179||tom179@mail.com|CA||94105|2023-12-23|true
+180|John Brown|john180@mail.com|NULL|337 Main St||2023-12-07|Y
+181|Mike Johnson|mike181@mail.com|NULL|525 Main St|20190|2023-11-25|N
+182||mike182@mail.com|US|329 Main St|94105|2023-03-05|Y
+183||tom183@mail.com|UK|267 Main St|ABCDE|2024-01-06|
+184|John Patel|john184@mail.com|CA|363 Main St|94105|2023-12-28|Y
+185|Jane White|jane185@mail.com||364 Main St|20190|2024-02-22|true
+186|Alice White|alice186@mail.com|UK|550 Main St|20190|2023-09-16|true
+187|Raj White|raj187@mail.com|NULL|861 Main St|94105|2024-04-03|
+188|Alice Brown|alice188@mail.com|UK|202 Main St|20190|2023-08-25|Y
+189|||CA|966 Main St||2023-06-10|
+190|Raj Brown|raj190@mail.com|NULL|494 Main St||2023-07-13|N
+191|Leo Black||NULL||20190|2023-01-23|true
+192|"Emma|Brown"|emma192@mail.com|US|356 Main St||2023-02-04|true
+193|Bob Green|bob193@mail.com|US|358 Main St|20190|2023-09-02|true
+123|MISMATCH|EXTRA|COLS|HERE|oops
+195|"Nina|Smith"|nina195@mail.com|UK|159 Main St|ABCDE|2023-03-03|true
+196|Chris Brown||US|967 Main St||2024-04-13|false
+197|Chris Doe|chris197@mail.com|US|503 Main St|ABCDE|2024-02-15|
+198|Bob Smith|bob198@mail.com|NULL|198 Main St|ABCDE|2023-12-14|N
+199|Mike Smith|mike199@mail.com|AU|111 Main St|94105|2024-02-16|Y
+200|John Lee||NULL|109 Main St|94105|2023-12-06|true
+201|Jane Black|jane201@mail.com||46 Main St|94105|2023-03-13|false
+202|Chris White|chris202@mail.com|UK|942 Main St|20190|2024-04-29|N
+203|Nina Green|nina203@mail.com|CA|137 Main St|ABCDE|2023-10-10|Y
+204|Mike Smith|mike204@mail.com|NULL|202 Main St|94105|2023-05-30|Y
+205|Raj Green|raj205@mail.com|US|519 Main St|ABCDE|2023-07-27|false
+206||mike206@mail.com|US|702 Main St|20190|2023-07-16|
+207|Raj Black|raj207@mail.com|NULL|812 Main St|ABCDE|2024-03-10|Y
+208|"Nina|Brown"|nina208@mail.com|CA|228 Main St|20190|2023-05-07|
+209||bob209@mail.com|UK||94105|2024-03-05|
+210|John Green|john210@mail.com||924 Main St|20190|2023-06-29|false
+211|Raj Green|raj211@mail.com||256 Main St|ABCDE|2024-03-20|N
+212|John Black|john212@mail.com|US|205 Main St||2024-02-28|false
+213|Mike Lee||CA|458 Main St|94105|2023-07-28|N
+214|Raj Black|raj214@mail.com|CA|996 Main St||2023-10-20|N
+215|Sara White|sara215@mail.com|US|353 Main St|20190|2023-04-11|Y
+216|Jane Smith|jane216@mail.com|US|761 Main St|ABCDE|2023-03-07|false
+217||nina217@mail.com|UK|858 Main St||2023-04-04|
+218|Sara Lee|sara218@mail.com||74 Main St|94105|2023-01-26|Y
+219|"Sara|Smith"|sara219@mail.com|US|944 Main St|20190|2023-03-30|N
+220|Emma Patel|emma220@mail.com|NULL|882 Main St||2023-07-21|
+221|Leo Green|leo221@mail.com|||ABCDE|2023-03-23|N
+222|Alice Doe||AU|197 Main St||2023-01-30|N
+223|Chris Patel|chris223@mail.com|NULL|872 Main St|ABCDE|2024-05-01|true
+224|Nina White|nina224@mail.com|CA|7 Main St||2024-02-15|Y
+225|Chris Smith|chris225@mail.com|US|226 Main St|ABCDE|2023-09-17|false
+226|Mike Patel|mike226@mail.com|NULL|977 Main St||2024-02-10|false
+227|John Lee|john227@mail.com|AU|255 Main St||2024-01-24|true
+228|Emma Black|emma228@mail.com||45 Main St|20190|2023-09-21|true
+229|Mike Lee|mike229@mail.com|AU|424 Main St|20190|2024-03-20|true
+230|Chris Lee|chris230@mail.com||||2024-02-07|
+231|Sara Green|sara231@mail.com|NULL|378 Main St|20190|2023-03-11|false
+232|Nina Patel|nina232@mail.com|US||ABCDE|2023-12-25|
+233|||CA|434 Main St|20190|2024-01-26|true
+234|Sara Black||AU||94105|2023-03-13|true
+235|Alice Brown|alice235@mail.com|NULL|748 Main St|20190|2024-05-05|N
+236|Nina Patel|nina236@mail.com|NULL|716 Main St|94105|2023-02-01|true
+237|Sara Black||UK|346 Main St|ABCDE|2024-04-04|false
+238||nina238@mail.com|US||20190|2023-12-04|N
+239|Alice Doe|alice239@mail.com||36 Main St|20190|2023-02-21|Y
+240|Sara Black|sara240@mail.com||706 Main St||2024-02-09|Y
+241|Jane Doe|jane241@mail.com|CA|622 Main St|94105|2023-03-10|
+242|Sara Doe|sara242@mail.com|NULL|623 Main St||2023-10-01|Y
+243|Nina Doe|nina243@mail.com|NULL|308 Main St|94105|2023-12-28|true
+BAD_ROW_WITH_TOO_FEW_COLS
+245|Mike Smith|mike245@mail.com||751 Main St|ABCDE|2024-03-09|
+246|Emma Doe|emma246@mail.com|US|687 Main St|ABCDE|2024-04-28|N
+247|Tom Black|tom247@mail.com|NULL|973 Main St||2024-04-08|false
+248|Sara Patel|sara248@mail.com|AU||20190|2024-01-22|true
+249|Nina Patel|nina249@mail.com|CA|746 Main St|94105|2023-01-09|true
+250||john250@mail.com|CA|268 Main St||2023-10-18|
+251|Chris Brown||US|531 Main St|20190|2023-01-11|
+252|Alice Patel|alice252@mail.com||951 Main St|20190|2023-03-15|N
+253|Mike Green|mike253@mail.com|UK|665 Main St|94105|2023-07-11|false
+254|Leo Lee|leo254@mail.com||968 Main St|ABCDE|2023-11-20|N
+255|Sara Green|sara255@mail.com|US|208 Main St||2023-04-28|false
+256||raj256@mail.com|AU|||2023-07-28|N
+257|Alice Brown|alice257@mail.com||188 Main St|94105|2023-08-15|Y
+258|Alice Lee|alice258@mail.com||232 Main St|20190|2023-10-02|
+259|Bob Black|bob259@mail.com|AU|210 Main St|ABCDE|2023-10-07|Y
+260|Chris White|chris260@mail.com|US|574 Main St|20190|2023-04-12|
+261||alice261@mail.com||99 Main St||2023-01-08|
+262|||NULL|190 Main St|ABCDE|2024-03-25|
+263|Sara Doe|sara263@mail.com|CA|613 Main St|94105|2023-04-13|false
+264|Leo Doe|leo264@mail.com||545 Main St|20190|2023-06-25|Y
+265|Alice White|alice265@mail.com||899 Main St|20190|2023-08-15|
+266|Mike Doe|mike266@mail.com|AU|566 Main St|94105|2024-03-10|
+267|Chris Lee|chris267@mail.com|US|382 Main St||2023-11-27|N
+268||nina268@mail.com|AU||20190|2023-06-19|N
+269|Mike Green|mike269@mail.com|AU|714 Main St|20190|2023-07-22|
+270|Chris Green||AU|839 Main St||2023-08-30|Y
+271|"Tom|Black"|tom271@mail.com|UK|100 Main St|ABCDE|2023-05-21|Y
+272||john272@mail.com|US||94105|2023-10-16|
+273|Jane White|jane273@mail.com|CA|639 Main St||2024-04-18|
+274|"Sara|Doe"|sara274@mail.com|CA|785 Main St|ABCDE|2023-12-28|
+275|Nina Smith|nina275@mail.com|UK|174 Main St|20190|2023-05-24|true
+276|Alice Green|alice276@mail.com|AU|392 Main St|20190|2023-12-30|Y
+277|Leo Green|leo277@mail.com|US|413 Main St||2023-02-11|Y
+278|Tom Black|tom278@mail.com|UK|380 Main St|94105|2023-10-14|true
+279|Tom Smith|tom279@mail.com|CA|88 Main St|94105|2023-01-06|true
+280|"Chris|White"|chris280@mail.com|NULL|160 Main St|94105|2023-07-20|false
+281|Bob White|bob281@mail.com||485 Main St||2024-05-11|
+282|Raj White|raj282@mail.com|AU||94105|2024-01-30|false
+283|Sara Patel|sara283@mail.com|CA||94105|2023-09-09|true
+284|Bob Black|||795 Main St|20190|2023-04-17|
+285|"Mike|Johnson"|mike285@mail.com|NULL|311 Main St|20190|2024-03-06|false
+286|John Black||UK|779 Main St|20190|2023-08-05|true
+287|Leo Green|leo287@mail.com|US|913 Main St||2023-08-31|false
+288||emma288@mail.com|UK|270 Main St|ABCDE|2023-05-21|N
+289|Chris Brown|chris289@mail.com|NULL|635 Main St|94105|2023-07-28|N
+290|Raj Smith|raj290@mail.com|CA|12 Main St|ABCDE|2023-12-19|false
+291|John Lee|john291@mail.com|US|341 Main St|ABCDE|2023-05-01|N
+292|"Tom|Brown"|tom292@mail.com|US|915 Main St||2023-09-10|N
+293|Nina Smith|nina293@mail.com|NULL|618 Main St|20190|2023-01-31|false
+294|Nina Brown|nina294@mail.com|CA|250 Main St|94105|2023-04-21|false
+295|Bob Patel||UK|263 Main St|20190|2024-04-28|true
+296|Chris Smith||AU|970 Main St|20190|2023-06-27|
+297|Nina Patel|nina297@mail.com||25 Main St||2024-03-26|
+298|Sara Lee|sara298@mail.com||326 Main St|20190|2024-03-29|
+299|Nina White|nina299@mail.com|CA|820 Main St|20190|2023-04-26|true
+300|Bob Lee|bob300@mail.com||436 Main St|ABCDE|2023-01-03|
+301|John White|john301@mail.com|NULL|965 Main St|20190|2023-04-18|false
+302|Leo White|||18 Main St|94105|2023-12-15|N
+303|John White|john303@mail.com|UK|203 Main St||2024-04-16|N
+304|Mike Brown|mike304@mail.com|CA|574 Main St|ABCDE|2024-04-24|true
+305||nina305@mail.com||39 Main St|ABCDE|2023-11-20|true
+306|Nina Lee|nina306@mail.com|UK|328 Main St||2023-10-07|true
+307|Nina Patel||NULL|518 Main St|94105|2023-08-08|Y
+308||emma308@mail.com||645 Main St||2024-02-23|true
+309|Sara Black|sara309@mail.com||413 Main St||2023-10-21|
+310|Chris Johnson|chris310@mail.com|AU|67 Main St||2023-02-23|false
+,,,
+312|Leo Brown|leo312@mail.com|NULL|814 Main St|94105|2023-11-15|false
+313|John Doe|john313@mail.com||488 Main St|20190|2023-07-31|false
+314|Emma Doe|emma314@mail.com|AU|107 Main St||2023-02-04|N
+315|Emma Brown|emma315@mail.com||832 Main St|ABCDE|2024-03-07|
+316||tom316@mail.com|AU||ABCDE|2023-07-11|N
+317|Nina Green|nina317@mail.com|UK||94105|2023-07-21|
+318|Alice Smith|alice318@mail.com|CA|582 Main St|ABCDE|2023-02-25|true
+319||emma319@mail.com|AU|395 Main St|20190|2023-05-13|
+320|Raj Lee||UK||20190|2023-04-03|N
+321|Tom Johnson|tom321@mail.com||672 Main St|94105|2024-01-13|N
+322|Mike Black||CA|878 Main St|94105|2023-12-10|N
+323|Nina Johnson||US|64 Main St|ABCDE|2024-04-28|N
+324|Raj Green|raj324@mail.com|AU||20190|2023-12-06|true
+325||nina325@mail.com|US|86 Main St||2023-01-01|false
+326|John Green|john326@mail.com|UK|85 Main St||2023-09-07|N
+327|"John|Lee"|john327@mail.com|AU|350 Main St|ABCDE|2023-03-02|true
+328|Leo Brown|leo328@mail.com||||2024-02-26|
+329|"Emma|Lee"|emma329@mail.com|CA|262 Main St|ABCDE|2024-01-15|N
+330|Alice Brown|alice330@mail.com|US|939 Main St|94105|2024-03-18|Y
+331|Tom Johnson|tom331@mail.com||476 Main St|94105|2024-04-17|N
+332|"Nina|Doe"|nina332@mail.com|US|82 Main St|ABCDE|2023-02-18|true
+333|Bob Smith|bob333@mail.com|NULL|925 Main St|ABCDE|2023-08-16|N
+334|"Sara|Green"|sara334@mail.com|AU||94105|2024-02-28|false
+335|Leo Patel|leo335@mail.com||767 Main St||2023-12-03|false
+336|Nina Smith|nina336@mail.com|US|84 Main St|ABCDE|2023-06-15|false
+337|Leo Black|leo337@mail.com|UK|97 Main St|94105|2023-01-28|false
+338|Mike Doe|mike338@mail.com||676 Main St|94105|2024-01-26|false
+339|Bob Green|bob339@mail.com|AU|488 Main St|ABCDE|2023-05-30|false
+340|Tom White|tom340@mail.com|US|627 Main St|94105|2024-01-03|true
+341|Sara Brown|sara341@mail.com|UK|666 Main St|20190|2023-01-21|Y
+342|Tom Brown||US|536 Main St|ABCDE|2024-05-06|false
+343||chris343@mail.com|NULL|335 Main St||2024-03-01|N
+344|John Patel|john344@mail.com|UK|108 Main St|20190|2023-12-13|N
+345|Raj Johnson|raj345@mail.com|NULL||20190|2023-10-13|Y
+346|Emma Black|emma346@mail.com|NULL|534 Main St|ABCDE|2023-07-19|true
+347|Leo White|leo347@mail.com|AU|308 Main St|ABCDE|2023-06-19|false
+348||||94 Main St|ABCDE|2024-01-24|
+349|Sara Patel|sara349@mail.com|AU||ABCDE|2024-01-30|Y
+350|Jane Smith|jane350@mail.com|UK|834 Main St||2023-04-13|Y
+351|Jane Black|jane351@mail.com|AU|622 Main St|ABCDE|2023-10-09|true
+352|Nina Green|nina352@mail.com||692 Main St|94105|2024-04-23|N
+353||chris353@mail.com|AU||94105|2024-03-08|N
+354|Leo Doe|leo354@mail.com|AU|493 Main St||2023-12-10|
+355|Mike Smith|mike355@mail.com|UK|650 Main St||2024-03-02|N
+356|Bob Smith|bob356@mail.com|US|821 Main St|ABCDE|2023-04-09|false
+357|Emma White||US|645 Main St||2023-08-01|N
+358|Sara Green|sara358@mail.com|UK|346 Main St|20190|2023-05-24|N
+359||raj359@mail.com|AU||ABCDE|2024-01-31|
+360|"Tom|Brown"|tom360@mail.com|NULL|216 Main St|ABCDE|2023-08-30|N
+361|Emma Johnson|emma361@mail.com|NULL|741 Main St|ABCDE|2023-06-28|N
+362|Chris Brown|chris362@mail.com|US|338 Main St|94105|2023-10-23|false
+363|Mike Johnson||CA|446 Main St|20190|2023-09-12|
+364|"Raj|Doe"|raj364@mail.com|US|959 Main St||2023-07-10|N
+365|Leo Brown|leo365@mail.com|||20190|2023-07-17|true
+366|Alice White|alice366@mail.com|NULL|100 Main St|94105|2023-03-30|Y
+367||john367@mail.com||163 Main St|ABCDE|2023-02-26|true
+368|Bob Black|bob368@mail.com|CA|435 Main St|94105|2023-04-22|
+369|Nina Patel|nina369@mail.com|CA|386 Main St|20190|2023-05-17|
+370||chris370@mail.com|UK|163 Main St|94105|2023-06-14|Y
+371||nina371@mail.com|US|507 Main St|ABCDE|2024-02-23|true
+372|Bob Johnson|bob372@mail.com|UK|318 Main St|ABCDE|2023-12-05|false
+373||emma373@mail.com|NULL|591 Main St|20190|2024-01-20|Y
+374|Mike Patel|mike374@mail.com|US|503 Main St|94105|2024-02-06|false
+375|John White||NULL|45 Main St|94105|2023-08-07|N
+376|Emma Lee|emma376@mail.com|AU|672 Main St|94105|2023-09-06|false
+377|Jane Lee|jane377@mail.com|||ABCDE|2023-03-02|
+378|Emma Patel|emma378@mail.com||3 Main St|ABCDE|2023-07-27|Y
+379|John Patel|john379@mail.com|AU|433 Main St|ABCDE|2023-12-15|true
+380|Tom Green||US|304 Main St|ABCDE|2023-12-30|
+381|John Doe|john381@mail.com|US|||2023-09-10|true
+382|Alice Doe|alice382@mail.com|NULL|339 Main St||2023-04-04|Y
+383|Tom White|tom383@mail.com||||2023-08-22|
+384|Alice White|alice384@mail.com|NULL|309 Main St|94105|2023-03-09|Y
+385|Tom Johnson|tom385@mail.com|NULL|920 Main St|94105|2024-01-26|N
+386|Chris Black|chris386@mail.com||925 Main St||2023-07-13|Y
+387|Sara White|sara387@mail.com|US|993 Main St|20190|2024-04-06|N
+388|John Green|john388@mail.com||82 Main St|94105|2023-06-23|false
+389|Leo Black|leo389@mail.com|AU|693 Main St|94105|2024-01-11|Y
+390|Tom White||UK|694 Main St|ABCDE|2024-03-01|false
+391||emma391@mail.com|NULL|437 Main St|ABCDE|2024-05-06|true
+392|John Brown||CA|582 Main St|94105|2023-06-28|true
+393|Raj Doe|raj393@mail.com|CA|55 Main St|94105|2024-01-06|N
+394|Sara Black|sara394@mail.com|UK|876 Main St|94105|2023-11-22|false
+395|Mike Johnson|mike395@mail.com|US|482 Main St||2024-04-05|
+396|Nina Black|nina396@mail.com|US|262 Main St|94105|2024-01-09|
+397||emma397@mail.com|UK||ABCDE|2024-03-12|
+398|"Jane|Johnson"|jane398@mail.com|UK|359 Main St|94105|2024-02-25|
+399|Tom Smith|tom399@mail.com|UK|688 Main St|94105|2023-02-28|true
+400|John Brown|john400@mail.com|CA|408 Main St|20190|2023-10-04|N
+401|Emma Doe|emma401@mail.com|UK|890 Main St|ABCDE|2023-03-23|
+402|"Nina|Patel"|nina402@mail.com|UK|564 Main St|94105|2023-04-15|Y
+403||raj403@mail.com|AU||ABCDE|2023-01-12|N
+404|Sara White|sara404@mail.com|NULL|720 Main St|20190|2024-02-07|N
+405|Jane Smith|jane405@mail.com|AU|279 Main St|20190|2024-04-11|false
+406|Mike Johnson|mike406@mail.com||478 Main St|94105|2023-03-03|N
+407|Alice Brown|alice407@mail.com|CA|726 Main St|ABCDE|2023-06-15|
+408||john408@mail.com|UK|461 Main St||2024-03-11|
+409|"Sara|White"|sara409@mail.com|UK|687 Main St|ABCDE|2024-02-18|Y
+410|Sara White|sara410@mail.com|CA|598 Main St|94105|2023-11-01|
+411|Mike Patel|mike411@mail.com|CA|653 Main St|20190|2023-12-20|Y
+412|John Green|john412@mail.com|NULL|598 Main St|94105|2023-08-26|true
+413|Nina Smith|nina413@mail.com||||2023-04-26|true
+414|Chris Johnson|chris414@mail.com|UK|685 Main St||2024-03-07|Y
+415|Nina Doe|nina415@mail.com|CA|200 Main St|20190|2023-02-22|Y
+416|"Chris|Patel"|chris416@mail.com|AU||ABCDE|2023-05-25|
+417|Jane Patel|jane417@mail.com|AU||20190|2023-10-05|false
+418|Alice Johnson|alice418@mail.com||797 Main St||2023-03-13|
+419||jane419@mail.com||42 Main St|94105|2023-04-06|N
+"unterminated,quote,here
+421||mike421@mail.com|CA|275 Main St|20190|2023-01-17|N
+422|||CA|465 Main St||2023-12-15|true
+423|Leo Doe|leo423@mail.com|UK|747 Main St|ABCDE|2023-10-03|Y
+424|Chris Johnson||NULL|812 Main St||2023-03-31|Y
+425||nina425@mail.com|AU|148 Main St|20190|2023-07-11|true
+426|Alice Johnson|alice426@mail.com||760 Main St|94105|2023-08-02|false
+427||sara427@mail.com||879 Main St||2023-02-01|
+428|Alice Smith||AU|54 Main St|ABCDE|2023-04-03|N
+429|Bob Patel|bob429@mail.com|NULL|63 Main St||2023-06-09|false
+430|Tom Johnson|tom430@mail.com||888 Main St|94105|2024-02-03|true
+431|Leo Black|leo431@mail.com|NULL|298 Main St|ABCDE|2023-01-17|Y
+432|Alice Patel|alice432@mail.com|UK|607 Main St|94105|2023-04-30|false
+433|Nina Black||AU|575 Main St|20190|2024-01-27|Y
+434|Mike Johnson|mike434@mail.com|CA|251 Main St|ABCDE|2023-05-12|N
+435|Leo White|leo435@mail.com|US||94105|2024-02-26|false
+436|Alice Smith|alice436@mail.com|AU|707 Main St|20190|2024-03-19|Y
+437|Raj Green|raj437@mail.com||131 Main St|ABCDE|2023-08-28|Y
+438|John Johnson|john438@mail.com|NULL||ABCDE|2024-04-13|
+439|Sara Johnson|sara439@mail.com|NULL|||2024-04-27|N
+440|Leo Doe|leo440@mail.com|AU|931 Main St||2023-11-25|
+441|Leo Green|leo441@mail.com|AU|379 Main St|94105|2024-04-24|N
+442|Leo Lee|leo442@mail.com|CA|340 Main St|20190|2023-01-30|true
+443|Alice Johnson|alice443@mail.com|UK|909 Main St||2023-12-03|true
+444||john444@mail.com|AU|73 Main St|ABCDE|2023-10-11|
+445|Chris Black|chris445@mail.com|US|443 Main St|ABCDE|2024-01-21|false
+446|John Brown|john446@mail.com|AU|568 Main St|94105|2023-09-12|
+447|Emma Green|emma447@mail.com|CA|267 Main St|94105|2023-09-20|
+448|John Brown|john448@mail.com|US|445 Main St|ABCDE|2023-04-07|false
+449|Tom Johnson|tom449@mail.com|NULL|88 Main St|ABCDE|2023-06-22|true
+450|Emma Green|emma450@mail.com|AU|747 Main St|94105|2023-12-27|N
+451|Mike Green|mike451@mail.com|US|812 Main St|ABCDE|2023-09-19|false
+452||sara452@mail.com|CA|105 Main St|94105|2023-10-18|N
+453|Tom Johnson||UK||94105|2023-01-10|false
+454||raj454@mail.com|CA|438 Main St|20190|2023-06-27|
+455|John White||US|533 Main St|ABCDE|2024-02-20|true
+456|"John|Green"|john456@mail.com|NULL|91 Main St||2023-04-22|false
+457|"Leo|Doe"|leo457@mail.com|CA|962 Main St||2023-05-16|N
+458|Alice Black|alice458@mail.com|AU|353 Main St||2024-01-11|true
+459|Sara Black|sara459@mail.com|US|581 Main St||2024-03-21|Y
+460|Jane Green|jane460@mail.com|UK|109 Main St|94105|2024-04-06|true
+461|Leo Smith|leo461@mail.com|AU||94105|2023-05-27|false
+462|Mike Lee|mike462@mail.com|NULL|||2023-10-26|false
+463|Emma Doe|emma463@mail.com|AU|327 Main St|20190|2023-07-25|N
+464|Mike White||UK|780 Main St|94105|2024-02-26|N
+465|"Emma|Black"|emma465@mail.com|AU||ABCDE|2023-02-17|true
+466|Leo Green|leo466@mail.com|CA|331 Main St|ABCDE|2023-12-28|true
+467|Nina Patel|nina467@mail.com|NULL|207 Main St|94105|2023-07-09|
+468|Sara Black|sara468@mail.com|CA|851 Main St|ABCDE|2023-03-07|Y
+469|Alice Brown|alice469@mail.com|UK|309 Main St|20190|2024-05-15|false
+470|Raj Johnson|raj470@mail.com|CA|729 Main St|20190|2023-07-18|true
+471|Nina Smith|nina471@mail.com|UK|907 Main St|20190|2024-01-05|false
+472|John Black||AU|980 Main St|20190|2023-05-08|true
+473|"Tom|Doe"|tom473@mail.com|NULL|130 Main St||2023-08-08|N
+474|Leo Patel|leo474@mail.com||630 Main St|94105|2024-02-09|false
+475|Chris Lee|chris475@mail.com|||94105|2023-07-11|true
+476||raj476@mail.com||770 Main St|94105|2023-09-15|true
+477|"Raj|White"|raj477@mail.com|US|659 Main St||2023-04-08|Y
+478|Raj White|raj478@mail.com|CA|168 Main St|ABCDE|2023-04-17|Y
+479|Leo Green|leo479@mail.com|UK|773 Main St|ABCDE|2024-05-15|N
+480|Jane Brown|jane480@mail.com|US|246 Main St|20190|2023-04-26|true
+481|Jane Lee|jane481@mail.com|NULL|574 Main St|ABCDE|2024-05-13|false
+482|"Nina|Black"|nina482@mail.com|UK|445 Main St|94105|2024-01-24|true
+483|||UK||94105|2023-09-05|false
+484|Chris Lee|chris484@mail.com|AU|151 Main St|20190|2024-05-11|true
+485|||UK|115 Main St|20190|2024-01-19|N
+486|Chris Lee|chris486@mail.com|||94105|2023-06-09|
+487|Raj Green|raj487@mail.com|AU|553 Main St|20190|2023-11-27|
+488|Nina Patel|nina488@mail.com|CA|221 Main St|ABCDE|2023-01-21|Y
+489|Chris Patel|chris489@mail.com|UK|692 Main St|94105|2023-10-01|true
+490|Emma Black||||ABCDE|2023-08-07|false
+491|Raj White|raj491@mail.com||239 Main St|20190|2023-06-07|false
+492|"Mike|Patel"|mike492@mail.com|UK|203 Main St|ABCDE|2024-04-08|N
+493|Chris Patel|chris493@mail.com||699 Main St|ABCDE|2023-09-26|false
+123|MISMATCH|EXTRA|COLS|HERE|oops
+495|Emma White|emma495@mail.com|CA|687 Main St|20190|2023-09-25|Y
+496|Jane White|jane496@mail.com|US|846 Main St||2023-09-09|Y
+497|Alice Black|alice497@mail.com||288 Main St|94105|2024-01-10|N
+498|Jane Johnson|jane498@mail.com|CA|170 Main St|ABCDE|2024-02-28|N
+499|Alice White|alice499@mail.com|UK|390 Main St|94105|2024-03-25|false
+500||chris500@mail.com|UK|835 Main St|20190|2024-05-01|true
+501|Jane Green|jane501@mail.com||||2023-09-12|N
+502|Alice Patel|||401 Main St|ABCDE|2023-08-25|false
+503|Jane Brown|jane503@mail.com|NULL|331 Main St|20190|2023-02-17|true
+504|Jane Lee|jane504@mail.com|US|602 Main St|94105|2024-03-25|N
+505|Alice Brown|alice505@mail.com|US|448 Main St||2023-08-20|true
+506|Emma Black|emma506@mail.com|NULL|515 Main St||2023-01-08|true
+507|Leo Johnson|leo507@mail.com|UK|351 Main St|20190|2023-03-13|
+508|Leo Doe|leo508@mail.com|CA|314 Main St|ABCDE|2023-11-19|Y
+509|Alice White|alice509@mail.com|UK|384 Main St|94105|2024-01-19|false
+510||raj510@mail.com||510 Main St|20190|2023-12-24|
+511|Emma Patel|emma511@mail.com|AU|881 Main St|20190|2024-03-06|false
+512|Mike White|mike512@mail.com|US|2 Main St|94105|2023-05-06|false
+513|Emma Smith||NULL|234 Main St||2023-12-09|Y
+514|"Raj|Patel"|raj514@mail.com|CA|725 Main St|20190|2023-01-10|N
+515|Mike Black|mike515@mail.com|AU|237 Main St|94105|2023-04-30|N
+516|Mike White|mike516@mail.com|AU|279 Main St|ABCDE|2023-10-25|N
+517|Tom Brown|tom517@mail.com|UK||94105|2024-02-27|
+518|Sara Smith|sara518@mail.com||520 Main St|20190|2023-09-11|false
+519||bob519@mail.com|AU|630 Main St||2023-09-29|true
+520|Tom Brown||CA|307 Main St|20190|2023-01-24|
+521|Sara Johnson|sara521@mail.com||201 Main St|ABCDE|2023-03-08|
+522|Raj Lee|raj522@mail.com|CA|748 Main St|94105|2023-03-04|
+523|Sara Johnson||US|616 Main St||2023-02-17|
+524|Chris Lee|chris524@mail.com|NULL|279 Main St||2023-12-26|
+525|Nina Black|nina525@mail.com||932 Main St||2024-02-17|Y
+526|Bob Brown|bob526@mail.com|AU|178 Main St|94105|2023-07-26|false
+527|Sara Smith|sara527@mail.com|US|767 Main St|ABCDE|2023-10-14|true
+528|Raj Patel|raj528@mail.com|NULL|801 Main St||2024-03-13|
+529|Alice Doe|alice529@mail.com||70 Main St||2024-01-15|N
+530|Nina Johnson||NULL|583 Main St||2024-02-14|true
+531|Leo Smith|leo531@mail.com|CA|889 Main St|20190|2024-04-22|N
+532|Emma Green|emma532@mail.com|US|204 Main St||2023-07-14|N
+533|John White|john533@mail.com|AU|173 Main St|94105|2023-11-06|false
+534|Nina Smith|nina534@mail.com|NULL|755 Main St||2023-02-16|true
+535||jane535@mail.com||912 Main St|ABCDE|2023-12-29|
+536|Chris Smith|chris536@mail.com||644 Main St|94105|2023-02-02|false
+537|Bob White|bob537@mail.com|UK||94105|2024-01-02|true
+538|Tom Johnson||US||20190|2023-04-15|true
+,,,
+540|Chris Doe|chris540@mail.com|US|144 Main St|94105|2024-01-09|N
+541|John Smith|john541@mail.com|AU|206 Main St||2023-01-25|
+542|Mike White|mike542@mail.com|UK|302 Main St|20190|2023-10-30|
+543||emma543@mail.com||55 Main St|20190|2023-09-14|Y
+544|Chris Green|chris544@mail.com|NULL|836 Main St|94105|2023-09-30|Y
+545|Alice Patel|alice545@mail.com|AU|454 Main St|20190|2023-10-07|Y
+546|Mike Smith|mike546@mail.com|||ABCDE|2023-12-17|N
+547||mike547@mail.com||889 Main St|94105|2024-05-05|false
+548|Tom Brown|tom548@mail.com|UK|733 Main St||2023-02-11|false
+549|Mike Black|mike549@mail.com||457 Main St|ABCDE|2023-09-25|N
+550||tom550@mail.com|CA|610 Main St|20190|2023-04-17|
+551||bob551@mail.com|UK|79 Main St|94105|2024-02-04|Y
+552|John White|john552@mail.com|AU|608 Main St|94105|2023-08-04|N
+553|Chris Patel|chris553@mail.com|US|133 Main St|ABCDE|2023-05-24|Y
+554|Bob Johnson|bob554@mail.com||||2023-12-06|true
+555||leo555@mail.com|AU||20190|2024-05-14|
+556|Emma Smith|emma556@mail.com|CA|410 Main St|ABCDE|2023-10-29|false
+557|Mike Johnson|mike557@mail.com|US|640 Main St|20190|2023-06-07|Y
+558|"Chris|Doe"|chris558@mail.com|US|260 Main St|20190|2024-02-09|N
+559|Bob Smith|bob559@mail.com|AU||20190|2024-03-03|true
+560|Tom White|tom560@mail.com||743 Main St||2024-02-23|
+561|||AU|928 Main St|20190|2024-01-28|false
+562|Mike Black|mike562@mail.com|CA||20190|2023-03-03|false
+563|Nina Johnson|nina563@mail.com|NULL|447 Main St|94105|2023-07-04|true
+564|Tom Green|tom564@mail.com|UK||94105|2023-09-11|false
+565|Tom Black||AU|218 Main St|ABCDE|2024-02-01|false
+566|Chris Doe||UK|811 Main St||2023-11-30|N
+567|Raj White|raj567@mail.com||412 Main St|20190|2024-01-06|N
+568|Emma Lee|emma568@mail.com|CA|232 Main St|ABCDE|2023-01-17|
+569||leo569@mail.com|NULL|460 Main St|94105|2023-02-13|N
+570|"Tom|Lee"|tom570@mail.com|AU|259 Main St|20190|2024-02-23|N
+"unterminated,quote,here
+572|Sara Black|sara572@mail.com|UK|430 Main St||2024-02-18|false
+573|Emma Johnson|emma573@mail.com||260 Main St||2023-01-30|true
+574|"Emma|Patel"|emma574@mail.com|US|8 Main St|20190|2023-07-22|false
+575|Nina Lee|nina575@mail.com|UK|349 Main St|ABCDE|2024-01-01|
+,,,
+577|Tom Smith|tom577@mail.com|CA|259 Main St||2023-09-09|false
+578||bob578@mail.com|AU|485 Main St|ABCDE|2023-03-28|true
+579|Sara Doe|sara579@mail.com|CA|751 Main St|ABCDE|2024-03-04|N
+580|"Raj|Green"|raj580@mail.com|||ABCDE|2023-11-08|false
+581|Alice Green|alice581@mail.com|US|850 Main St|ABCDE|2023-12-22|
+582|Tom Johnson|tom582@mail.com|US|402 Main St||2023-02-09|
+583|"Sara|Green"||US|842 Main St||2023-01-10|true
+584|Jane Doe|jane584@mail.com|NULL|574 Main St|94105|2024-02-27|Y
+585||mike585@mail.com|NULL|346 Main St||2023-02-24|false
+586|Jane Patel|jane586@mail.com|NULL|284 Main St|ABCDE|2023-04-19|Y
+587|Bob Brown|bob587@mail.com|US|66 Main St|20190|2023-05-17|Y
+588|Nina Johnson|nina588@mail.com|NULL|903 Main St||2023-07-27|true
+589|Mike Smith|||800 Main St||2024-02-10|true
+590|Sara Green|sara590@mail.com|UK|454 Main St|94105|2023-08-21|Y
+591|Nina White|nina591@mail.com||724 Main St|20190|2023-10-07|false
+592|||CA|996 Main St|ABCDE|2023-11-01|true
+593|Raj Patel|raj593@mail.com|AU|465 Main St|94105|2023-02-11|Y
+594|Raj Lee|raj594@mail.com|NULL|203 Main St|ABCDE|2024-05-14|
+595||bob595@mail.com|CA|232 Main St|ABCDE|2023-07-24|N
+596|Jane Patel||UK|104 Main St||2023-08-11|
+597|Bob Green|bob597@mail.com|UK|102 Main St|94105|2023-07-27|false
+598|Emma Johnson|emma598@mail.com||735 Main St|20190|2023-11-03|Y
+599|Bob Brown|bob599@mail.com|US|277 Main St||2023-05-25|
+600|Emma Lee|emma600@mail.com||571 Main St|20190|2024-03-26|true
+601||chris601@mail.com|CA|727 Main St|20190|2023-10-11|
+602||nina602@mail.com|US|621 Main St|ABCDE|2023-04-24|false
+603||leo603@mail.com||989 Main St|94105|2023-06-24|true
+604|John Patel|john604@mail.com|NULL|288 Main St|94105|2024-02-23|
+605|Mike Johnson|mike605@mail.com||842 Main St||2023-04-05|true
+606||mike606@mail.com|||ABCDE|2023-06-28|Y
+607||bob607@mail.com||877 Main St|20190|2023-01-31|true
+608||raj608@mail.com|UK|974 Main St|94105|2024-02-12|
+609|Sara White|sara609@mail.com|CA|327 Main St|94105|2024-01-17|true
+610|||US|77 Main St|20190|2023-10-28|Y
+611|Leo Brown|leo611@mail.com|AU|552 Main St|ABCDE|2023-10-09|true
+612||alice612@mail.com|CA|328 Main St|ABCDE|2023-12-20|
+613|Emma Lee|emma613@mail.com|AU|812 Main St|20190|2024-02-16|true
+614|Chris Smith|chris614@mail.com||465 Main St|ABCDE|2023-03-23|false
+615|Raj Johnson|raj615@mail.com|US|21 Main St|20190|2024-02-07|Y
+616|Sara Patel|sara616@mail.com|US|267 Main St|20190|2023-03-02|N
+617||bob617@mail.com|UK|556 Main St|94105|2023-03-15|false
+618|John Lee|john618@mail.com|CA|35 Main St|94105|2023-07-13|false
+619|Sara Green|sara619@mail.com|NULL||94105|2023-07-19|true
+620|Sara White|sara620@mail.com|CA|22 Main St|94105|2023-11-19|false
+621|Emma Lee||NULL|890 Main St|ABCDE|2023-08-02|false
+622|Jane Green|jane622@mail.com|US|97 Main St|20190|2023-07-05|N
+623|Leo Patel||NULL|755 Main St||2023-07-16|
+"unterminated,quote,here
+625|Alice Lee|alice625@mail.com|NULL|261 Main St|94105|2023-10-27|
+626|Raj Patel|raj626@mail.com|NULL|447 Main St|ABCDE|2023-09-12|true
+627|||CA|289 Main St|94105|2023-03-29|false
+628|Emma Johnson|emma628@mail.com|CA||ABCDE|2024-03-22|
+629||mike629@mail.com|UK|76 Main St||2024-05-13|false
+630|John Lee|john630@mail.com|UK|475 Main St|94105|2024-02-18|false
+631|Leo Black|leo631@mail.com|CA|333 Main St||2024-01-10|N
+632|Sara White||UK|218 Main St|ABCDE|2023-08-21|N
+633|Leo Johnson|leo633@mail.com|AU|414 Main St|94105|2023-04-20|
+634|"Sara|Patel"|sara634@mail.com||704 Main St|ABCDE|2023-06-14|true
+635|"Alice|Brown"|alice635@mail.com|AU|982 Main St|94105|2023-03-19|
+636|Alice Lee|alice636@mail.com|NULL|769 Main St|20190|2023-11-23|
+637|Jane Patel|jane637@mail.com|CA|921 Main St|94105|2023-09-05|Y
+638|"Raj|Smith"||US|264 Main St||2024-02-25|
+639|Jane Johnson|jane639@mail.com|UK||ABCDE|2023-04-04|N
+640|Jane Black|jane640@mail.com|NULL|||2023-09-24|N
+641|Leo Johnson|leo641@mail.com|UK|756 Main St||2024-04-20|N
+642|Leo Patel|leo642@mail.com|NULL||94105|2023-09-20|N
+643|Alice Smith|alice643@mail.com|CA|706 Main St|94105|2023-08-25|false
+644|Jane Lee|jane644@mail.com|AU|136 Main St||2024-03-11|N
+645|Mike White|mike645@mail.com||207 Main St|ABCDE|2023-11-29|N
+646|Leo Doe|||437 Main St|20190|2023-05-13|true
+647|Nina Green|nina647@mail.com||858 Main St|ABCDE|2023-10-12|false
+648|"Chris|Doe"|chris648@mail.com|NULL|650 Main St|94105|2023-01-06|false
+649|Leo Doe|leo649@mail.com|US|264 Main St|20190|2024-03-08|true
+650||jane650@mail.com|CA|||2023-10-10|
+651|"Raj|Lee"|raj651@mail.com||188 Main St|ABCDE|2023-01-12|
+652|Bob Patel|bob652@mail.com|NULL|672 Main St||2023-08-23|false
+653|Mike Green|mike653@mail.com|US|359 Main St|20190|2024-01-12|N
+654|Bob Green|bob654@mail.com|NULL|96 Main St|94105|2023-06-25|
+655|Alice White||AU|553 Main St|ABCDE|2023-12-20|Y
+656||sara656@mail.com|AU|492 Main St|94105|2023-04-17|N
+657||tom657@mail.com|UK|649 Main St|ABCDE|2024-02-23|Y
+658|Tom Green||UK|256 Main St||2023-09-04|false
+659|Mike White|mike659@mail.com|UK|457 Main St||2023-04-15|N
+660|Leo Brown||NULL|794 Main St|94105|2024-04-05|true
+661|Leo Smith|leo661@mail.com|CA|755 Main St|94105|2023-03-25|false
+662|Sara Brown|sara662@mail.com|NULL|955 Main St|94105|2023-10-16|Y
+663|"Raj|Doe"|raj663@mail.com||947 Main St||2023-01-11|N
+664|Alice Johnson|alice664@mail.com|CA|192 Main St||2024-01-24|false
+665||emma665@mail.com|NULL|707 Main St|94105|2024-02-03|Y
+666|Tom Smith|tom666@mail.com|NULL|578 Main St|94105|2023-11-08|N
+667|Tom Smith|tom667@mail.com||347 Main St|ABCDE|2024-03-15|false
+668|Leo Brown|leo668@mail.com|UK|301 Main St||2023-03-14|N
+669|Leo Black||UK|83 Main St||2023-03-03|true
+670|Chris Brown|chris670@mail.com|CA||94105|2024-01-20|false
+671||raj671@mail.com|NULL|29 Main St||2024-03-17|Y
+672|Sara White|sara672@mail.com|US||20190|2024-04-30|Y
+673|Sara Lee|sara673@mail.com|NULL||ABCDE|2023-11-24|Y
+674|Emma Brown|emma674@mail.com|AU|721 Main St|20190|2024-02-02|N
+675|Chris Black|chris675@mail.com|AU|584 Main St||2023-04-22|
+676|Leo Johnson|leo676@mail.com|NULL||20190|2023-08-17|
+677|"Mike|Smith"|mike677@mail.com||290 Main St|ABCDE|2023-10-29|true
+678|Jane Patel|jane678@mail.com|US|195 Main St|94105|2023-07-24|
+679|Sara Brown||UK|385 Main St|ABCDE|2023-08-31|true
+680|Emma Lee|emma680@mail.com||43 Main St|20190|2023-09-23|true
+681|Chris Doe|chris681@mail.com|CA|114 Main St|20190|2024-04-20|
+682|Raj Doe|raj682@mail.com|US|483 Main St|ABCDE|2024-03-30|N
+683|Raj Black||||20190|2023-11-26|false
+684|"Leo|Smith"||UK|907 Main St|ABCDE|2024-04-03|N
+685|"Emma|Smith"|emma685@mail.com|UK||94105|2023-07-04|false
+686|Bob Green|bob686@mail.com|US|617 Main St||2023-08-21|false
+687|Emma Black|emma687@mail.com|NULL|352 Main St|ABCDE|2023-06-02|N
+688|Sara Black||US|753 Main St|ABCDE|2023-12-29|true
+689||bob689@mail.com|CA|249 Main St|ABCDE|2023-09-21|false
+690|Sara White||US|644 Main St|94105|2023-06-04|N
+691|Jane Lee|jane691@mail.com|US|676 Main St|ABCDE|2023-05-01|
+692|"Leo|Brown"||CA|690 Main St||2024-02-18|
+693|Mike Smith|mike693@mail.com|UK|765 Main St|ABCDE|2023-11-29|false
+694|Tom Green|tom694@mail.com|CA|283 Main St||2023-10-10|
+695|Mike Johnson|mike695@mail.com|US|309 Main St||2023-03-18|
+696|Mike Smith|mike696@mail.com||892 Main St|20190|2023-03-23|true
+697|Raj Lee|raj697@mail.com||507 Main St||2023-09-21|
+698|Leo Brown|leo698@mail.com|AU|382 Main St||2023-03-23|N
+699|John Johnson|john699@mail.com|UK|531 Main St||2024-04-24|
+700||tom700@mail.com||376 Main St||2023-07-04|N
+701|Alice Green|alice701@mail.com|NULL|400 Main St|20190|2024-05-07|false
+702||tom702@mail.com|NULL|85 Main St|94105|2023-03-03|N
+703|"Mike|Patel"|mike703@mail.com|UK|||2023-12-13|N
+704|Sara White|sara704@mail.com|US|89 Main St|94105|2023-05-07|N
+705||nina705@mail.com|CA|996 Main St|ABCDE|2023-07-12|true
+706|Jane Green|jane706@mail.com|US|936 Main St|94105|2023-01-26|false
+707|Jane Smith|jane707@mail.com|UK|505 Main St||2023-11-06|
+708|Alice Smith|alice708@mail.com|CA||20190|2023-04-12|N
+709|John Doe||US|621 Main St||2023-03-09|N
+710||raj710@mail.com|AU|715 Main St|20190|2023-12-10|Y
+711|Mike Smith|mike711@mail.com|CA|791 Main St||2023-07-21|
+712|Bob Black|bob712@mail.com|AU||ABCDE|2023-04-26|Y
+713|Raj White|raj713@mail.com||643 Main St|94105|2023-10-10|
+123|MISMATCH|EXTRA|COLS|HERE|oops
+715|Jane Johnson|jane715@mail.com|CA||94105|2024-04-01|Y
+716||chris716@mail.com|NULL|274 Main St|ABCDE|2023-06-18|
+717|Jane Brown|jane717@mail.com|US|487 Main St||2023-04-27|false
+718|Nina White||UK|868 Main St||2024-01-01|Y
+719|Emma Green|emma719@mail.com|UK|522 Main St|94105|2023-06-11|N
+720|Emma Doe|emma720@mail.com|US|42 Main St|ABCDE|2023-03-06|Y
+721|Chris Green|chris721@mail.com|CA|191 Main St||2023-06-09|true
+722|Jane Johnson|jane722@mail.com|US|963 Main St|ABCDE|2023-07-01|N
+723|Alice Brown||UK|262 Main St|94105|2023-01-15|
+724|Bob Johnson|bob724@mail.com|NULL|987 Main St||2023-07-18|false
+725||tom725@mail.com||31 Main St|ABCDE|2023-08-10|N
+726||tom726@mail.com|AU|589 Main St||2023-03-11|
+727|Emma Smith|emma727@mail.com|AU|789 Main St|ABCDE|2024-02-09|N
+728||tom728@mail.com|US|397 Main St|ABCDE|2023-10-26|true
+729|Sara Patel|sara729@mail.com|NULL|9 Main St|ABCDE|2023-12-15|
+730||leo730@mail.com|CA|243 Main St||2024-02-07|false
+731|Alice Smith||UK|48 Main St|94105|2024-03-03|false
+732|Chris Patel|chris732@mail.com|CA|141 Main St||2024-02-22|Y
+733|"Jane|Lee"|jane733@mail.com||265 Main St|94105|2023-05-09|false
+734||tom734@mail.com|US|55 Main St|20190|2023-03-17|true
+735|"Raj|Black"|raj735@mail.com|NULL|96 Main St|20190|2023-02-06|
+736|Mike Patel|mike736@mail.com||174 Main St|20190|2023-11-13|true
+737|Sara Patel|sara737@mail.com|UK|111 Main St||2023-07-08|
+738|Raj Green|raj738@mail.com|CA|336 Main St|20190|2023-08-22|Y
+739|Sara White|sara739@mail.com|UK|72 Main St|ABCDE|2024-01-30|false
+740||sara740@mail.com|CA||ABCDE|2024-01-14|Y
+741|Bob Black|bob741@mail.com|AU|925 Main St|94105|2023-08-08|false
+742||mike742@mail.com|CA|109 Main St|ABCDE|2023-05-27|true
+743|"Alice|Patel"||CA|464 Main St|ABCDE|2023-10-12|
+744||alice744@mail.com|US|91 Main St|94105|2023-05-25|N
+745|Alice Brown|alice745@mail.com|US|446 Main St|20190|2023-12-19|false
+746|"Tom|White"|tom746@mail.com|US|175 Main St|ABCDE|2024-04-05|Y
+747|Raj White||AU|933 Main St|20190|2024-02-17|
+748|Tom Green|tom748@mail.com|NULL|856 Main St||2023-04-14|N
+749|Bob White|bob749@mail.com|NULL|989 Main St||2024-02-25|Y
+750|Nina Patel|nina750@mail.com|US|232 Main St||2023-11-10|N
+751|"Sara|Johnson"|sara751@mail.com|UK|4 Main St||2023-08-29|N
+752|"Nina|Green"|nina752@mail.com|CA|703 Main St||2023-09-14|Y
+753|"Jane|Black"|jane753@mail.com|NULL|818 Main St|20190|2023-12-02|Y
+754|Nina Johnson||NULL|128 Main St|94105|2023-06-08|false
+755|Chris Johnson|chris755@mail.com|AU||ABCDE|2023-10-08|
+756|Mike White|mike756@mail.com|US||94105|2023-12-08|
+,,,
+758|John Patel|john758@mail.com|NULL|556 Main St|20190|2023-04-17|
+759|"Emma|Green"|emma759@mail.com|AU|605 Main St|ABCDE|2024-03-07|Y
+760|Chris Brown|chris760@mail.com|NULL|875 Main St||2023-11-30|true
+761|Leo Johnson|leo761@mail.com|||94105|2023-08-21|false
+762|Leo Doe||US|865 Main St|94105|2023-07-13|N
+763|"Jane|Johnson"|jane763@mail.com|AU||20190|2023-10-08|false
+764|Alice Smith|alice764@mail.com|NULL|126 Main St|94105|2024-02-09|false
+765||emma765@mail.com|US|263 Main St||2023-11-21|Y
+766|Raj Black|raj766@mail.com|US||20190|2023-07-11|true
+767|"Raj|Patel"|raj767@mail.com|US|158 Main St|20190|2023-01-13|true
+768|Emma Doe||NULL|3 Main St|94105|2023-11-07|N
+769||jane769@mail.com|US|195 Main St|20190|2023-11-29|Y
+770|||US|506 Main St|94105|2023-03-24|Y
+771|Jane Patel|jane771@mail.com|UK|725 Main St||2023-03-06|
+772|John Doe||AU|985 Main St||2024-03-25|true
+773||mike773@mail.com|CA|769 Main St|ABCDE|2024-05-04|Y
+774|"Nina|Black"||CA||ABCDE|2023-12-05|Y
+775|Leo Brown|leo775@mail.com|US|823 Main St|94105|2024-04-20|N
+776|Leo Smith|leo776@mail.com|NULL||94105|2024-01-29|N
+777|Mike Smith|mike777@mail.com||248 Main St||2024-03-03|
+778|Bob Lee|bob778@mail.com|UK|396 Main St|94105|2023-02-18|N
+779|Nina White|nina779@mail.com|US|70 Main St|ABCDE|2023-06-24|false
+780|Alice Brown|alice780@mail.com|||94105|2023-11-06|Y
+781|"Sara|Johnson"|sara781@mail.com|NULL|434 Main St|20190|2024-04-01|false
+782|Tom Black||CA|672 Main St|ABCDE|2023-02-27|N
+783|||US||20190|2023-05-26|true
+784|Alice Doe|alice784@mail.com||494 Main St|ABCDE|2023-09-19|false
+785||chris785@mail.com|AU|445 Main St|ABCDE|2024-03-16|
+786||chris786@mail.com|CA|280 Main St|20190|2023-11-18|
+787|Nina Doe||NULL|786 Main St|94105|2023-06-25|true
+788||nina788@mail.com|CA||94105|2023-04-30|false
+789|Bob Johnson|bob789@mail.com|NULL|83 Main St||2024-01-01|Y
+790|John Patel|john790@mail.com|NULL|258 Main St|20190|2023-03-07|true
+791|Chris Smith|chris791@mail.com|AU|804 Main St|94105|2024-05-03|false
+792|Tom Doe|tom792@mail.com||773 Main St|94105|2023-07-16|Y
+793|Chris Doe|chris793@mail.com|UK|131 Main St|20190|2023-09-01|N
+794|Alice Patel|alice794@mail.com|UK|125 Main St|ABCDE|2023-12-07|
+795|"John|Patel"|john795@mail.com|NULL|531 Main St|94105|2024-03-02|Y
+796|Alice Doe|alice796@mail.com||713 Main St|20190|2023-04-06|
+797|"Chris|White"||UK|383 Main St|ABCDE|2023-11-27|false
+798|Jane Black|jane798@mail.com|UK|503 Main St|20190|2023-09-17|N
+799|Tom Smith|tom799@mail.com|CA|61 Main St|94105|2023-11-30|N
+800|Jane Green|jane800@mail.com|AU|65 Main St|ABCDE|2023-12-28|true
+801|Bob Brown|bob801@mail.com|UK|823 Main St||2023-11-09|Y
+802|Nina Johnson||UK|84 Main St|ABCDE|2023-06-28|
+803|Tom Black|tom803@mail.com||719 Main St|20190|2023-08-30|N
+804|"Alice|Patel"|||789 Main St|20190|2024-02-29|N
+805|Raj Smith|raj805@mail.com|UK|839 Main St|ABCDE|2024-04-29|
+806|Mike Doe|mike806@mail.com|AU|21 Main St|20190|2023-09-12|true
+807|Sara Brown|sara807@mail.com|CA|660 Main St||2024-04-27|true
+808|Alice White|alice808@mail.com|UK|997 Main St|20190|2023-10-28|true
+809|Sara Johnson|sara809@mail.com|UK|266 Main St|94105|2024-02-10|Y
+810|Leo Doe|leo810@mail.com||327 Main St||2023-03-22|Y
+811|Jane Patel|jane811@mail.com|AU|269 Main St|ABCDE|2023-05-03|false
+812|Bob Black|bob812@mail.com|NULL||20190|2023-08-22|true
+813|Tom Johnson||UK|530 Main St||2023-03-02|Y
+814|Sara Johnson||AU|796 Main St|94105|2023-04-16|Y
+815|Sara Patel|sara815@mail.com|UK|896 Main St|ABCDE|2023-11-03|false
+816|Alice Lee|alice816@mail.com|US|189 Main St||2024-03-02|Y
+817||jane817@mail.com|AU|952 Main St|94105|2023-03-24|N
+818||leo818@mail.com||437 Main St||2023-02-21|N
+819|Chris Black||CA|892 Main St||2024-01-25|
+820|Mike Smith|mike820@mail.com||605 Main St|20190|2024-01-04|Y
+821|Bob Patel||CA|76 Main St|ABCDE|2024-02-18|
+822|"Bob|Lee"|bob822@mail.com|CA|477 Main St||2024-02-01|
+823|Tom Green|tom823@mail.com|UK|363 Main St|20190|2023-10-09|
+824|Nina Green|nina824@mail.com|UK|552 Main St|ABCDE|2024-01-28|true
+825||sara825@mail.com|UK|86 Main St|ABCDE|2023-01-11|Y
+826|||UK|||2023-02-23|N
+827||mike827@mail.com|CA|939 Main St|94105|2023-08-22|true
+828|John Patel|john828@mail.com|UK|254 Main St|20190|2024-04-27|false
+829||sara829@mail.com|US|924 Main St||2023-12-24|N
+830|Mike Lee|mike830@mail.com|US|359 Main St|94105|2023-01-03|Y
+831|Raj Patel||AU||ABCDE|2024-01-29|false
+832|John Doe|john832@mail.com||289 Main St|20190|2023-10-05|Y
+833|Leo Doe|leo833@mail.com||326 Main St|20190|2024-03-18|false
+834|Chris Brown|||||2023-03-30|Y
+835||raj835@mail.com|AU|648 Main St||2023-03-05|N
+,,,
+837|Bob Patel||UK|969 Main St|94105|2023-09-13|N
+838|Leo Green|leo838@mail.com|UK||94105|2023-08-11|
+839|Tom Patel||UK|136 Main St|20190|2023-09-09|true
+840|John Green|john840@mail.com|AU|421 Main St|ABCDE|2024-02-14|
+841|"Raj|Brown"||NULL|709 Main St||2023-09-19|N
+,,,
+843|Emma Lee|emma843@mail.com||490 Main St|94105|2023-08-27|N
+844|Tom Patel|tom844@mail.com|UK|396 Main St||2023-03-09|Y
+845|Chris Doe|chris845@mail.com|CA|730 Main St|ABCDE|2023-03-01|true
+846|Leo Brown|leo846@mail.com|NULL|810 Main St||2023-01-26|false
+847|Jane Brown|jane847@mail.com||612 Main St||2024-04-02|N
+,,,
+849||bob849@mail.com|US|575 Main St||2023-03-26|N
+850|Jane Johnson|jane850@mail.com||898 Main St|94105|2024-02-02|
+851|Raj Smith|raj851@mail.com|CA|939 Main St|94105|2024-05-05|N
+852|Raj Black|raj852@mail.com|NULL|435 Main St|94105|2023-04-20|true
+853||chris853@mail.com||277 Main St|ABCDE|2023-02-06|N
+854|Mike Lee|mike854@mail.com||286 Main St|94105|2023-07-27|false
+855|Mike Black|mike855@mail.com||833 Main St|ABCDE|2023-12-01|
+856|Bob Brown|bob856@mail.com|CA|965 Main St|ABCDE|2023-06-18|
+857||raj857@mail.com|AU|929 Main St||2024-01-25|
+858|Bob Black|bob858@mail.com|AU|496 Main St|94105|2024-03-29|Y
+859|"Mike|Lee"|mike859@mail.com|NULL|920 Main St||2023-04-27|Y
+860|"Mike|Doe"|||74 Main St|20190|2023-01-30|N
+861|Emma Johnson||UK|417 Main St||2023-05-20|true
+862|Leo Green|leo862@mail.com|NULL|639 Main St|ABCDE|2024-03-17|false
+863|Nina Johnson|nina863@mail.com|||ABCDE|2023-09-08|
+864||leo864@mail.com|NULL|713 Main St|94105|2024-04-22|Y
+865|Leo Brown|leo865@mail.com||516 Main St|ABCDE|2024-02-05|false
+866|Chris White|chris866@mail.com|US|963 Main St|20190|2023-11-03|
+867|Nina Doe||CA|318 Main St||2023-04-08|true
+868|Mike White|mike868@mail.com|UK||94105|2023-12-01|false
+869|"Leo|Patel"|leo869@mail.com|UK|733 Main St|20190|2023-05-19|
+870|Chris Smith|chris870@mail.com|US|777 Main St|20190|2023-04-07|Y
+871|Alice Johnson|alice871@mail.com|AU|21 Main St|20190|2024-03-02|Y
+872|Raj Smith|raj872@mail.com|CA|779 Main St||2023-10-24|Y
+873|Mike Smith||NULL||20190|2023-02-25|Y
+874|Alice Doe||UK||ABCDE|2023-12-10|
+875|Emma Black|emma875@mail.com|AU|612 Main St|20190|2023-08-11|Y
+876|Raj White|raj876@mail.com||906 Main St|20190|2023-03-07|Y
+877|Chris Black|chris877@mail.com|NULL|645 Main St|ABCDE|2023-08-23|N
+878|John White|john878@mail.com|US||94105|2023-07-06|
+879||alice879@mail.com||482 Main St||2024-03-19|N
+880|Jane Brown|jane880@mail.com|AU|697 Main St||2024-02-28|N
+881|Tom Johnson|tom881@mail.com||815 Main St|20190|2023-08-30|N
+882|Jane Lee|jane882@mail.com|AU|132 Main St|ABCDE|2023-09-24|Y
+883|Raj Smith||UK|423 Main St||2023-04-25|N
+,,,
+885|Emma Doe|emma885@mail.com||50 Main St|ABCDE|2023-02-16|Y
+886|Leo Doe|leo886@mail.com||50 Main St|20190|2024-03-22|
+887|Raj Green|raj887@mail.com|||20190|2023-09-15|
+888|Mike Lee|mike888@mail.com|CA|478 Main St|20190|2023-06-10|false
+889|Nina Patel|nina889@mail.com|US|162 Main St||2023-03-05|true
+890|Leo Green|leo890@mail.com|CA|457 Main St|20190|2023-05-15|false
+891|Mike Johnson|mike891@mail.com|UK|840 Main St||2023-04-21|Y
+892||nina892@mail.com|NULL|432 Main St||2024-01-13|false
+893||bob893@mail.com|UK|449 Main St||2023-12-03|true
+894|Jane Lee|jane894@mail.com|AU|59 Main St|94105|2023-11-27|false
+895|Leo Lee|leo895@mail.com|UK|130 Main St||2023-11-27|true
+896|Nina Black||US|988 Main St||2023-11-16|true
+897|Bob Green|bob897@mail.com|AU|981 Main St|94105|2023-03-09|true
+898||leo898@mail.com|US|518 Main St|94105|2023-03-18|false
+899|Leo Black|leo899@mail.com|NULL|423 Main St||2023-02-27|
+900|Nina Doe|nina900@mail.com|NULL|566 Main St|94105|2023-11-30|false
+901|Emma White|emma901@mail.com|AU||ABCDE|2023-04-06|true
+902||alice902@mail.com||847 Main St|20190|2023-08-03|false
+903|Tom White|tom903@mail.com|US||ABCDE|2023-02-20|N
+904|Bob Johnson||CA||94105|2024-02-16|
+905|"Leo|White"|leo905@mail.com|CA||ABCDE|2024-02-25|false
+906|Raj Doe|raj906@mail.com|UK|846 Main St|94105|2023-01-27|true
+907|Nina Black|nina907@mail.com|AU||94105|2023-03-29|
+908|Nina Black|nina908@mail.com|UK|425 Main St|94105|2024-01-30|
+909|Chris Johnson|chris909@mail.com|US||20190|2023-05-15|false
+910|Mike Black|mike910@mail.com|US|373 Main St||2024-01-08|true
+911|Jane Brown|jane911@mail.com|AU|416 Main St|20190|2023-09-02|true
+912|Bob Patel||US|465 Main St|94105|2023-07-14|true
+913|Leo Doe|leo913@mail.com|NULL||94105|2023-07-04|Y
+914|John Lee|john914@mail.com|NULL||94105|2023-03-27|true
+915|"Emma|Lee"|emma915@mail.com|UK|337 Main St|20190|2024-04-15|true
+916|"Raj|Lee"|raj916@mail.com||15 Main St|ABCDE|2023-08-18|
+917|Mike Lee||US|4 Main St|20190|2023-05-01|N
+918|||US|108 Main St|20190|2023-08-08|true
+919|John Lee|john919@mail.com|AU|611 Main St|20190|2023-10-15|true
+920||alice920@mail.com|NULL|92 Main St|20190|2023-04-08|true
+921|Raj Brown|raj921@mail.com|UK|399 Main St|94105|2023-04-07|Y
+922|Raj Patel|raj922@mail.com|CA|441 Main St|94105|2024-02-02|Y
+923|Bob White|bob923@mail.com|CA|869 Main St|20190|2024-03-01|Y
+924|Sara Lee|sara924@mail.com||41 Main St|94105|2024-05-06|Y
+925|Chris Patel|chris925@mail.com|US|842 Main St|94105|2023-03-22|true
+926|Mike Doe||AU|268 Main St||2023-05-25|
+927|Raj Patel||CA||94105|2023-02-03|true
+928|Nina Lee||CA|897 Main St|20190|2023-04-07|
+929||leo929@mail.com|AU|417 Main St|ABCDE|2023-06-11|Y
+930|Leo Doe|leo930@mail.com|NULL|915 Main St|20190|2023-04-16|false
+931|Sara White|sara931@mail.com||86 Main St|94105|2024-04-19|Y
+932|Mike Smith|mike932@mail.com|US|917 Main St|94105|2023-03-21|Y
+933|Jane Patel||UK|402 Main St|94105|2023-02-24|Y
+934||bob934@mail.com|NULL|366 Main St|ABCDE|2023-06-16|
+935|John Brown|john935@mail.com|AU|391 Main St|20190|2023-05-22|false
+936|Emma Johnson|emma936@mail.com|AU|943 Main St||2024-02-12|true
+937|Jane White|jane937@mail.com|US|300 Main St|20190|2023-05-06|N
+938|Leo White||NULL|11 Main St|20190|2023-05-30|true
+939||mike939@mail.com||951 Main St|20190|2023-11-21|
+940|John Smith|john940@mail.com|NULL|620 Main St|94105|2023-09-09|false
+941|John Doe|john941@mail.com||206 Main St|ABCDE|2024-01-14|false
+942|Tom White|tom942@mail.com|CA|909 Main St|ABCDE|2024-03-13|false
+"unterminated,quote,here
+944|Emma Doe|emma944@mail.com||6 Main St|94105|2023-07-05|true
+BAD_ROW_WITH_TOO_FEW_COLS
+946||alice946@mail.com|CA|302 Main St|94105|2023-01-25|true
+947|Chris Johnson||CA|517 Main St||2023-11-12|true
+948|Alice Black|alice948@mail.com|UK|482 Main St||2023-04-21|Y
+949||chris949@mail.com|UK|313 Main St|20190|2023-11-13|true
+950|Nina White|nina950@mail.com|US|750 Main St||2023-07-04|true
+951|Chris Lee|chris951@mail.com|CA|399 Main St|94105|2023-09-15|false
+952|Emma Johnson|emma952@mail.com|UK||20190|2023-09-13|Y
+953|Tom Brown|tom953@mail.com||512 Main St|ABCDE|2023-07-26|N
+954|John Doe|john954@mail.com|CA|69 Main St|ABCDE|2024-04-18|Y
+955|Mike Smith|mike955@mail.com|US|974 Main St|20190|2023-08-10|true
+956|Leo Patel|leo956@mail.com||155 Main St||2024-03-14|Y
+957||bob957@mail.com|AU|574 Main St|94105|2024-05-13|true
+958|"Alice|Lee"|alice958@mail.com|US|408 Main St|ABCDE|2023-04-02|N
+959|Emma Patel|emma959@mail.com||988 Main St|20190|2024-04-26|N
+960|Mike Black|mike960@mail.com|AU|||2024-02-29|Y
+961||nina961@mail.com|NULL|293 Main St|ABCDE|2023-12-25|
+962|"Nina|Brown"|nina962@mail.com|AU|933 Main St|20190|2023-08-27|N
+963||alice963@mail.com||863 Main St|ABCDE|2023-03-21|
+123|MISMATCH|EXTRA|COLS|HERE|oops
+965||leo965@mail.com|UK|180 Main St|94105|2023-08-25|true
+966||emma966@mail.com|CA|387 Main St|94105|2024-02-04|false
+967|Tom Doe|tom967@mail.com|CA|253 Main St|20190|2024-04-03|false
+968|Chris Lee|chris968@mail.com|US|149 Main St|94105|2023-07-22|true
+969|Emma Black|emma969@mail.com|US|306 Main St|20190|2023-02-22|Y
+970|Raj Smith||UK|55 Main St|ABCDE|2023-12-08|false
+971|"Leo|Black"||UK|||2023-03-08|true
+972|"John|Green"|john972@mail.com|AU|29 Main St|20190|2023-07-05|
+973|Sara Brown||AU|71 Main St|94105|2023-06-17|false
+974|Sara Green|sara974@mail.com|CA|360 Main St|94105|2023-02-13|
+975|"Bob|Green"|bob975@mail.com|UK|461 Main St||2023-02-25|Y
+976|Leo Johnson|leo976@mail.com|US|949 Main St|ABCDE|2023-07-16|false
+977|"Leo|Johnson"|leo977@mail.com|US|6 Main St|94105|2023-12-01|false
+978||sara978@mail.com|UK|171 Main St|ABCDE|2024-04-29|
+979|Mike White|||141 Main St|20190|2024-01-07|
+980|John Johnson|john980@mail.com|CA|897 Main St|20190|2024-01-29|
+981|Bob Smith|bob981@mail.com|CA|532 Main St|ABCDE|2023-10-27|false
+982|Mike Johnson|mike982@mail.com|US|723 Main St|ABCDE|2024-01-01|false
+983|"Sara|Patel"|sara983@mail.com|NULL|965 Main St|20190|2023-07-29|Y
+984|"John|Green"|john984@mail.com|NULL|164 Main St|20190|2023-12-23|N
+985||alice985@mail.com|US||20190|2024-01-09|false
+986||emma986@mail.com|CA|874 Main St|ABCDE|2023-11-13|true
+987|Leo Patel|leo987@mail.com|UK|464 Main St|94105|2023-09-08|N
+988|"Jane|Patel"|jane988@mail.com|UK|414 Main St|20190|2023-11-10|false
+989|Leo White|leo989@mail.com||23 Main St|ABCDE|2024-04-15|true
+990|John Black|john990@mail.com|AU|||2023-04-28|false
+991|Leo Lee|leo991@mail.com|UK|411 Main St|20190|2023-03-02|false
+992|Leo Lee|leo992@mail.com|UK|516 Main St||2023-01-16|true
+993|Tom Brown|tom993@mail.com||618 Main St|20190|2023-01-08|N
+994|Mike Brown|mike994@mail.com|UK|625 Main St|20190|2023-06-10|Y
+995|"Chris|Smith"|chris995@mail.com||88 Main St|94105|2023-04-06|Y
+996|Nina Lee|nina996@mail.com|US||ABCDE|2023-07-31|false
+997|Bob Smith||CA|718 Main St|94105|2023-02-01|Y
+998|Chris Johnson|chris998@mail.com|AU|||2023-12-09|Y
+999||raj999@mail.com|AU|388 Main St|ABCDE|2024-05-05|
+1000|Raj Smith||UK|775 Main St||2023-07-15|true
+1001|John Black|john1001@mail.com||111 Main St|20190|2024-01-20|
+1002|Nina Black|nina1002@mail.com|US|441 Main St|20190|2023-04-04|false
+1003|Bob White||CA|45 Main St|ABCDE|2023-05-22|Y
+1004|Sara Patel|sara1004@mail.com|UK|236 Main St|94105|2023-10-20|N
+1005|Alice White|alice1005@mail.com|US|906 Main St|ABCDE|2024-02-24|false
+1006|Nina White|nina1006@mail.com|US|775 Main St|94105|2023-04-22|N
+1007|John Patel|john1007@mail.com|UK|743 Main St|94105|2023-09-09|true
+1008|Raj Smith|raj1008@mail.com|UK||94105|2024-05-07|false
+1009|Tom Doe|tom1009@mail.com|||20190|2023-07-16|Y
+1010||sara1010@mail.com||619 Main St|20190|2023-07-27|N
+1011|Nina White|nina1011@mail.com|UK|||2023-11-26|Y
+1012|Leo Johnson|leo1012@mail.com|US|802 Main St|20190|2024-05-08|true
+1013|||AU|153 Main St|ABCDE|2024-03-07|Y
+1014|Alice Smith|alice1014@mail.com|US||20190|2023-03-14|Y
+1015|Emma Smith|emma1015@mail.com|US|525 Main St|ABCDE|2023-07-23|false
+1016|Sara Smith|sara1016@mail.com|||ABCDE|2023-01-16|true
+1017||alice1017@mail.com|US|854 Main St|20190|2024-03-06|Y
+1018|Mike Lee|mike1018@mail.com|CA||20190|2023-09-05|true
+1019|Leo Smith|leo1019@mail.com|CA|230 Main St||2023-02-23|N
+1020|Leo White|leo1020@mail.com||984 Main St||2023-11-13|false
+1021|"Alice|Black"||AU|412 Main St|ABCDE|2023-07-05|
+1022|Bob Green|bob1022@mail.com|US|307 Main St||2023-09-06|Y
+1023|Emma Green|||828 Main St|ABCDE|2023-04-23|Y
+1024|Leo Black|leo1024@mail.com|NULL|55 Main St|94105|2023-03-29|false
+1025|Sara Green|sara1025@mail.com||959 Main St|ABCDE|2023-12-01|N
+1026|"John|Smith"|john1026@mail.com|NULL|938 Main St|20190|2023-01-04|true
+1027|Alice Lee|alice1027@mail.com|CA|864 Main St|20190|2023-08-31|
+1028|Bob Smith|bob1028@mail.com|CA||20190|2023-09-04|
+1029|Nina Doe|nina1029@mail.com||91 Main St||2024-03-07|
+1030|Emma Johnson|emma1030@mail.com|UK|666 Main St|20190|2023-02-12|
+1031|Raj White|raj1031@mail.com|UK|488 Main St|20190|2024-04-28|true
+1032|||CA|764 Main St|94105|2023-10-10|false
+1033|Sara Doe||NULL|31 Main St|20190|2024-05-08|false
+1034||mike1034@mail.com|UK|281 Main St||2023-01-16|N
+1035|Raj Smith|raj1035@mail.com|US|634 Main St|ABCDE|2023-07-21|true
+1036|"Sara|Doe"|sara1036@mail.com|CA||94105|2023-04-07|N
+1037|Jane Smith|jane1037@mail.com|AU|704 Main St|94105|2023-09-09|Y
+1038|Leo White||UK|34 Main St|20190|2023-12-16|true
+1039||jane1039@mail.com||304 Main St|20190|2024-05-09|true
+1040|Emma Lee|emma1040@mail.com|AU||94105|2023-10-19|true
+1041|Alice Brown|alice1041@mail.com|UK|847 Main St|94105|2023-10-03|N
+1042|Chris Smith|chris1042@mail.com||638 Main St||2023-01-07|false
+1043|Tom Doe|tom1043@mail.com||179 Main St||2023-11-24|
+1044|Nina Johnson|nina1044@mail.com|CA|650 Main St|ABCDE|2023-02-24|N
+1045|John Doe|john1045@mail.com||91 Main St|94105|2023-01-24|
+1046|Emma Black|emma1046@mail.com|CA||94105|2023-05-01|N
+1047|Sara Lee|sara1047@mail.com||893 Main St||2024-04-23|true
+1048||john1048@mail.com|US|886 Main St|ABCDE|2023-08-26|false
+1049|Sara White|sara1049@mail.com|UK|884 Main St||2023-07-29|true
+1050|Emma Johnson||CA|244 Main St|20190|2023-07-02|
+1051|John Doe|john1051@mail.com|NULL|594 Main St|20190|2023-03-21|
+1052|Tom Lee|tom1052@mail.com|NULL||20190|2023-05-11|N
+1053|Raj Brown|raj1053@mail.com|CA|390 Main St||2024-04-25|Y
+1054|John Patel|john1054@mail.com|US|130 Main St|94105|2024-01-28|
+1055|"Chris|Lee"||CA|975 Main St||2024-04-15|true
+1056|Leo Doe|leo1056@mail.com|CA|712 Main St|94105|2023-03-20|Y
+1057|Raj Smith|raj1057@mail.com|US|||2023-07-29|false
+1058||tom1058@mail.com|CA|647 Main St|ABCDE|2023-10-28|N
+1059|Nina Johnson||AU|204 Main St|ABCDE|2023-05-02|false
+1060|Nina Brown|nina1060@mail.com|CA|440 Main St|20190|2024-03-22|false
+,,,
+1062|Leo Black|leo1062@mail.com||734 Main St|94105|2024-01-12|true
+1063|Alice White|alice1063@mail.com||21 Main St|ABCDE|2024-01-31|false
+1064|Nina Brown|nina1064@mail.com|UK|901 Main St|94105|2023-08-27|false
+1065|Raj Johnson|raj1065@mail.com||557 Main St|ABCDE|2024-02-24|true
+1066|Sara Patel|sara1066@mail.com|US|186 Main St|ABCDE|2024-05-13|true
+1067|Bob White||AU|543 Main St|ABCDE|2023-07-09|Y
+1068|"Mike|Doe"||NULL|998 Main St||2023-08-04|N
+1069|Tom Johnson|tom1069@mail.com|UK|700 Main St|ABCDE|2023-10-18|true
+1070|Emma Brown|emma1070@mail.com|US|684 Main St||2023-05-23|N
+1071|John Johnson|john1071@mail.com|UK|258 Main St|94105|2023-12-26|false
+1072|"Mike|Brown"|mike1072@mail.com|NULL|468 Main St||2023-05-30|false
+1073|Raj Doe|raj1073@mail.com|UK|443 Main St||2024-04-14|false
+1074|"Raj|Green"|raj1074@mail.com|US||ABCDE|2023-11-08|N
+1075|Emma Black|emma1075@mail.com|AU|649 Main St|94105|2024-01-31|N
+1076|Sara Black|sara1076@mail.com|AU|614 Main St|20190|2024-03-28|true
+1077|Mike Black|mike1077@mail.com|US||94105|2023-07-27|N
+1078|Sara Black|||80 Main St|ABCDE|2024-02-27|N
+1079||jane1079@mail.com|AU||ABCDE|2023-04-11|Y
+1080||tom1080@mail.com|CA|294 Main St|20190|2023-07-23|false
+1081|Bob Johnson|bob1081@mail.com|NULL|445 Main St|ABCDE|2023-05-24|true
+1082|Mike Brown|mike1082@mail.com|US|367 Main St|20190|2024-04-01|true
+1083|John Doe||UK|353 Main St|20190|2023-06-12|
+1084|Nina Doe|nina1084@mail.com|US|102 Main St|94105|2023-06-19|
+1085|Tom Johnson|tom1085@mail.com|UK|212 Main St|20190|2024-05-11|true
+1086|Emma Johnson|emma1086@mail.com|US|953 Main St|ABCDE|2023-06-24|N
+1087|Alice Doe|alice1087@mail.com|UK||94105|2023-10-16|Y
+1088|Bob Lee|bob1088@mail.com||331 Main St||2023-12-17|true
+1089||leo1089@mail.com|CA|140 Main St||2023-07-07|false
+1090|Sara Smith|sara1090@mail.com|AU|114 Main St|ABCDE|2023-12-14|false
+1091|Mike Doe|mike1091@mail.com||742 Main St|94105|2023-12-30|Y
+1092|Mike White|mike1092@mail.com|AU|273 Main St|94105|2023-10-16|false
+1093|Jane Johnson|jane1093@mail.com|NULL|74 Main St|94105|2023-07-20|Y
+1094|Nina Johnson|nina1094@mail.com|AU|873 Main St|20190|2023-07-06|N
+BAD_ROW_WITH_TOO_FEW_COLS
+1096|Leo Black|leo1096@mail.com|AU|183 Main St|ABCDE|2024-03-01|
+1097|Emma Black|emma1097@mail.com|NULL|494 Main St||2024-05-14|true
+1098|Nina Brown|nina1098@mail.com|NULL||94105|2023-05-28|
+1099|Chris Lee|chris1099@mail.com||830 Main St|20190|2023-11-07|false
+1100||bob1100@mail.com|US|||2024-04-13|
+1101||bob1101@mail.com|CA|536 Main St|ABCDE|2023-06-06|false
+1102||raj1102@mail.com|AU|62 Main St|94105|2023-06-13|false
+1103|"Sara|Brown"|sara1103@mail.com|UK|449 Main St|ABCDE|2023-12-01|false
+1104|Leo Patel|||884 Main St||2023-02-19|false
+BAD_ROW_WITH_TOO_FEW_COLS
+1106|Sara Green||AU|813 Main St|94105|2023-01-03|true
+1107||nina1107@mail.com|AU|||2024-04-29|
+1108|"Sara|Brown"|sara1108@mail.com|UK|62 Main St|94105|2023-01-08|N
+1109|Leo Green||US|||2024-03-08|Y
+1110||nina1110@mail.com|CA|936 Main St|ABCDE|2024-03-14|N
+1111|Raj Black||NULL|577 Main St|ABCDE|2023-02-14|
+1112|Mike Doe|mike1112@mail.com||||2023-06-09|
+1113|John Patel|john1113@mail.com|US|953 Main St|ABCDE|2023-06-13|Y
+1114|Raj Lee|raj1114@mail.com|US|391 Main St|ABCDE|2024-02-12|N
+1115|John Brown|john1115@mail.com||123 Main St|ABCDE|2023-10-03|false
+1116|Jane Green||AU|139 Main St|20190|2023-01-08|Y
+1117|Leo Doe||NULL|649 Main St|20190|2024-01-19|Y
+1118|Mike Green|mike1118@mail.com|CA|||2023-08-10|Y
+1119|Tom Doe|tom1119@mail.com|UK|553 Main St|20190|2023-01-04|
+1120|"John|Brown"|john1120@mail.com|AU|541 Main St|ABCDE|2024-02-22|Y
+1121|||||20190|2023-09-28|Y
+1122|Bob Patel|bob1122@mail.com|AU|215 Main St|94105|2023-10-22|true
+1123|"Bob|Green"|bob1123@mail.com|AU|339 Main St|94105|2024-04-13|Y
+1124|Tom Lee|tom1124@mail.com|NULL|502 Main St|ABCDE|2023-04-03|N
+1125|Bob Brown||AU|188 Main St|94105|2023-09-11|
+1126|John Brown|john1126@mail.com|US|904 Main St||2023-04-02|false
+1127|Bob Brown|bob1127@mail.com|UK|892 Main St||2023-06-19|
+,,,
+123|MISMATCH|EXTRA|COLS|HERE|oops
+1130|"Leo|Smith"|leo1130@mail.com|UK|416 Main St|ABCDE|2023-07-07|
+1131|Bob Brown|bob1131@mail.com|US|750 Main St|94105|2024-05-02|false
+BAD_ROW_WITH_TOO_FEW_COLS
+1133|Jane Doe|jane1133@mail.com|CA|456 Main St|94105|2023-07-12|Y
+1134|John Smith|john1134@mail.com|UK|988 Main St|ABCDE|2023-01-17|
+1135|Emma Black|emma1135@mail.com|CA|874 Main St|94105|2023-07-27|false
+1136|Raj White|raj1136@mail.com|AU|380 Main St|20190|2023-10-26|false
+1137|Emma Doe|emma1137@mail.com|||20190|2023-05-20|true
+1138||john1138@mail.com|US||20190|2023-05-25|true
+123|MISMATCH|EXTRA|COLS|HERE|oops
+1140|Nina Doe|nina1140@mail.com|AU|252 Main St||2024-05-11|false
+1141|Leo Smith|leo1141@mail.com||574 Main St|20190|2023-01-03|true
+1142||nina1142@mail.com|UK|575 Main St||2024-01-26|Y
+BAD_ROW_WITH_TOO_FEW_COLS
+1144|Bob Green|bob1144@mail.com|UK|459 Main St||2024-04-24|false
+1145|Chris Lee|||209 Main St|94105|2024-02-15|Y
+1146||chris1146@mail.com|NULL|348 Main St|94105|2024-01-25|false
+1147|Nina Johnson|nina1147@mail.com|NULL|279 Main St|94105|2023-07-04|true
+1148|Jane Doe|jane1148@mail.com|US|561 Main St|ABCDE|2024-03-22|true
+1149|Jane Patel|jane1149@mail.com|US|169 Main St|20190|2023-12-21|Y
+1150|Raj Doe|raj1150@mail.com|CA|934 Main St|ABCDE|2024-03-30|
+1151|Sara Green|sara1151@mail.com||82 Main St|20190|2023-03-19|false
+1152|Emma Black|emma1152@mail.com|AU|81 Main St|ABCDE|2024-03-12|
+1153|Nina Johnson|nina1153@mail.com|CA|||2024-01-26|false
+1154|Bob Patel|bob1154@mail.com|NULL|44 Main St|ABCDE|2023-10-25|Y
+1155||raj1155@mail.com|NULL|||2024-04-28|N
+1156|Emma Doe|emma1156@mail.com|US|642 Main St|20190|2023-06-13|Y
+1157|"John|Brown"|john1157@mail.com|AU|348 Main St||2023-10-11|false
+1158|Alice Black|alice1158@mail.com|AU|34 Main St|ABCDE|2023-11-04|false
+1159||emma1159@mail.com||557 Main St|20190|2023-01-11|N
+1160|Tom Brown|tom1160@mail.com|AU|895 Main St||2023-08-19|Y
+1161|Chris Lee|||613 Main St|94105|2023-06-29|Y
+,,,
+1163|Leo White|leo1163@mail.com|AU|496 Main St|ABCDE|2023-08-16|
+1164|Jane Patel|jane1164@mail.com||258 Main St|ABCDE|2023-11-18|N
+1165|Nina Brown|nina1165@mail.com|||20190|2023-04-28|true
+1166|Bob Smith||AU|664 Main St|ABCDE|2023-06-29|
+1167||raj1167@mail.com|US|965 Main St|94105|2023-09-11|Y
+1168||jane1168@mail.com|NULL|701 Main St|20190|2023-04-16|N
+1169|Nina Johnson|nina1169@mail.com|CA||94105|2024-03-17|
+1170|Raj Patel|raj1170@mail.com|US|310 Main St|20190|2024-03-08|Y
+1171|Leo Johnson|leo1171@mail.com|US||ABCDE|2023-08-20|Y
+1172|Bob Lee|bob1172@mail.com|US|668 Main St||2023-11-04|false
+1173|Jane Lee|jane1173@mail.com|US||94105|2023-11-13|N
+1174|Emma Brown|emma1174@mail.com|NULL|874 Main St|ABCDE|2024-04-10|true
+1175|John Doe|john1175@mail.com|AU|||2023-11-30|true
+1176|Sara Johnson|sara1176@mail.com|CA|874 Main St|94105|2023-09-14|Y
+1177|Chris Patel|chris1177@mail.com|CA|475 Main St||2023-09-15|Y
+1178|Chris Green|chris1178@mail.com|UK|103 Main St|20190|2023-10-08|Y
+1179|Emma White||||94105|2023-02-06|
+1180|Leo Smith|leo1180@mail.com|CA|530 Main St|94105|2024-03-30|
+BAD_ROW_WITH_TOO_FEW_COLS
+1182|"Mike|Green"|mike1182@mail.com|CA|502 Main St|94105|2023-09-19|false
+1183|Emma Black|emma1183@mail.com|NULL|582 Main St|94105|2023-08-20|true
+1184|Sara Johnson||AU|762 Main St|94105|2023-01-25|false
+1185||emma1185@mail.com|US|82 Main St||2023-04-24|true
+1186||raj1186@mail.com||29 Main St||2024-01-13|true
+1187|Leo Brown|leo1187@mail.com|NULL|100 Main St||2024-05-02|N
+1188||sara1188@mail.com|CA||20190|2024-02-25|N
+1189|Raj Doe|raj1189@mail.com|NULL|||2023-06-04|Y
+1190|"Jane|Black"|jane1190@mail.com|UK||94105|2023-08-05|Y
+1191|Tom Brown|tom1191@mail.com|UK|535 Main St|94105|2024-03-28|true
+1192|Nina Brown|nina1192@mail.com|NULL|967 Main St|94105|2023-10-25|Y
+1193|Jane Smith|jane1193@mail.com|US|737 Main St|94105|2023-06-26|false
+1194|Sara Johnson|sara1194@mail.com|UK|271 Main St||2023-03-13|
+1195|"Chris|Brown"|chris1195@mail.com|US|221 Main St|20190|2023-09-25|true
+1196|Emma Patel|emma1196@mail.com|AU|521 Main St|ABCDE|2024-05-05|N
+1197|||NULL|235 Main St||2023-11-17|true
+1198|John White|john1198@mail.com|AU|274 Main St|94105|2023-08-26|true
+1199|Sara White||||20190|2023-12-24|true
+1200|Tom Johnson|tom1200@mail.com||953 Main St|ABCDE|2024-03-05|
+1201|Nina Doe||AU|286 Main St||2023-09-28|true
+BAD_ROW_WITH_TOO_FEW_COLS
+1203|Bob Brown||NULL|447 Main St||2023-12-03|true
+1204|Emma Green|emma1204@mail.com||620 Main St|94105|2023-12-27|true
+1205|Bob Doe||NULL|10 Main St||2024-02-02|false
+1206|Sara Patel|sara1206@mail.com|CA|622 Main St|94105|2023-07-27|N
+1207|"Mike|Brown"|mike1207@mail.com|AU|84 Main St|20190|2023-01-11|false
+1208|Leo Black|leo1208@mail.com|US|90 Main St||2024-01-26|N
+1209||bob1209@mail.com|NULL|898 Main St||2024-03-25|false
+1210|Alice Green|alice1210@mail.com|CA||94105|2023-08-08|
+1211|John Black|john1211@mail.com|||94105|2024-01-01|false
+1212|John Johnson||CA|964 Main St||2023-11-09|
+1213|Raj Brown|raj1213@mail.com|CA|713 Main St|94105|2023-09-20|false
+1214|Mike Johnson|mike1214@mail.com|||94105|2023-01-19|
+1215||tom1215@mail.com|US|590 Main St|94105|2023-06-13|
+1216|John Patel|john1216@mail.com|UK|898 Main St||2024-03-08|
+1217|Mike Johnson|mike1217@mail.com|AU|967 Main St|ABCDE|2023-10-30|N
+1218|Mike Black|mike1218@mail.com|UK|333 Main St|ABCDE|2024-02-29|N
+1219|Sara Smith|sara1219@mail.com|UK||94105|2024-02-18|N
+1220|Tom Brown|||781 Main St||2023-06-28|N
+1221|Mike Green|mike1221@mail.com|US|885 Main St|ABCDE|2023-12-30|true
+1222|Emma Lee|emma1222@mail.com|CA|775 Main St|94105|2023-03-28|false
+1223|Alice Green|alice1223@mail.com||977 Main St||2023-05-25|true
+1224|Sara Green|sara1224@mail.com|NULL|478 Main St||2023-12-12|
+1225|"Emma|Patel"|emma1225@mail.com|CA|501 Main St|20190|2023-06-30|N
+1226||alice1226@mail.com|NULL|266 Main St|ABCDE|2024-05-13|Y
+1227|Bob Green|bob1227@mail.com|CA|840 Main St|ABCDE|2023-03-24|false
+1228|Chris Lee|chris1228@mail.com|UK|512 Main St||2023-03-06|Y
+1229|Nina White|nina1229@mail.com|US|14 Main St|94105|2023-02-03|
+1230|||UK|||2023-11-26|Y
+1231||alice1231@mail.com|NULL|||2023-09-27|
+1232|Bob Black|bob1232@mail.com|CA|636 Main St|94105|2023-12-12|false
+1233|Sara Johnson|sara1233@mail.com|AU|8 Main St|20190|2023-11-29|
+1234|Nina Smith||CA|841 Main St|94105|2023-02-17|true
+1235|Nina Smith|nina1235@mail.com|||94105|2023-10-18|Y
+1236||mike1236@mail.com||884 Main St||2023-11-17|
+1237|Chris Smith|chris1237@mail.com|US||94105|2023-08-06|true
+1238||leo1238@mail.com|UK|914 Main St|20190|2023-10-05|N
+1239|Leo Smith|leo1239@mail.com||613 Main St||2023-08-09|true
+1240|John Brown|john1240@mail.com|CA|295 Main St|94105|2023-12-04|false
+1241||nina1241@mail.com|US|336 Main St|94105|2023-10-04|false
+1242||jane1242@mail.com||759 Main St|20190|2023-05-25|N
+1243|John Black|john1243@mail.com|NULL|925 Main St|94105|2024-03-17|true
+1244|"Tom|White"|tom1244@mail.com|AU|4 Main St|20190|2023-09-04|true
+1245|Alice Black|alice1245@mail.com||686 Main St|ABCDE|2023-07-31|N
+1246|"Sara|Black"|sara1246@mail.com|UK|363 Main St||2023-07-11|
+1247|Alice Brown|alice1247@mail.com|NULL|49 Main St|20190|2023-12-22|
+1248|"Raj|Johnson"|raj1248@mail.com|UK|167 Main St|20190|2024-04-19|N
+1249|Alice Johnson|alice1249@mail.com|US||94105|2023-10-02|true
+1250|Nina Smith|||560 Main St|ABCDE|2023-08-25|
+1251|Sara Johnson|sara1251@mail.com|NULL|365 Main St||2023-04-23|Y
+1252|Leo Patel|leo1252@mail.com|NULL||ABCDE|2023-10-03|Y
+1253|"Sara|Brown"||UK|732 Main St||2024-01-05|true
+1254|Chris Johnson|chris1254@mail.com||45 Main St|ABCDE|2024-04-27|Y
+1255|Jane Patel|jane1255@mail.com|UK|||2023-11-15|Y
+1256|Chris Green|chris1256@mail.com||120 Main St|20190|2024-02-01|
+1257||jane1257@mail.com||339 Main St||2024-03-23|N
+1258|"Sara|Brown"|sara1258@mail.com|US|650 Main St|20190|2024-03-26|N
+1259|Bob Smith|bob1259@mail.com|CA|510 Main St|20190|2023-02-12|
+1260|Chris Patel|chris1260@mail.com|CA|242 Main St|94105|2023-07-06|
+1261|"Sara|Green"|sara1261@mail.com||341 Main St|ABCDE|2023-07-30|false
+1262|Mike White||AU|||2023-05-28|true
+1263|Tom Green|tom1263@mail.com|UK|286 Main St|ABCDE|2023-02-09|N
+1264||bob1264@mail.com|UK|106 Main St|94105|2023-03-17|N
+1265|Emma Patel|emma1265@mail.com|US|742 Main St||2023-07-04|
+1266|Alice Brown||AU|287 Main St||2024-04-06|true
+1267|Mike Green|||||2023-04-18|Y
+1268|Tom Johnson|tom1268@mail.com||752 Main St|ABCDE|2024-03-14|Y
+1269||||972 Main St||2024-02-07|
+1270|Alice Green|alice1270@mail.com|NULL|790 Main St||2023-03-28|N
+1271|Tom Brown|tom1271@mail.com|NULL|313 Main St||2024-01-30|true
+1272|Jane Johnson|jane1272@mail.com|UK|902 Main St|ABCDE|2023-06-08|false
+1273|Chris Brown|chris1273@mail.com|NULL|188 Main St||2024-01-30|true
+1274|Emma Doe|emma1274@mail.com|AU|407 Main St||2023-02-21|N
+1275|John Black||AU||94105|2024-01-29|true
+1276|Nina Lee|nina1276@mail.com|NULL|||2023-07-21|
+1277|Nina White|nina1277@mail.com|US|440 Main St|94105|2024-04-23|Y
+1278|Jane Brown|jane1278@mail.com|UK|97 Main St|20190|2023-12-05|Y
+1279|Nina Lee||CA|232 Main St|20190|2024-03-31|true
+1280|Mike Brown|mike1280@mail.com|US|431 Main St||2023-01-05|true
+1281|Raj Patel|raj1281@mail.com|AU|738 Main St|ABCDE|2023-11-20|false
+1282|"Sara|Green"|sara1282@mail.com|AU|494 Main St|20190|2023-08-19|N
+1283||mike1283@mail.com||560 Main St|ABCDE|2024-03-05|Y
+1284|Sara Lee|sara1284@mail.com||167 Main St|94105|2024-03-12|
+1285|Sara White|sara1285@mail.com|CA|608 Main St|94105|2023-12-05|Y
+1286|Alice Patel|alice1286@mail.com|CA|||2023-09-12|false
+"unterminated,quote,here
+1288|"Emma|Green"|emma1288@mail.com|CA|328 Main St|ABCDE|2023-04-24|Y
+1289|Mike Brown|mike1289@mail.com|NULL|951 Main St|94105|2023-06-27|N
+1290|Alice Johnson|alice1290@mail.com|US|354 Main St||2024-04-05|Y
+1291|Alice Johnson|alice1291@mail.com|NULL|257 Main St|94105|2024-02-19|
+1292||john1292@mail.com|AU|815 Main St||2024-01-10|
+1293||jane1293@mail.com|NULL|188 Main St||2023-07-28|
+123|MISMATCH|EXTRA|COLS|HERE|oops
+1295|Alice Brown|alice1295@mail.com|UK|||2023-10-26|
+1296|Chris Black|chris1296@mail.com|CA|929 Main St||2023-09-04|true
+1297|Tom Brown|tom1297@mail.com|AU||ABCDE|2023-08-28|false
+1298|Jane Smith|jane1298@mail.com|AU|24 Main St|94105|2024-04-27|true
+1299|Leo White|leo1299@mail.com|AU|378 Main St||2024-04-30|false
+1300|Bob White|bob1300@mail.com|CA|48 Main St|ABCDE|2024-01-06|
+1301|||CA|138 Main St|94105|2023-06-19|N
+1302|Tom Patel|tom1302@mail.com|CA|419 Main St|ABCDE|2023-07-02|true
+1303|Alice Doe||NULL|766 Main St|20190|2023-01-11|false
+1304|Alice Lee|alice1304@mail.com|US|348 Main St|ABCDE|2023-09-06|Y
+1305|Emma Patel|emma1305@mail.com|US|752 Main St|94105|2023-12-19|
+1306|Emma Black|emma1306@mail.com|NULL||ABCDE|2024-01-26|
+1307|||NULL|76 Main St|94105|2024-04-16|N
+1308|"Chris|Doe"||UK|138 Main St|94105|2023-07-03|N
+1309|||||ABCDE|2023-10-14|true
+1310|Leo Black|leo1310@mail.com|UK|506 Main St|ABCDE|2024-01-07|false
+1311|Bob Johnson|bob1311@mail.com|AU||ABCDE|2023-08-23|true
+1312||emma1312@mail.com|CA|359 Main St||2023-09-06|Y
+1313||mike1313@mail.com||820 Main St||2023-11-19|
+1314|||CA|296 Main St||2023-03-05|true
+1315|Alice Smith|alice1315@mail.com|UK|965 Main St||2023-01-20|true
+1316|Chris White|chris1316@mail.com||419 Main St|20190|2024-02-06|Y
+1317|"Raj|Smith"|||929 Main St|ABCDE|2023-11-20|Y
+1318|Emma Patel|emma1318@mail.com|CA|208 Main St||2023-02-08|N
+1319||sara1319@mail.com|UK|559 Main St||2023-03-24|N
+1320|Sara Smith|sara1320@mail.com|CA|631 Main St|94105|2023-03-19|false
+1321|Mike Patel|mike1321@mail.com|||ABCDE|2023-04-22|Y
+1322|Alice Brown|alice1322@mail.com||816 Main St|94105|2023-08-20|true
+1323|Nina Black|nina1323@mail.com|UK|257 Main St|20190|2023-08-02|
+1324|Nina Smith|nina1324@mail.com|US|284 Main St|ABCDE|2023-06-23|
+1325|"Chris|Doe"|chris1325@mail.com|CA||20190|2023-11-01|true
+1326|Emma Patel|emma1326@mail.com|AU|550 Main St||2023-12-08|Y
+1327|Nina Smith|nina1327@mail.com|UK|518 Main St||2023-05-06|Y
+1328|Bob Lee|bob1328@mail.com|UK|195 Main St||2024-02-21|
+1329|John White|||194 Main St|94105|2024-01-25|N
+1330|John Black||US|310 Main St|ABCDE|2024-02-14|N
+1331|Emma White|emma1331@mail.com|NULL|||2023-09-13|Y
+123|MISMATCH|EXTRA|COLS|HERE|oops
+1333|John Black|john1333@mail.com|UK|420 Main St|ABCDE|2023-06-05|Y
+1334|Raj Doe|raj1334@mail.com|US|935 Main St|94105|2023-04-27|N
+1335|Nina Lee|nina1335@mail.com|CA|400 Main St||2023-08-28|true
+1336|Bob Doe||AU|61 Main St|20190|2024-02-04|false
+1337|Emma Lee|emma1337@mail.com|AU|65 Main St|94105|2024-05-03|
+1338|Raj Doe||NULL|||2023-06-12|N
+1339|Bob Black|bob1339@mail.com|UK|864 Main St|ABCDE|2023-11-01|
+1340|Leo Green|leo1340@mail.com|NULL|887 Main St|ABCDE|2023-11-11|true
+1341|Leo Green|leo1341@mail.com|NULL|657 Main St|20190|2024-04-11|Y
+1342|Chris White|chris1342@mail.com|AU|608 Main St|20190|2023-09-19|N
+1343|Bob Johnson|bob1343@mail.com|UK|238 Main St||2024-05-12|Y
+1344|Emma Black|emma1344@mail.com|NULL|918 Main St|ABCDE|2023-07-22|false
+1345|Leo Lee|leo1345@mail.com|US|609 Main St||2023-11-28|N
+1346|Sara Black|sara1346@mail.com|NULL|381 Main St||2023-02-06|true
+1347|Tom Patel|tom1347@mail.com|CA|475 Main St|94105|2023-02-18|true
+1348|Nina Patel|nina1348@mail.com|US|315 Main St|94105|2023-01-30|Y
+1349|Chris Black|chris1349@mail.com|UK|325 Main St|94105|2023-09-28|false
+1350|Jane Lee|jane1350@mail.com|CA|428 Main St|ABCDE|2023-11-07|
+1351|Mike Black|mike1351@mail.com||526 Main St||2023-01-12|Y
+1352|Nina White||UK|973 Main St||2023-04-24|false
+1353|Emma Green|emma1353@mail.com||189 Main St||2024-04-11|true
+1354|Sara Doe|sara1354@mail.com||798 Main St|20190|2024-01-06|Y
+1355|Sara Smith|sara1355@mail.com|US|689 Main St||2024-01-06|N
+1356|Tom Green|tom1356@mail.com|NULL|337 Main St|ABCDE|2023-12-18|
+1357|Leo White|leo1357@mail.com|AU|163 Main St|94105|2023-06-01|Y
+1358|Leo Brown||CA|597 Main St|ABCDE|2023-02-02|
+1359|Alice Johnson|alice1359@mail.com|NULL|547 Main St||2023-06-05|Y
+1360|Emma Johnson|emma1360@mail.com|UK|||2023-12-24|false
+1361|John Brown|john1361@mail.com|CA|500 Main St|94105|2023-09-12|
+1362|Tom Patel|tom1362@mail.com|US|725 Main St|94105|2023-10-13|N
+1363|Raj Green||UK|378 Main St||2023-11-20|false
+1364||chris1364@mail.com|US|845 Main St||2024-05-05|Y
+1365|Tom White|tom1365@mail.com|NULL|539 Main St|94105|2023-07-14|false
+1366|John Smith|john1366@mail.com|AU|631 Main St|20190|2023-10-15|
+1367|Mike White|mike1367@mail.com|UK|137 Main St|ABCDE|2023-09-17|
+1368|Raj Brown|raj1368@mail.com|NULL|994 Main St||2024-04-28|Y
+1369|John Johnson|john1369@mail.com|CA|820 Main St|94105|2023-04-22|
+1370|Alice Brown|alice1370@mail.com||591 Main St|ABCDE|2023-06-16|
+1371||raj1371@mail.com|NULL|901 Main St|ABCDE|2023-08-30|N
+1372|John Green|john1372@mail.com||618 Main St|ABCDE|2024-02-24|false
+1373|Alice White|alice1373@mail.com||723 Main St|94105|2023-11-10|true
+1374|Bob Green|bob1374@mail.com|US|501 Main St|20190|2023-12-28|true
+1375||alice1375@mail.com|NULL|165 Main St||2023-02-04|true
+1376|Jane Green|jane1376@mail.com|UK|780 Main St|94105|2023-05-02|true
+1377|Bob Smith|bob1377@mail.com||149 Main St|20190|2024-03-26|Y
+1378|||CA|568 Main St|20190|2023-04-06|Y
+1379|Jane Brown|jane1379@mail.com|US||94105|2024-02-22|true
+1380||john1380@mail.com|UK|949 Main St|94105|2023-01-01|N
+1381|Tom White|tom1381@mail.com|AU|153 Main St|94105|2023-08-27|Y
+1382|Alice Patel||NULL|286 Main St|ABCDE|2024-02-05|false
+1383|Tom Patel|tom1383@mail.com|US|781 Main St|ABCDE|2024-02-05|
+1384|Chris Black|chris1384@mail.com|AU|85 Main St|94105|2024-04-02|true
+BAD_ROW_WITH_TOO_FEW_COLS
+1386|Bob Brown|bob1386@mail.com|UK|334 Main St|94105|2023-07-03|Y
+1387|Tom Patel|tom1387@mail.com|UK|113 Main St||2023-02-14|true
+1388|||UK|126 Main St||2023-07-19|N
+1389|Bob Patel|bob1389@mail.com|CA|111 Main St|ABCDE|2023-12-08|Y
+1390|Mike Lee|mike1390@mail.com|NULL|54 Main St|94105|2023-03-18|false
+1391|Nina Johnson||CA|632 Main St||2023-09-10|
+1392|"Bob|Johnson"|bob1392@mail.com|NULL|592 Main St|ABCDE|2024-05-08|Y
+1393|Mike Johnson|mike1393@mail.com|AU|437 Main St|94105|2023-01-15|false
+"unterminated,quote,here
+1395|Emma Patel|emma1395@mail.com|NULL|590 Main St||2023-07-29|true
+1396|Mike Doe|||571 Main St||2024-03-12|false
+1397|Jane Patel|jane1397@mail.com|AU||94105|2023-01-20|Y
+1398||raj1398@mail.com|UK|481 Main St|94105|2024-01-12|true
+1399|Alice Lee|alice1399@mail.com|CA|784 Main St|ABCDE|2023-04-06|true
+1400|"Jane|White"|jane1400@mail.com|CA|322 Main St|ABCDE|2023-10-21|false
+1401||emma1401@mail.com|US||20190|2024-05-01|false
+1402|Leo Brown||AU|684 Main St||2023-08-06|true
+1403|Nina Patel|nina1403@mail.com|CA|974 Main St||2023-04-09|N
+1404||john1404@mail.com|US|157 Main St|94105|2023-01-09|
+1405|Sara Doe|sara1405@mail.com|CA|939 Main St|ABCDE|2023-04-29|true
+1406|Leo Smith|leo1406@mail.com||734 Main St||2023-11-07|
+1407|John Patel|john1407@mail.com|UK|411 Main St||2023-05-04|true
+1408|"Sara|Green"|sara1408@mail.com|UK|352 Main St|20190|2023-02-22|false
+1409|Mike Black|mike1409@mail.com|CA|421 Main St|94105|2023-11-17|
+1410|Leo White|leo1410@mail.com|AU||ABCDE|2023-02-09|true
+1411|John Johnson|john1411@mail.com|AU|224 Main St|20190|2023-06-28|
+1412|Nina White|nina1412@mail.com|NULL|55 Main St|94105|2024-05-04|Y
+1413|"Emma|Patel"||AU|382 Main St||2023-08-17|
+1414|Sara White|sara1414@mail.com|CA|330 Main St||2023-09-25|
+1415|Raj Johnson|raj1415@mail.com|UK||ABCDE|2023-02-15|N
+1416||bob1416@mail.com|US|105 Main St||2023-03-07|true
+1417|Jane Doe|jane1417@mail.com|CA|268 Main St|ABCDE|2023-09-28|Y
+1418|Bob Doe||AU|536 Main St|20190|2023-09-14|N
+1419|||UK|120 Main St||2023-02-21|false
+1420|"Bob|Johnson"|bob1420@mail.com||146 Main St|ABCDE|2023-04-10|N
+1421|Chris White||NULL|579 Main St||2023-08-16|
+1422|Chris Patel|chris1422@mail.com|NULL|505 Main St||2023-10-20|true
+1423|Leo Lee|leo1423@mail.com|CA|64 Main St|ABCDE|2023-04-29|Y
+1424||bob1424@mail.com|CA|678 Main St|ABCDE|2023-04-23|
+,,,
+1426|Sara Patel|sara1426@mail.com|CA|298 Main St|20190|2024-01-25|
+1427||raj1427@mail.com||554 Main St|ABCDE|2024-03-29|true
+1428|John Smith|john1428@mail.com||796 Main St|94105|2023-02-07|true
+1429|Bob White|bob1429@mail.com|US|564 Main St|ABCDE|2023-11-19|false
+1430|John White|john1430@mail.com|NULL|878 Main St|20190|2024-05-13|false
+1431|Raj Doe|raj1431@mail.com|NULL||20190|2023-05-04|false
+1432|||UK|187 Main St|ABCDE|2024-01-18|
+1433|Alice Brown|alice1433@mail.com||341 Main St|94105|2024-03-22|Y
+1434|Chris Black|chris1434@mail.com|NULL|904 Main St|94105|2023-04-19|N
+1435|Chris Green|||861 Main St||2023-10-08|false
+1436|Nina Brown|nina1436@mail.com|US|379 Main St|20190|2023-02-07|N
+1437|Alice Doe|alice1437@mail.com|AU||ABCDE|2024-03-11|N
+1438|Tom White|tom1438@mail.com|UK|413 Main St|20190|2023-07-12|Y
+1439|Jane Smith|jane1439@mail.com|UK|857 Main St|94105|2023-12-03|true
+1440|Raj Lee||US|954 Main St|ABCDE|2023-07-07|
+1441|Alice Black|alice1441@mail.com|UK|631 Main St|94105|2024-04-17|false
+1442|Mike Doe|mike1442@mail.com|US|805 Main St|20190|2024-05-10|Y
+1443|Leo Black||AU|124 Main St|20190|2023-02-02|Y
+,,,
+1445|Raj Black|||306 Main St|20190|2023-12-23|false
+BAD_ROW_WITH_TOO_FEW_COLS
+1447|Bob Patel|bob1447@mail.com||486 Main St|ABCDE|2023-11-25|Y
+1448|Chris Johnson|chris1448@mail.com|NULL|30 Main St||2023-10-07|false
+1449|Jane Green|jane1449@mail.com|UK|624 Main St|ABCDE|2023-12-03|
+1450|Nina Brown|nina1450@mail.com|CA|725 Main St|ABCDE|2024-04-29|
+1451|Bob White|bob1451@mail.com|AU|29 Main St|94105|2023-03-11|true
+1452|John Patel||AU||ABCDE|2023-05-25|Y
+1453|Jane Patel||CA|637 Main St|ABCDE|2023-03-23|
+1454|Jane Smith|jane1454@mail.com|CA|858 Main St||2023-07-17|
+1455|Jane Patel|jane1455@mail.com|US|988 Main St|ABCDE|2023-01-29|N
+1456|"Sara|Black"|sara1456@mail.com|NULL|925 Main St||2024-04-14|false
+1457|Jane Smith|jane1457@mail.com|CA|422 Main St|94105|2024-03-04|true
+1458|Sara White|sara1458@mail.com|NULL|461 Main St|20190|2023-12-16|
+1459|Chris White|chris1459@mail.com|NULL|724 Main St|94105|2024-02-19|true
+1460|Nina Brown|nina1460@mail.com|UK||20190|2024-03-31|Y
+1461|Leo Lee|leo1461@mail.com||845 Main St|20190|2023-04-25|Y
+1462|Chris Patel|chris1462@mail.com|AU|532 Main St|20190|2024-03-30|Y
+1463|Alice Patel|alice1463@mail.com||7 Main St||2023-10-18|
+1464|Nina Smith|nina1464@mail.com|UK|827 Main St|ABCDE|2024-03-10|N
+1465|Tom Smith|tom1465@mail.com|NULL|312 Main St||2023-06-11|false
+1466|Tom Black|tom1466@mail.com|US||20190|2023-11-10|true
+1467||jane1467@mail.com|CA|121 Main St|ABCDE|2023-02-27|
+1468|"Bob|Black"|bob1468@mail.com||504 Main St|ABCDE|2023-03-02|Y
+1469||tom1469@mail.com||404 Main St|ABCDE|2023-08-02|false
+1470|Alice Green|alice1470@mail.com|CA|14 Main St|94105|2024-02-22|N
+1471|Bob Doe|bob1471@mail.com|CA||20190|2023-03-04|false
+1472|Mike Brown|||403 Main St|ABCDE|2023-10-14|true
+1473|Raj Smith|raj1473@mail.com||458 Main St||2024-04-29|true
+1474|Sara Patel||US|846 Main St|94105|2024-01-27|true
+1475|"Emma|Johnson"|emma1475@mail.com||771 Main St|94105|2023-09-29|Y
+1476||jane1476@mail.com|US|856 Main St|20190|2023-02-15|false
+1477|Mike White||CA|||2023-02-05|N
+1478|"Tom|Doe"||US|305 Main St|20190|2023-07-11|Y
+1479|Jane White|jane1479@mail.com|AU|413 Main St|20190|2023-05-17|
+1480|Chris Brown|chris1480@mail.com||603 Main St|94105|2023-04-07|
+BAD_ROW_WITH_TOO_FEW_COLS
+1482|Raj Smith|raj1482@mail.com||855 Main St|ABCDE|2023-01-12|
+1483|Emma Patel|emma1483@mail.com|||20190|2023-09-12|true
+1484|John White|john1484@mail.com|NULL|280 Main St|94105|2023-05-10|Y
+1485|Leo White|leo1485@mail.com|CA|416 Main St||2024-02-07|
+1486|"John|White"|john1486@mail.com|NULL|419 Main St|94105|2023-04-10|N
+1487|Leo Johnson|leo1487@mail.com|CA|322 Main St|ABCDE|2024-04-01|
+1488|Tom Brown||NULL|475 Main St|20190|2023-06-19|
+1489|Sara Patel|sara1489@mail.com||||2024-01-07|Y
+1490|Sara Green||UK|186 Main St||2023-04-16|true
+1491|Leo White|leo1491@mail.com|US|82 Main St|20190|2024-03-27|true
+BAD_ROW_WITH_TOO_FEW_COLS
+1493|Alice Lee|||44 Main St|94105|2024-05-08|Y
+1494|Tom Green|tom1494@mail.com|CA|993 Main St|20190|2023-10-29|true
+1495|"John|Black"|john1495@mail.com|NULL||94105|2023-12-01|Y
+1496|John Doe|john1496@mail.com|CA|789 Main St|20190|2023-07-05|false
+1497|||AU|684 Main St|ABCDE|2024-04-04|Y
+1498|Tom Smith|tom1498@mail.com|CA||94105|2023-11-13|false
+,,,
+1500|Mike Doe|mike1500@mail.com|US|556 Main St|ABCDE|2024-04-01|

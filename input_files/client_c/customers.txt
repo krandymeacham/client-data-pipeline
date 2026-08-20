@@ -1,0 +1,1501 @@
+id	fname	lname	signup_date	age	marketing_opt_in
+1		Black	2023-01-08	71	0
+2	Emma	Doe	2023-07-19	unknown	true
+3	Sara	Johnson	2023-04-12	unknown	false
+,,,
+5	Tom	Patel	2024-02-22	33		extra_col
+6	Emma	Black	2024-02-01	unknown	
+7	Mike	White	2023-08-04		false
+8	Jane	Doe	2023-08-16		
+9		Green	2024-01-14	35	true
+10	Tom	White	2023-09-28	unknown	false
+11	Raj	Smith	2024-01-02		false
+12		Lee	2023-09-12	unknown	false
+13	Chris	Black	2023-12-30		
+14	Emma	Doe	2023-03-31	79	
+15	Raj	Doe	2023-11-12		
+16		Johnson	2023-07-30		
+17	Nina		2023-12-14	58	0
+18	John		2023-05-24		1
+19	Jane	Smith	2023-03-24	62	
+20		Smith		71	1
+21	Tom	Smith	2023-01-23		false
+22	Tom	White	2024-02-17		0
+23	Raj	Johnson	2024-03-09	51	
+24			2024-03-31		false
+25		Black	2023-03-06		0
+123|MISMATCH|EXTRA|COLS|HERE|oops
+27	John	Green	2023-10-01	77	1
+28	Emma	Patel	2023-04-17		true
+29		Green	2024-04-04	unknown	0
+30	Mike	Doe	2023-09-20		false
+,,,
+32	Alice	Lee	2023-07-03		true
+33	Jane	Black	2023-02-12	unknown	
+34	Emma	Green	2024-03-29	unknown	
+35	Sara		2024-05-08		0
+36	Tom		2023-12-14	18	false
+37	Jane	Doe		unknown	
+38	Emma	Lee	2024-05-05	unknown	false
+39	John	Brown	2023-12-22		false
+40	Chris	Green	2023-05-29	45	0
+41	Leo	Black	2023-07-23		
+42	Nina	Black	2023-07-01	unknown	1
+43	Raj	Johnson	2024-02-19		
+44	Alice	Black	2024-05-06		
+45		Doe	2023-07-19	unknown	
+46	Raj	Doe	2023-05-19		
+47	Sara	Green	2024-02-12	unknown	false
+48	Mike	White	2023-03-30		false
+49	Leo	Smith	2023-03-04	unknown	
+50	Tom	Smith	2023-05-06	unknown	
+51		Smith	2023-10-10	unknown	1
+52	John		2023-04-11	unknown	
+53	Nina	Smith			0
+54	Jane	Smith	2023-02-15	unknown	0
+55	Tom	Green	2024-01-04		
+56	Jane	Johnson	2024-02-21		0
+57	Chris	Smith	2024-01-26	31	true
+58	Leo	Patel	2024-03-06		
+59	Leo	Lee	2023-02-16		
+60	Jane	Smith	2023-03-29	47	
+61	Raj	Johnson	2023-02-18	unknown	true
+62	Tom	White			
+63	Jane	Doe	2023-10-01	22	
+64	Leo	White	2023-03-08		false
+65		Lee	2023-08-03	22	false
+66	John	Johnson	2024-05-10	56	0
+67		Brown	2023-04-07	63	true
+123|MISMATCH|EXTRA|COLS|HERE|oops
+69		Johnson	2023-05-02		false
+70	Nina	Smith	2024-05-14	31	false
+71	Raj	White	2023-08-16	unknown	1
+72	Raj	Smith	2023-03-15		0
+"unterminated,quote,here
+74	Chris	Smith	2023-03-23		false	extra_col
+75	Jane	Black	2023-10-13	77	false	extra_col
+76	Sara	Patel	2023-07-21		
+77	Nina	Johnson	2023-04-24		0
+78	Nina	Johnson		57	1
+79	Tom	Johnson	2024-04-12	unknown	
+80	Bob	Johnson	2023-08-17	unknown	
+81	John	Johnson	2023-01-09		
+82	Jane		2023-10-28	unknown	0
+83			2024-02-11	unknown	
+84	Mike	Johnson	2023-06-27		
+85	Leo	Black	2023-04-15	unknown	true
+86	Leo	Green		61	
+87	Bob	White	2023-07-18	unknown	
+88	Mike	Smith	2023-04-11	74	1
+89	Alice		2023-08-05	unknown	0	extra_col
+90	Mike	White	2023-11-16		true
+91	Emma	Brown		52	
+92	Nina	Brown	2024-03-22	79	1
+93	Chris				false
+94	Mike	Lee	2024-02-25	34	
+95	John	Smith	2023-06-22		false
+96	Leo	Smith	2023-05-15		1
+97	Sara	White	2024-01-30		true
+98	Bob	Green	2023-09-25	unknown	
+99	Sara	Green	2023-10-24	unknown	1
+100	Jane	Brown		unknown	0
+123|MISMATCH|EXTRA|COLS|HERE|oops
+102	Raj	Green	2023-12-03		
+103	Tom	White			
+104	Tom	Brown	2024-02-01		
+105	Jane	Black	2024-04-13	unknown	true
+106	Bob	Lee	2023-11-30	19	1
+107	Raj	Johnson	2023-03-26		true
+108	Bob	Black	2023-06-13	unknown	1
+109	Bob		2023-01-01	73	0
+110	John	Smith	2023-05-21	77	false
+111	Raj	Doe	2023-06-15		true
+112		Smith	2024-02-03		
+113	Emma	Johnson	2023-10-25		0	extra_col
+114	Emma				1
+115	Tom	White	2023-11-29	56	1
+116	Tom	Patel	2023-06-20	unknown	1
+117	Leo	Patel	2023-04-27	24	
+118	Nina	Smith	2024-01-19		1	extra_col
+119	Nina	Lee	2023-04-17	18	
+120	Tom	Doe	2023-12-27		false
+121	Raj	Smith	2023-02-20		false
+122	Raj	Patel	2023-08-06	31	
+123		Patel		63	1
+124	Mike		2023-12-03	19	false
+125	John	Johnson	2023-08-26	45	
+126			2023-06-01	unknown	false	extra_col
+127	Nina	Lee	2024-03-14	25	
+128	John		2023-10-30	80	1
+129	Mike	Patel	2023-02-24	unknown	1
+130		Lee		unknown	
+131		Patel	2024-02-01	69	
+132	Bob	White	2023-07-01		1
+133	Alice	White	2023-05-06		
+134		Johnson		unknown	
+135		White	2023-07-07	unknown	
+136	Raj		2023-08-26	48	true
+137		Doe	2023-01-26	unknown	false
+138	Chris	Green		unknown	1
+139		White	2023-09-18	unknown	false
+140	Leo	Doe	2024-02-05	unknown	
+141	Mike	Patel	2023-04-16	unknown	false
+142	Mike	Johnson	2023-01-04		0
+143	Chris	Johnson	2023-04-10		false
+144	Jane	Patel	2024-01-09	unknown	true	extra_col
+145	Nina	Patel	2023-06-25		1
+146	Emma	Lee	2024-01-11	19	1
+147	Mike	Lee	2023-05-01	65	0	extra_col
+148	Chris	Smith		unknown	false
+149	Emma	Lee	2023-01-21		0
+150	Tom	Doe	2023-11-28	34	true
+151		Smith			
+152	Nina	Black	2024-04-04	38	0	extra_col
+153	Alice	Patel	2023-05-31	46	false
+154	Bob	Smith	2023-04-22		1
+155	Jane	Patel	2023-10-18	unknown	true
+156	Tom	Green	2024-01-27	unknown	
+157	Mike	Doe	2024-03-12	unknown	true
+158	Nina	Smith			false
+159	Jane		2023-03-04	unknown	
+160		Johnson	2024-03-31		false
+161	Tom	Smith	2023-03-19		false
+162		Smith	2023-12-11	30	0
+163	Jane	Patel	2023-03-14		1
+164	Chris	Black	2024-04-29	25	1
+165	Jane		2023-12-14	40	true
+166	Mike	Johnson	2023-07-31	22	
+167	Emma	Johnson	2023-01-05		true
+168	Leo	Patel	2024-02-09	27	true
+169	Mike		2023-03-20		false
+170	Emma	Green	2023-12-21		0
+171	Sara	Green	2024-01-31	unknown	1
+172	Alice	Johnson			0
+173	Sara	White	2023-10-12	38	1
+174	Raj	Green	2024-02-08		
+175	John	Patel		58	true
+176			2024-03-02	unknown	
+177	Chris	Black	2023-04-27		false
+178					true
+179	Mike	White	2023-04-10	22	
+180		Johnson	2023-07-24	unknown	
+181	Sara	Brown	2023-03-07	unknown	1
+182	Mike	Doe	2023-11-24		0
+183	Alice	Lee	2024-03-23		true
+184	Mike		2023-04-20	29	1
+185	Raj	Black	2024-03-24	54	1
+186	Bob	Patel	2023-04-21		false
+187	Nina		2023-10-25	59	false
+188	Alice			unknown	0
+189	Alice	Smith	2023-04-05	unknown	
+190	Sara	White		unknown	1
+191	Tom	Lee	2023-01-23		0
+192	Alice		2023-05-07		0	extra_col
+193	Sara	Smith	2023-10-14	62	
+194	Nina	White			false
+195		Patel	2023-08-23	unknown	false
+196	Nina	Smith	2023-10-17		1
+197			2024-02-20	unknown	true
+198	Nina		2024-01-26		1
+199	Nina	Lee	2024-02-07		1
+200	Leo	Black	2023-03-25	67	
+201	Jane	Smith	2023-05-05	21	
+"unterminated,quote,here
+203	Leo	Lee	2024-01-20	unknown	
+204	Mike	Lee			0
+205	Alice	Johnson			false
+206		Black	2023-10-25	50	0	extra_col
+207	Leo		2023-12-25	79	
+208	Leo	Smith	2024-01-20		false
+209	John	Smith		unknown	false
+210	Raj	Johnson	2023-04-02		
+211	Emma	Doe	2023-08-05		
+212	Bob	Lee	2023-07-19	49	0
+213		Lee	2023-08-11	40	0
+214		White	2024-04-10	38	0
+215	Raj	Doe	2023-05-16	unknown	
+216				unknown	0
+217	Chris	Smith	2024-04-28	unknown	1
+218	Alice	Smith	2024-04-05		0
+219	Tom	White	2023-01-09	unknown	true
+220	Emma		2024-03-21	unknown	false
+221	John	Brown	2023-09-02		0
+222		Smith	2023-02-27	23	
+223			2023-06-04	70	true
+224	John	Patel	2023-03-18	unknown	false
+225	Emma	White	2024-03-30	25	true	extra_col
+226	Leo	Brown	2023-08-03	19	
+227	Leo	Brown		55	1
+228		Lee	2023-08-02		1
+229	Raj	Smith	2023-06-13	unknown	true
+230	Chris	Patel	2024-01-17	unknown	false
+231	Leo	Black	2023-12-26		
+232	Emma	Brown			false
+233	Raj	Black	2023-04-26		
+234	Bob		2023-02-15	unknown	0
+235	Nina	Lee		unknown	
+236	Emma	Brown	2023-07-29	unknown	
+237	Bob	Green	2023-09-01	41	
+238	Jane	Johnson	2023-08-04		true
+239	Mike	Green	2023-12-10	unknown	true
+240	Chris	Brown	2023-08-30		
+241	Leo	Patel	2023-06-13	73	
+242		Lee	2023-07-22	20	false
+243	Leo	Johnson	2023-04-26		true
+244	Tom	Johnson	2023-03-21	49	false
+245	Nina	Patel	2023-08-25	31	false
+246	Leo		2023-07-12	22	0
+247	Alice	Smith			true
+248	Emma	Green	2023-08-24	unknown	true	extra_col
+249		Black	2024-03-01	unknown	1
+250		Lee	2024-01-20	unknown	1
+251	Sara	Lee	2023-05-13	unknown	
+252	Chris	Johnson	2023-08-10	35	false
+253	Sara	Doe		unknown	true
+254	Emma	Doe	2024-01-16	unknown	0
+255	Bob	White	2023-02-23	34	0
+256	Mike		2023-08-27		0
+257	Emma	Green		76	
+258	Chris		2023-01-27		
+259	Emma	Smith	2023-05-10	74	false	extra_col
+260	Raj	Lee	2023-08-08		false
+261	Mike	Smith	2023-07-14	50	true
+262		Lee	2023-01-04		0
+263	Sara	Johnson		unknown	
+264	Mike	Brown		unknown	
+265	Chris	White	2023-06-24		true
+266	Raj	Brown	2023-01-20	48	0
+267	Alice	Green	2023-06-20	unknown	1
+268	Mike	Lee	2023-05-08		true
+269	Mike	Brown	2023-03-28		true
+270		Lee			0
+271		Patel	2024-01-09	unknown	0	extra_col
+272	Sara	Green	2023-01-27	46	0
+273	Alice	Green	2023-04-25	31	0
+274		Brown	2023-05-13	42	true
+275	Tom	Lee	2023-03-14		true
+276	Raj	Johnson		unknown	
+277	Raj	White	2024-03-26		1
+278	Emma	Johnson		unknown	
+279	Alice		2023-04-06		
+280	Sara	Johnson	2023-09-12	78	0
+281	Tom	Johnson			true
+282		Smith	2024-03-03	unknown	
+283	Raj	Brown	2024-02-02	unknown	0	extra_col
+284	Leo	White	2023-01-24		0
+285	Raj	Smith	2023-07-12	unknown	true
+286	Leo	Johnson	2023-03-30	unknown	1
+287	Emma	Lee	2023-12-15		false
+288		Brown			0
+289		Lee	2024-04-06		1
+290	Tom	Patel	2024-04-13	51	0
+291			2023-05-21	49	0
+292	Chris	Johnson	2023-05-02	unknown	0
+293	Raj	Smith	2024-01-31	41	true
+294		Black	2023-09-06		false
+295		Johnson		unknown	1
+296	Leo	Lee	2023-03-31		false
+297	Bob	Smith	2024-03-04		1
+298	Chris	White		45	1
+299	Alice	Doe	2023-10-05		true
+300	Nina	Johnson	2023-06-26		true
+301	Raj	White	2024-03-16	71	1
+302		Doe	2023-11-22		
+303	Bob	Black	2023-02-15		0
+304	Sara	Patel	2024-05-02	unknown		extra_col
+305	Raj	Green	2023-11-10	72	1
+306	Jane	Black	2023-10-09		1
+307	Bob	Brown		76	
+308	Nina	Lee	2023-12-09		0
+309	Jane	Smith		unknown	0
+310	Mike	Smith	2023-10-23	unknown	1
+311	Jane	Brown	2023-05-05		false
+312	Bob	Black		unknown	true
+313	Tom		2023-01-26	unknown	0
+314		Brown	2023-01-07	42	0
+315	Raj	Patel		unknown	true
+316	Bob	Doe	2023-05-11	unknown	false
+317	Sara	Lee	2023-01-24		0
+318	Emma	White		unknown	
+319			2024-01-04		false
+320		Lee	2023-03-16		
+321	Alice		2023-10-14	69	false
+322	John	Lee	2023-08-27	unknown	
+323	Leo	Brown	2023-08-23		false
+324	Emma	Patel	2024-02-04	66	false	extra_col
+325	Jane	Brown	2024-02-29	64	false
+326		Doe	2023-08-29		1
+327	Leo	Green	2023-05-03		true
+328	John		2024-04-17	71	false
+329	Bob	Johnson	2024-01-26	63	1
+330	Bob	White	2024-02-17		1	extra_col
+331	Jane	Brown	2023-02-16		
+332	Mike	Smith	2024-01-27	unknown	true
+333		Patel	2023-08-10	unknown	
+334	Tom	Brown	2023-08-23	unknown	0	extra_col
+335	Nina	Smith	2023-03-09		false
+336	John	Johnson		unknown	
+337	Alice	Doe			
+338		Brown		32	0
+339	Bob	Patel	2023-06-12	unknown	
+340	Mike	Doe	2023-02-05		0
+341	John	Brown	2023-01-13	unknown	1
+342	John	White	2023-07-27		1
+343	Tom	Smith	2023-12-07		false
+344		Patel	2024-04-16	76	
+345	Sara	Lee	2024-03-07		
+346	Alice	Patel	2023-07-23	48	false
+347	Alice				false
+348	Mike	Patel		32	false
+349	Jane	Lee	2024-02-16		true
+350	Raj	Black	2023-02-21		false
+351	Bob	Lee		58	
+352	Alice	Lee	2023-08-02		false
+353	Sara	Doe			
+354	Leo		2024-03-23		
+355	Bob		2023-04-15		1
+356		Green	2023-04-04	43	
+357	Nina	Lee	2024-01-05	39	0	extra_col
+358	John		2024-05-14		0
+359	Sara	Green			
+360	Alice		2023-08-04		true
+361	Emma	Green	2024-03-06	77	false
+362	Tom	Green	2023-02-03		0
+363	Nina	Smith			
+364		White	2023-05-21	unknown	true
+365	Emma	Green	2024-01-20	unknown	
+366	Sara	White	2024-01-05		
+367	Bob	Black	2023-02-17	unknown	1
+368	Alice	Doe	2024-05-03	45	
+369	Chris	Brown	2024-01-22	71	
+370	Alice	White	2024-02-24	19	0
+371	Raj		2024-02-19	68	
+372		Green	2024-02-06	unknown	false
+373	Bob	White	2023-02-12		true
+374			2023-11-04	21	
+375		Doe	2023-01-30	33	0
+376	Alice		2023-09-06		1
+377	Alice	Smith	2023-10-06		1
+378	Chris	White	2023-06-09		true
+379		Patel	2024-01-05	77	true
+380	Sara		2023-07-16		1
+381		White	2023-02-03		0
+382	Mike	Smith	2023-11-04	56	true
+383	Mike	Johnson	2023-03-21	unknown	
+384	Alice	Black	2024-03-16		true
+385	Nina	Lee	2023-08-05	unknown	0
+386	Emma	Green	2023-03-09		true
+387		Green	2023-08-16	76	true
+388	Mike	Brown	2024-01-12	unknown	false
+389	Mike	Lee	2023-10-24		false
+390	Tom		2024-05-07		1
+391		Black	2023-03-27	66	false
+392	Alice		2024-03-07	28	1	extra_col
+393			2024-02-28	29	0
+394	Alice	Patel	2023-07-03	72	0	extra_col
+395	Emma	Smith	2023-08-08	unknown	false
+396		Brown	2023-11-15		true
+397	Raj		2023-05-14		
+398	Raj	Patel	2024-05-07	unknown	1
+399	Nina	Black	2024-05-01	unknown	true
+400	Raj	Smith	2023-02-04		
+401	Nina	Patel	2023-10-27	unknown	
+402	Emma	Brown	2023-08-19		
+403	Nina				1
+404	Nina	Lee	2023-09-21	37	
+405	Leo	Patel	2024-04-20	39	1
+406	Mike	Smith	2023-06-03	22	1
+407	Leo		2023-12-10		
+408	Jane	Green	2023-03-16		false
+409		Brown	2023-04-21	unknown	
+410	John	Patel	2023-11-04	40	false
+411	Alice	Lee	2023-04-23	58	1
+412	Leo	Johnson			true
+413	Chris	Johnson	2023-04-20	20	1
+414		White	2023-06-05		
+415	John	White	2023-10-18		1
+416	Chris	Patel	2024-01-14		1
+417	Raj		2023-11-30	unknown	1
+418	Mike	Black	2023-03-28	unknown	false
+419	Tom	Doe	2023-06-19	unknown	1
+420	Emma	Smith	2023-06-17	18	
+421	Bob	Patel	2023-08-29	unknown	
+422	Leo	Johnson		unknown	0
+423	John	Patel	2023-08-25	unknown	true
+424	Jane	Lee	2023-09-03	unknown	
+425	Alice		2023-09-13	unknown	true
+426	Mike	Doe	2023-06-26	58	false
+427	Chris		2023-10-22	unknown	1
+428		Lee	2024-01-04	unknown	
+429	Nina	Smith	2023-10-16	unknown	true
+430	Bob	Patel	2023-07-24		0
+431		Smith	2023-07-26	unknown	
+432	John	Patel	2023-03-07		
+433		White	2023-01-10	unknown	1
+434	Emma	Lee	2023-08-24	75	false
+435	Emma	Johnson	2024-01-27	unknown	
+436		Smith	2024-02-15		true
+437	Bob	Brown	2023-01-01	38	1
+438	Sara	Smith	2023-11-11		1
+"unterminated,quote,here
+440	Jane	Doe			true
+441	John		2023-04-28	unknown	1	extra_col
+442		Smith	2023-05-11		
+443	Raj	Patel	2024-03-17	54	
+444	Jane	Black	2023-01-10	37	1
+445	Sara	White		33	
+"unterminated,quote,here
+447	Leo	Green	2023-03-05	unknown	
+448	Nina	Smith	2023-03-16		true	extra_col
+449	Chris	Smith	2024-03-18		true
+450	Tom	Brown	2023-12-20	66	
+451		Black	2023-05-07		true
+452		Smith	2023-01-11	unknown	false
+453	Nina	White			true
+454	Nina	Johnson	2024-04-07	58	0
+,,,
+456	Jane	White	2023-11-16	unknown	1
+457	Raj	Doe	2023-09-05	unknown	1
+458		Brown	2023-07-24	unknown	false
+459		Brown	2024-03-21		
+460	Leo	Johnson	2024-01-31	unknown	true
+461	Bob	Smith	2023-04-14		0
+462	Jane	Patel	2024-04-11		
+463	Leo	Green			true
+464	Alice	Black	2024-04-08	unknown	false
+465	Tom	Green	2023-10-25	unknown	
+466	John	White	2023-01-15		
+467		White	2023-03-02	unknown	true
+468	Tom	White	2023-01-10	59	false	extra_col
+469		White			1
+470	Sara	Brown	2023-04-29		
+471	Sara	Patel		21	1
+472	Raj	Doe	2023-12-04		1
+473	Sara	Doe	2023-11-07		0
+474	John	Lee	2023-01-01		0
+475	Tom	Patel	2023-10-18	unknown	
+476	Nina	Johnson	2023-12-07	unknown	true
+477	Mike	Patel	2023-09-24		0
+478		Black	2023-05-14	75	
+479	Mike		2023-11-26		
+480	Bob	White	2024-04-13	unknown	false
+481	Leo		2023-02-01		false
+482	Raj		2024-03-17		
+483		Johnson			1
+484	Nina		2024-01-26		false	extra_col
+485		Smith	2023-11-10	unknown	false
+486	Chris		2024-03-30	70	1
+487	Leo	White	2024-05-11	unknown	
+488		Lee	2023-12-26		
+489	Emma	Smith			true
+490	Emma	White	2023-05-24	unknown	
+491	Tom	White	2023-05-17	33	
+492	Bob	Patel	2024-04-26		0
+493	Jane	Doe	2023-12-28		false
+494	Raj			73	0
+495	Nina	Green	2023-03-24	18	false
+496	Tom	Patel	2023-08-09	61	0
+497	Nina	Brown	2023-02-17		0
+498	Bob	Patel	2023-04-30	unknown	false
+499	Bob	Doe	2024-04-23		1
+500	Bob	Patel	2023-01-13	unknown	false	extra_col
+501	Mike		2023-01-18		0
+502	Leo	Green	2023-03-05		1
+503	Alice	White	2023-02-24	unknown	
+504		Patel	2024-02-04	25	1
+123|MISMATCH|EXTRA|COLS|HERE|oops
+506	Alice	Green	2024-01-16	unknown	true
+507	Bob	Lee	2023-10-20	unknown	
+508	Tom		2024-04-06	unknown	false
+509			2023-08-09	19	false
+510	John	Lee	2024-04-14		1
+511	Mike	Green	2023-03-10	39	
+512	Emma		2023-07-23	unknown	1
+513	Jane	Brown			true
+514	Leo			70	true
+515	Bob	Patel	2024-02-26	unknown	
+516		Green	2023-12-16		0
+517	Alice		2023-06-28		1
+518	Alice	Brown	2023-08-06		true
+519			2023-12-07			extra_col
+520	Nina	White		unknown	
+521	Sara	Lee	2023-05-30	unknown	
+522		Patel	2023-06-16	unknown	0
+523	Raj	Green	2023-10-11		0
+524	Chris	Green		61	true
+525	Raj	Lee	2023-08-31		
+526	Raj	Lee	2023-10-27		
+527	Leo	Brown	2023-01-27	unknown	true
+528	Chris	Black	2023-02-09	unknown	
+529	Tom	Brown	2023-05-28		
+530	Tom	Brown		61	false
+531	John	Brown	2023-04-07		false
+532	Jane	Black	2023-08-14	47	1
+533	Sara	Smith	2023-12-20		false
+534	Mike	Brown	2023-04-03	unknown	0
+535	Raj	White	2023-08-02	unknown		extra_col
+536		Patel	2023-03-29		0
+537		Patel	2023-03-05		false
+538	Jane	Doe	2023-01-25		
+539	Raj	Smith	2023-03-03	61	1
+540		Smith		unknown	
+541	Emma	Smith	2023-06-14		0
+542	Emma	Green	2024-01-05	68	0
+543		Smith	2023-12-20	33	true
+544	Raj	Green	2023-02-06		true
+545	Alice	Doe		unknown	0
+546			2023-09-20		
+547	Tom	White	2023-04-12	41	
+548	Mike	Green	2023-02-25	53	1
+549	John	Black	2024-04-07		
+550	Sara	Doe			false
+551	Tom	Doe	2024-02-10	unknown	
+552	Nina	Patel	2023-01-20		
+553		Brown	2023-04-14	unknown	false
+"unterminated,quote,here
+BAD_ROW_WITH_TOO_FEW_COLS
+556	Nina	Green	2024-05-02		
+557	Tom		2023-08-30	24	true
+558	Sara	White	2023-01-07		0
+559	Mike	Brown			0
+560	Jane	Lee	2023-09-15	33	
+561	Jane	Lee	2024-04-24	unknown	0	extra_col
+562		White	2023-06-14		true
+563	Chris	White	2024-01-30		true
+564	Mike	Brown	2023-05-02		false
+565	Emma	White	2023-12-25		1
+,,,
+567	Tom	Smith	2023-04-30		0
+568	Emma				
+569	Emma	Johnson	2023-12-09	21	0
+570	Emma	Smith	2023-07-17		false
+571	Nina	Smith			1
+"unterminated,quote,here
+573		Brown			
+574		Smith	2023-03-16	unknown	1
+575	Bob	White	2023-10-17		0
+576	Emma	Black	2024-02-13		0
+577	Raj	White	2023-02-06	unknown	true
+578	Tom	Doe	2023-12-18	67	true	extra_col
+579	Tom	Green	2023-07-08	unknown	0
+580			2024-04-16	unknown	1
+581	John	Brown		unknown	
+582	Emma	Lee	2023-09-21	unknown	false
+583	Leo	Johnson		70	false
+584	Alice	Patel	2024-01-30	unknown	
+585		Johnson	2024-02-08	unknown	0
+586	Raj	Black	2023-09-12	39	0	extra_col
+587		Smith	2023-11-27		1
+588	Tom	Patel		unknown	
+589	Raj	Green	2024-02-25		1
+590	Nina	Patel	2023-12-11	47	true
+591	Nina	Brown	2023-01-17		
+592	Nina	Black			1
+593	John	Smith	2023-10-28	70	
+594	Sara	Green			0
+595	Chris	Lee	2023-07-24	unknown	1
+596		Smith	2023-02-19	41	true
+597	Chris		2024-02-18		true
+598	Nina	Patel	2024-03-24		true
+599	Chris	Johnson	2023-10-08	56	false
+600	Chris	Black	2023-02-27		1
+601	John	White			
+602	Raj	White	2023-04-23	unknown	0
+603	Sara	Lee	2023-05-15		1
+604	Raj	Black			0
+605	Chris	Johnson			0
+606	Tom		2023-07-03	unknown	1	extra_col
+607	John	Johnson			true
+608	Emma	Doe	2023-02-28	unknown	false
+609	Bob	Black	2023-07-13	70	true
+610	Mike	Green	2023-06-03	41	
+611	Sara	Lee	2023-02-13	61	false
+612	Leo	Lee			false
+613	Nina	Johnson	2024-03-21		true
+614	John	Lee	2023-06-21		
+615		White	2023-05-07		0
+616	Chris	Green	2023-05-15		false
+617	Sara	Patel	2024-04-21		1
+618	Raj	Lee	2023-06-13	56	
+619	John		2024-02-06	35	0
+620	Leo	Green	2024-04-16	45	1
+621	Tom	Green	2024-04-29	79	0
+622	Emma	Johnson	2023-07-07		false	extra_col
+623		White	2023-05-09	24	1
+624	Leo	Lee	2023-10-20	78	
+625		Johnson			false
+626	John	Black	2023-03-28	unknown	true
+627	Raj	Doe	2023-04-05		0
+628	Alice	Lee	2023-01-02	unknown	true
+629		Johnson	2023-11-09		false
+630	Nina	Brown	2023-08-05		
+631	Tom	Green	2023-06-28		1
+632	Alice		2023-04-12	66	true	extra_col
+633	Leo	Lee	2023-07-24	48	
+634	Tom	Green	2023-05-24		false
+635		Doe	2023-03-21	unknown	true
+636	Mike	Smith		50	1
+637	Sara	Brown	2023-02-04		
+638	John	Smith		37	true
+639			2023-05-19		0
+640	John	Smith	2024-04-06	68	1	extra_col
+641	Sara	Green	2023-03-29		
+642	Alice	Lee	2024-03-29		false
+643		Johnson	2024-02-09	unknown	
+644	Tom	Johnson	2023-11-11		true
+645		Smith	2023-04-19	unknown	1
+646	Mike	Lee			true
+647	Mike	Lee	2024-03-08	28	1
+648	Alice	Lee	2023-08-01		true
+649	Leo	Green	2023-04-14	unknown	0
+650	Chris	Brown	2023-11-08	unknown	true	extra_col
+651	Jane	Doe	2024-02-11	78	true	extra_col
+652	John	Smith	2024-04-22		false
+653	Chris	Black	2023-02-21		0
+654	Nina	Patel	2023-01-03		
+655	Bob	Patel	2024-01-19		
+656	Leo	Lee	2023-12-22		0	extra_col
+657	Leo	Patel	2023-06-03		false
+658	Mike	Black	2023-07-31	unknown	
+659	Chris		2023-05-27		
+660	Raj	White	2023-03-14	25	true
+661	Leo	Doe	2023-03-02	unknown	false
+662	Jane		2023-06-12	unknown	false
+663		White	2024-03-23		false
+664	Sara	Doe	2023-09-11	unknown	false
+665	John	White	2023-02-13		0
+666	Tom		2023-05-06	unknown	1
+667	Alice	White	2023-01-21	47	
+123|MISMATCH|EXTRA|COLS|HERE|oops
+669	Tom		2023-04-09	unknown	
+670	Raj	Green			false
+671	Tom	Smith	2023-06-02		1
+672	Nina	Green	2023-02-17	unknown	
+673	John	Green	2023-08-24	71	0
+674	Raj	White	2023-08-09	39	1
+675	Tom	Doe	2023-03-25	53	false
+676	Emma		2023-08-03	57	false	extra_col
+677	Sara	Lee	2023-08-23	unknown	0
+678	Mike	Green	2023-05-11	30		extra_col
+679	Raj	Smith		43	0
+680	Bob	Smith		51	true
+681	Mike	Green	2023-10-09		
+682	Alice	Brown	2024-02-12		0
+683	Chris	Green			true
+684	Tom	Green	2023-03-25	unknown	0
+"unterminated,quote,here
+686	Raj	Lee		unknown	false
+687	Nina	Green	2023-04-03		true
+688	Raj	Patel	2024-02-22	unknown	
+689	Leo	Lee	2023-06-22	28	
+690		Black	2023-12-28	unknown	0
+691	Raj	Doe	2023-01-24		1	extra_col
+692	Chris		2024-02-01	unknown	
+693	Alice	Lee	2024-01-12	unknown	true
+694	Leo	Brown	2023-01-28	unknown	0
+695		Lee	2023-06-28	unknown	
+696	Tom	White	2023-05-24	unknown	
+697	Leo	Brown	2023-05-09	unknown	1
+698	Leo	Brown	2023-01-31	45	true
+699	Jane	Green	2024-01-13		true
+700		Patel		unknown	true
+701	Alice	Johnson	2023-04-13		true
+702			2023-05-31	39	1
+703	Mike		2023-07-03		true
+704	Emma	White		62	
+705	Mike	Lee	2023-12-02		0
+706	John		2024-02-18		0
+707	Bob	Green	2023-03-15		true
+708	Tom		2023-05-23		
+709	Raj	Doe	2023-02-06		
+710	Raj	Smith			0
+711	Leo		2024-03-01	20	
+712	John	Lee	2023-10-27		false
+713	Emma	Smith	2024-04-12		
+714	Sara		2023-01-19	unknown	0
+715	Mike		2024-05-06		0
+716			2023-08-23	unknown	1
+717		Smith		unknown	
+718	Nina	Black	2023-12-28	unknown	1
+719	Raj		2024-01-17		1
+720	Emma	Johnson	2024-01-12	unknown	0
+721	Chris	Lee		40	
+722	Alice		2024-02-05		1
+723	Bob	Johnson	2023-02-03	unknown	
+724	Sara	Green	2023-06-28	76	1
+725	Mike	Green	2024-05-07	40	1
+726	Nina	Black		32	
+727	Chris	Patel		62	0
+728	Bob	Lee	2023-08-28	unknown	
+"unterminated,quote,here
+730		Green	2024-02-08	28	
+731	Tom	Johnson	2023-02-11	29		extra_col
+732	Mike	Patel	2023-08-12		1
+733		Johnson			0
+734	Raj	White	2023-01-01		false	extra_col
+735		Brown	2023-12-14		
+736	Bob	Smith	2023-04-24		true
+737		Black	2023-03-06	40	true	extra_col
+738	John	Patel	2023-06-25	57	0
+739	Nina	Green	2023-05-28	unknown	false
+740		Doe	2023-09-21	74	false
+741	John	Doe	2024-01-17		
+742		Black	2023-03-20	unknown	true
+743	Jane	Patel	2023-06-06	unknown	1
+744	Raj	Lee	2024-02-01		
+745	Leo	Green	2023-11-08	46	
+746	Tom	Brown	2023-06-02		true
+747	Tom		2023-08-27	unknown	
+748	Raj	White	2023-12-19		1
+749	Leo	White		55	true
+750	Mike	Smith	2024-02-12		0
+751		Doe	2023-01-10	unknown	
+752	Alice	Patel	2024-04-03	56	1
+753		Brown	2024-03-22		1
+754	Emma	Black	2024-01-14		
+755	John		2023-06-14	unknown	
+756	Alice	Lee	2023-11-19		
+757		Smith			0
+758	Raj	Johnson	2023-02-03	58	false
+759	Chris	Lee	2024-02-23		
+760	Sara	White		unknown	1
+761	Alice	White	2023-04-08	21	0
+762	Jane	Lee	2024-02-16	unknown	0
+763	Nina	Patel	2023-02-20	unknown	true	extra_col
+764	Sara		2023-09-09	66	1
+765	Chris	Doe	2024-01-27		0
+766	Raj		2023-11-01		0
+767		Black	2024-01-10		
+768	Jane	Doe	2024-03-15	unknown	true	extra_col
+769	Bob	White	2023-07-04		false
+770	Bob		2023-04-26	46	1
+771	Sara	Johnson	2023-10-04	unknown	0
+772	Bob	Green			false
+773	Chris	Green			1
+774	Emma	Brown	2023-09-15		
+775	Leo	Smith	2024-03-16	unknown	
+776	Bob	Brown	2023-09-07	unknown	true
+777		Brown	2023-12-19		true
+778	Sara	Black	2024-03-11		1
+779	Raj		2023-11-20		0
+780		Johnson	2024-03-29		1	extra_col
+781	Chris		2023-02-01	51	1
+782	Nina	Johnson	2023-11-28	38	false
+783	Tom	Green	2023-01-23		false
+784	Tom	White	2023-03-02		true	extra_col
+785	Leo		2023-11-02	unknown	
+786	Sara	Brown	2023-09-19		false
+787	Alice	Johnson	2023-01-17	35	
+788	Raj	Smith	2024-01-30	22	1
+789	Bob	Green	2023-06-28		
+790	Leo	Green	2023-09-21		
+791	Emma	Smith	2023-07-13		false
+792	Leo	Doe	2024-04-11		1
+793	Sara	Doe	2023-04-05		
+794	Sara		2024-04-27		0
+795		Lee	2023-05-12	unknown	1
+796	Sara		2023-11-25	unknown		extra_col
+797	Sara	Smith	2023-05-03		true	extra_col
+798	Sara			unknown	
+799	Leo	Smith	2023-04-03		false
+800	Bob	Smith	2023-04-12		true
+801				unknown	
+802		White		unknown	0
+803	Raj	Johnson		34	1
+804	John		2023-08-01	unknown	false
+805	Bob	Johnson	2023-01-20		false
+806	Nina	Lee			1
+807	Emma	Doe		unknown	
+808	Raj	Lee	2023-01-07		
+809	Jane	Smith	2023-12-22	18	true
+810	Emma	White			0
+811	Raj	Green	2023-11-10	unknown	
+812	Alice	Brown	2023-10-30	unknown	1
+813		Green	2023-06-10	35	
+814	Nina	Green	2023-02-13	30	1
+815	Alice		2023-01-23		false
+816	Sara	White	2023-03-09	69	
+817	Alice	Patel			true
+818	John	Lee	2023-12-19	55	true
+819	Alice	Black	2024-01-09		1
+820		White	2024-02-01	unknown	
+821	John	Patel	2023-10-04	unknown	0
+822	Sara	Doe	2023-01-28		
+823	Raj	Lee	2023-05-23		false
+824		Johnson	2023-05-19		
+825	Tom		2023-08-08		
+826	Nina	Black	2023-10-12	unknown	1
+827			2023-07-09		0
+828	Jane	Johnson	2024-01-30		
+829	Raj		2023-08-26	21	false
+830	Raj			unknown	true
+831	Bob	Johnson	2023-04-13	unknown	1
+832	Alice	Doe	2023-03-17		
+833	Emma		2024-03-15	71	true
+834	Raj	Patel	2023-12-12		false
+835	Leo		2023-07-08	unknown	
+836	Jane	Smith	2023-07-04	31	false
+837	Nina	Johnson	2024-02-21		false
+838	Tom	Doe	2023-09-07	unknown	
+839			2023-07-01	unknown	true
+840	Bob	Smith	2023-12-03		
+841		Doe	2024-04-11		1
+842	Mike	Green	2023-09-20		
+843	Alice	Black	2023-06-29	unknown	
+844	Tom	Brown	2023-01-15	25	false
+845	Bob	Brown	2023-04-01		0
+846	Sara	Black	2023-02-09	63	true
+847	Mike	Doe		79	false
+848	Mike	Green		25	0
+849	Chris		2023-05-23	69	true
+850	Sara	Green	2024-03-31	43	true
+851	Alice	White	2023-09-20		0
+852	Leo	Brown	2024-05-02	60	
+,,,
+854		Doe	2023-10-01	unknown	true
+855	Leo	Doe	2023-06-18		1
+856		Green		unknown	
+857	Jane	Doe			false
+858	Bob	Lee	2023-11-09	unknown	false
+859	Mike				false
+BAD_ROW_WITH_TOO_FEW_COLS
+861	Emma	Patel	2023-04-09	unknown	true
+862	Emma	Black	2023-12-15	unknown	1
+863	Emma	Green	2023-12-26	unknown	1
+"unterminated,quote,here
+865		Doe	2023-06-17		true
+866	Tom		2023-04-24	68	0
+867	Sara	Smith		28	1
+868			2023-02-18	24	false
+869	Sara	Black			true
+870	Emma	Black	2023-01-03	20	0
+871		Patel	2023-05-17	unknown	0
+872			2023-07-02	unknown	true
+873	Mike	Smith	2023-05-28	unknown	0
+874	Leo	Patel	2023-04-19		false
+875		Brown	2023-01-04		1
+876	Raj	Green	2023-03-10	42	0
+877	Leo	Lee	2023-06-04	unknown	1
+878	Raj	Patel	2024-01-02		0
+879	Emma	Johnson	2023-01-09	35	true
+880	Sara	Lee	2023-06-13	unknown	true
+881	Leo	Doe	2023-11-03		true
+882	Sara		2024-04-27		true
+883	John	Lee		unknown	
+884	Tom	White	2023-01-22	unknown	false
+885	Nina	Brown	2023-03-03	unknown	
+886	John		2023-05-29		0
+887	Chris	Patel		75	1
+888	Mike	White	2023-03-01	unknown	false
+889	Emma	Black	2024-02-03	unknown	true
+890		Green	2023-04-19	38	true
+891	Chris		2023-12-26	70	true
+892	Chris	Lee	2023-06-03		1
+893	Tom	Smith	2023-01-11	43	false
+894	Chris	White	2024-04-16	36	true	extra_col
+895	Emma	Patel	2023-02-01		1
+896	Alice	White	2023-02-28		true
+897	Jane	White	2023-01-26	unknown	1
+898	John		2023-02-18		1
+899	Bob	Lee	2024-05-03		1
+BAD_ROW_WITH_TOO_FEW_COLS
+901	Jane	Smith	2023-12-12		true
+902		Black	2023-11-18	41	false
+903	Nina	Black	2023-01-27	25	0
+904	Mike		2023-04-07	unknown	
+905	Bob		2023-01-10	unknown	
+906	Chris	Smith	2023-02-05	unknown	true
+907	Sara	Smith			true
+908	Leo	Doe	2023-07-13	unknown	true
+909	Emma	White			false
+910	John	Smith	2023-10-09		false
+911	Chris	Lee	2023-01-27	49	0
+912	Nina		2023-12-02	unknown	
+913	Emma		2023-06-10	unknown	0
+914	Nina	Green	2023-03-20	unknown	
+915		Brown	2023-09-25	68	0
+916	Jane	Johnson		unknown	0
+917	Jane	Patel	2023-06-09	unknown	0
+918		Patel	2024-03-07		false
+919		Johnson	2024-01-03		false
+920	Tom		2024-03-31		1	extra_col
+921	Chris	Brown	2023-04-20	unknown	true
+922	John		2024-03-17	unknown	0
+923	Jane			49	
+924		Smith	2023-04-13		
+925	Bob	White			0
+926	Tom	Black	2023-08-13	unknown	true
+927	Leo	White	2024-01-29	unknown	1
+928	Tom	Green	2023-01-14	unknown	1
+929	Leo	Smith	2023-08-09	unknown	
+930	Jane	Doe	2023-12-04	75	1
+931	Bob	Patel	2023-08-08		1
+932	Bob	White		unknown	
+933		Black	2023-06-19	unknown	1
+934	Chris	Brown	2023-06-20	unknown	0
+935	Leo	Green	2023-02-21	52	1
+936	Leo	White			0
+"unterminated,quote,here
+938	Alice	Green	2023-09-09	unknown	
+939		Black	2023-11-03	unknown	
+940		Green	2024-01-14	unknown	1
+941		Patel			0
+942	Alice		2023-10-27	28	0
+943	Alice	Johnson	2023-06-11	unknown	true
+944	Mike	Smith		33	
+945	Chris	Patel		59	
+946	Nina	Patel	2023-10-13	65	
+947	Tom	Smith	2023-02-26	unknown	false
+948	Chris	Johnson	2023-01-17		true
+949	Alice	Smith	2023-03-26	unknown	true
+950	Bob	Smith		unknown	0
+951		Black	2023-06-13	43	false
+952	Leo	Johnson	2023-05-06	unknown	1
+953	Nina	Johnson	2023-05-23		
+954	Alice	Patel	2023-12-30	36	0
+955	Emma	Black	2023-02-02		true
+956	Mike	Doe	2023-03-21	59	
+957	Emma	Brown	2023-03-18	38	0
+958	John	Black	2023-08-27	54	1
+959		Green	2023-05-23	72	true
+960	Jane		2023-04-13	67	0
+961	Chris	White	2024-04-18	unknown	false
+962	Bob	Lee	2023-02-05	57	false
+963	Bob	Doe	2023-09-04		true
+964	John	Smith	2023-01-19		1
+965	Jane	Doe	2023-12-04	57	1
+966	Sara			unknown	1
+967			2023-10-05	42	false
+968	Chris	Green	2023-03-23	43		extra_col
+969	Leo	Smith	2024-01-12	68	false
+970	Tom	Black	2023-04-23		
+971	Bob	Black	2024-04-01		true
+972	Alice	Lee	2023-11-02	unknown	false
+973	Nina		2023-09-08		1
+974	Raj	Black	2023-08-29		false
+975	Nina	Doe	2024-04-26	unknown	true
+976	Bob	White	2023-11-15	unknown	false
+977	Raj	Brown	2023-10-19		1
+978	Leo	White		unknown	0
+979	Nina	Johnson	2023-10-22	unknown	1
+980	Emma		2023-12-25		
+981	John		2024-04-03		
+"unterminated,quote,here
+983	Nina	White	2023-08-14		
+984	Bob	Smith	2023-12-19	54	
+985	Alice	Johnson	2023-01-31		
+986	Nina	Brown	2023-05-24		0
+987	Jane	Black	2023-03-07		1
+988	Raj	Lee	2023-07-10	unknown	
+989	Bob		2023-12-22		
+990	Sara	Smith	2023-06-06	unknown	0
+991	Alice	Lee	2023-12-20	unknown	false
+992	Alice	Smith	2024-04-15		false
+993	John		2023-10-28	unknown	
+994	Bob	Patel	2023-11-16	unknown	0
+995	Chris	Patel	2023-09-12	unknown	true
+996	Tom		2023-03-09	unknown	
+997	Leo	Smith	2024-03-14	unknown	true
+998		Doe	2023-12-22	unknown	1
+999	Mike	Lee	2023-06-01	unknown	
+1000	Bob	Lee	2023-07-24		false
+1001	Raj		2023-12-16	51	
+1002	Tom		2023-11-05		0
+1003	Tom	Brown	2023-03-22	unknown	1
+1004	Leo	Brown	2023-06-02	21	0
+1005	Raj	Green	2024-01-17	40	
+1006		Lee	2023-12-08		
+1007	John		2023-03-26		false
+1008	John	Johnson	2023-03-19	unknown	
+1009	Raj		2023-02-28	75	0
+1010		Lee			true
+1011		Smith		33	true
+1012	Mike		2023-07-13	unknown	true
+1013	John	Doe	2023-03-02		true
+1014	Alice	Black	2024-03-03	unknown	false
+1015	Nina	White	2023-04-10		
+1016	Nina	Black	2023-03-12	46	
+1017				unknown	1
+1018	Nina	Black	2023-12-27		true
+1019		Johnson	2023-05-27		true
+1020	Leo	Green	2024-02-14		
+1021	Leo	Patel			1
+1022	Raj	Lee	2023-08-15	20	
+1023	Alice	Brown	2023-03-11	unknown	
+1024		Patel		unknown	
+1025	Nina	Johnson	2023-09-18		1
+1026	Jane	Doe	2024-05-08	69	1
+1027	Mike		2023-12-06	38	
+1028	Leo	Doe	2024-04-20		false
+1029	Chris	Patel	2023-11-01	53	0
+1030	John	Johnson	2023-08-17		false
+1031	Leo	Brown	2024-03-04		true
+1032	Chris	White		unknown	1
+1033	John	Doe	2023-12-19	67	1
+1034	Chris		2024-03-08		
+1035	Bob	Green	2024-04-11	unknown	
+1036	Tom	Brown	2023-11-11		
+1037	Sara	Patel	2023-11-26	42	0
+1038	Leo	Black	2024-01-03	unknown	true
+1039	John	Black	2023-04-07		
+1040	Alice	Johnson	2023-11-10	56	0
+1041		Brown	2023-06-01		
+1042	Leo	Smith	2023-09-04		0
+1043	Tom	Smith		unknown	
+1044	Tom	Green		67	0
+1045	Sara	Brown	2024-01-12	unknown	1
+1046	Sara			58	false
+1047	John	Lee		62	true
+,,,
+1049	Mike	White			false
+1050	Mike	Doe	2023-10-31	unknown	1
+1051	John	Doe	2024-03-23		false
+1052	Tom	Doe	2023-12-06	60	1
+1053	John	Patel	2023-03-07	unknown	
+1054		Doe	2023-07-14		
+1055	Raj		2023-01-10		0
+1056	Nina	Green	2023-07-27	27	0
+1057	Leo	Patel		unknown	true
+1058	Alice	Lee	2023-08-12	29	true
+1059	Emma	White	2023-01-17		1
+1060	Nina	Lee	2023-09-06		1
+1061	Nina		2023-10-15	80	false
+1062	Bob		2023-09-24		true
+1063	Leo		2023-10-23	unknown	true
+1064	Chris	Doe	2023-09-23	unknown	
+1065	Nina	Lee	2023-09-24	34	true
+1066		Smith	2023-11-26	unknown	0
+1067	John		2024-03-01		true	extra_col
+1068	Chris	Lee	2023-11-21	36	1
+1069	Alice	Patel	2023-04-25		0
+1070	Nina		2023-08-21		true
+1071		Patel	2023-10-13		
+1072	Sara	Brown	2024-03-03		0
+1073	Jane	Black		unknown	
+1074	Sara	Black	2024-01-10	unknown	
+1075	Raj		2024-03-08	unknown	false	extra_col
+1076	Chris	Patel	2023-12-02	27	false
+1077	Chris		2023-11-11	61	
+1078	Tom	Patel	2023-02-15	unknown	0
+1079	Emma	Lee	2024-01-23	unknown	1
+1080	Bob	Johnson	2024-01-21	unknown	false
+1081	Alice	Brown	2023-10-16		1
+1082	Bob	Doe	2023-12-07	80	1	extra_col
+1083	Chris	Johnson	2024-03-30	54	0
+1084	Tom	Johnson	2023-09-22	19	
+1085	Alice	Green	2023-04-16	38	
+1086	Nina	Patel		23	
+1087	Bob	Brown	2023-01-27	unknown	false
+1088	Jane	Lee		80	0
+1089	Nina	Doe		21	false
+1090	Leo	Johnson	2024-01-26		1
+1091	John	Smith	2024-01-18		1
+123|MISMATCH|EXTRA|COLS|HERE|oops
+1093	Bob	White		64	0
+1094	Sara	Black		50	0
+1095	Leo	Black	2023-11-08		0
+1096	Tom	White	2023-05-07	73	0
+1097	Bob	Smith	2023-11-04	unknown	1	extra_col
+1098	Bob	Brown	2024-05-11	73	true
+1099	Emma	Patel	2024-03-09		false
+1100	Tom	Brown	2023-01-09	unknown	true
+1101	Jane		2023-07-29	26	1
+1102	Sara	Patel	2023-10-25	62	false
+1103	Bob		2023-07-09		
+1104	Sara	Green	2023-02-11		true
+1105	Tom	Johnson	2023-05-28	unknown	false
+1106	Chris	Doe	2023-09-17		
+1107	Leo	Johnson	2024-02-20		false
+1108	Alice	Green	2023-06-18	21	
+1109	Leo	Johnson	2023-01-27		0
+1110	Bob	Johnson	2023-09-14	unknown	1
+1111		Doe			0
+1112	Mike	Lee	2024-03-28	34	0	extra_col
+1113	Jane		2023-03-20		
+1114	John				
+1115	Bob		2023-07-31		1
+1116	Leo	Doe	2023-07-26	27	
+1117	Sara		2024-03-06	unknown	1
+1118	Emma			34	
+1119	Sara	Smith	2023-10-14	56	
+1120	Bob	Johnson			1
+1121	Bob	Green	2023-08-30		true
+1122	Alice		2023-08-12		1	extra_col
+1123	Emma	Black	2023-01-04	77	true
+1124	Nina	Green	2023-11-05	63	
+1125			2023-10-01		0
+1126	Leo		2023-10-18	unknown	false
+1127	Leo		2023-01-19		
+1128	Emma	Green	2023-01-02	63	
+1129		Green	2023-08-06		
+1130		Green	2024-01-31	25	false
+1131	Alice	White	2023-08-21	64	1	extra_col
+1132	Bob	Green	2024-03-20	47	0
+1133	Nina	Doe			
+1134	Nina	Black	2024-03-11	unknown	1
+1135	Chris	Johnson	2023-06-24	79	
+1136	Emma	Brown	2023-06-27		true
+1137	Mike	Patel	2024-03-06	23	
+1138		Doe	2023-04-27		0
+1139	Bob	Green	2023-01-28	unknown	false
+1140	Emma	Johnson	2023-08-13		
+1141	Nina	Green	2024-01-26	42	
+1142	Emma	Brown		unknown	false
+1143	Emma	White	2023-03-20	23	true
+1144	Raj	Johnson	2024-05-02		0
+1145	Alice	White	2024-02-29	38	0
+1146	Jane		2023-07-08			extra_col
+1147		Smith	2023-10-17	36	0
+1148			2023-09-22	38	1
+1149	Raj			unknown	1
+1150	John	Brown	2023-06-19		false
+"unterminated,quote,here
+1152	Sara	Black			
+1153	Leo	Lee	2023-02-02		false
+1154		Brown			true
+1155	Jane	Black	2024-01-27		
+1156	Nina	White	2023-03-26		0
+1157		Black	2023-06-18	79	true
+1158	Sara	Smith	2024-04-25		
+1159	Alice			unknown	false
+1160	Sara	Johnson	2023-05-10		true
+1161	Mike	Green	2024-01-22		0
+1162	Chris				true
+1163	Sara	Black	2024-03-21	36	
+1164	John	Lee	2023-05-22		
+1165	Jane	Green	2024-04-22	28	false
+1166	John	Brown			false
+1167	Jane	Johnson	2023-01-23		1
+1168	Leo	White	2023-12-14	unknown	0	extra_col
+1169	Emma	Johnson	2023-09-04	40	1
+1170	Sara		2023-08-03	unknown	
+1171	Chris	White	2024-05-10	unknown	false
+1172	Jane	Johnson	2023-10-15	27	1
+1173	Sara	Smith	2023-09-12	18	
+1174	Tom	Brown		51	
+1175	Leo	White	2024-04-12		0	extra_col
+1176		Patel	2023-07-24	unknown	
+1177	Mike	Black	2023-07-13		
+1178	Sara	Johnson	2023-01-28		false
+1179	Bob		2023-06-14		
+1180		White	2023-03-13	35	true
+1181	Chris	Green	2023-08-30		
+1182	Emma	Doe	2024-01-06	30	
+1183	Alice	Doe	2023-09-28		
+1184	Sara	Johnson	2024-04-05		false
+1185	Tom	Patel	2024-04-08	69	true
+1186	Nina		2024-03-02		
+1187	John	Brown	2023-12-10	59	false
+1188	Sara	Black	2024-02-25	unknown	1
+1189	Alice	White	2023-12-28		0
+1190		Black	2023-06-17	unknown	true
+1191	Chris	Doe	2023-04-04		1
+1192	Chris	Johnson	2024-02-02		
+1193	John	Doe	2023-05-10		0
+1194	Tom	Lee	2024-01-13	22	0
+1195	Emma	Doe	2023-07-02	unknown	true
+1196	Emma	Johnson	2024-03-06	79	true	extra_col
+1197	Jane	Smith	2023-11-13		0
+1198	Tom	Green	2023-05-19	28	
+1199	Mike	Johnson	2023-06-13	63	
+,,,
+1201	John	Johnson	2023-03-01		0
+1202	Tom	Brown			false
+1203	John	Green	2023-12-14	39	true
+1204	Mike		2023-07-07	30	
+1205		Johnson	2023-04-11	77	1
+1206	Mike		2023-05-25	26	1
+1207	Sara	Lee	2023-09-11		
+1208	Chris		2023-01-08	unknown	1
+1209	Alice	Lee	2023-08-28		false
+1210	Emma	Brown		unknown	
+1211		Black	2024-02-06	unknown	false
+1212	Bob	Lee	2023-05-30		
+1213	Nina	Johnson	2024-01-19	unknown	false
+1214	John	Green	2024-02-17		
+1215		Patel	2024-04-21	unknown	true
+1216	Jane	Doe		unknown	false
+1217	Mike	Green	2023-01-04		true	extra_col
+1218	Emma	White	2023-01-11		
+1219	Tom	Smith	2023-04-15		false
+1220	Raj	Black	2023-08-23	75	true
+1221	Emma	Johnson	2023-11-23		0
+1222	Bob	Black	2023-02-23	unknown	true
+1223	Raj	Johnson	2023-07-17		1
+1224	Alice		2023-04-20	unknown	1
+1225		Brown	2023-11-02		0
+1226	Leo	Smith	2023-08-23	77	false
+1227	Raj	Brown	2024-04-14	51	
+1228	Nina	Johnson	2023-03-20		
+1229	Nina	White			1
+1230	Emma	Patel	2023-01-27	unknown	
+1231	John	Johnson	2024-01-09		
+1232	Mike	Lee			
+1233	Sara	Brown	2023-04-18	28	0
+1234	Leo	Brown	2023-09-02	unknown	true
+1235	Emma	Doe	2023-02-12		
+1236		Patel	2023-03-17		true
+1237	Mike	Johnson	2023-12-20		1
+1238	Raj	Patel		unknown	
+1239	Emma	Smith	2024-03-30		false
+1240	Leo	Brown	2023-10-06		false
+1241	Chris	Black	2024-01-17	unknown	
+1242	Tom		2023-07-07	unknown	false
+1243	Alice	Doe	2023-01-04	unknown	false
+1244	Tom	Black	2023-06-22		
+1245	Bob	Patel	2023-09-23	71	0
+1246		White	2023-07-07	unknown	false	extra_col
+1247	Nina	Doe	2023-10-30	unknown	1
+1248	Tom	Brown	2023-08-02		
+1249	Tom	Johnson	2023-01-07		true
+1250	Mike	Black	2023-06-26		0
+1251	Jane	Doe	2023-08-05	19	0	extra_col
+1252	Mike	Brown	2024-04-29	19	true
+1253	Raj		2023-01-31		1
+1254	Chris		2024-05-10	74	0
+1255		Black	2023-08-08		false
+1256	Mike	Lee	2023-03-15	unknown	1
+1257	Emma		2023-01-08	unknown	0
+1258	Leo	Smith	2024-01-17		true
+1259	Tom	Patel		unknown	false
+1260	John	Black	2023-11-04	unknown	0
+1261	Bob	Smith	2023-10-11		
+1262	Jane	Smith	2023-04-01	unknown	1
+1263	Nina	Brown	2023-01-11	34	0
+1264		Brown	2023-06-17		1
+1265	Tom	Brown	2023-08-20	unknown	true
+1266	Sara	Patel	2024-02-09	21	false
+1267	Bob	White	2023-10-01	21	0
+1268		Johnson	2023-10-02		
+1269	Raj	Green	2023-09-11	unknown	true
+1270		Black	2023-03-11	unknown	1
+1271	Jane	Doe	2023-12-25	56	
+1272	Tom	Lee	2023-03-12	47	true	extra_col
+1273	Mike	Lee			true
+1274	Raj	White	2023-10-11	unknown	true
+1275	Alice	Lee	2023-11-30	unknown	
+1276	Leo	Patel	2023-07-21	35	0	extra_col
+1277	Nina	White	2024-05-05	48	
+1278	Tom		2023-08-23	67	
+1279	Emma	Green	2023-06-15	30	false
+1280	Bob	White	2023-02-25		true
+1281	Leo	Johnson	2024-03-19		1
+1282	John	Black	2023-02-21	29	false
+1283	Nina	White	2023-06-18	unknown	
+1284	Raj	Smith	2023-03-02	unknown	true	extra_col
+1285	Alice	Brown	2024-03-21	37	true
+1286	Leo	Johnson	2023-01-04	unknown	0
+1287	Jane	Doe	2024-05-10	50	0
+1288	John	Green	2023-10-22	unknown	false
+1289	Bob	Doe	2023-08-20	unknown	true
+1290		Patel	2024-02-23	28	true
+1291		Green	2023-10-02	42	false
+1292	Tom		2023-07-21		true	extra_col
+1293		Lee	2024-03-31	unknown	
+1294	Emma	Green	2023-04-08		1
+1295	Raj	Doe	2023-09-18	64	0
+1296	Raj		2023-01-19	unknown	true
+1297	Alice		2024-04-01		true
+1298	Emma	Johnson	2023-10-10	unknown	0
+1299	Emma	Doe	2024-01-22	26	false
+1300	Nina	Lee	2023-03-01	unknown	
+1301	Jane	White	2024-02-06	unknown	
+1302	Leo	Green	2023-05-07	unknown	1
+1303	Jane	Brown	2024-03-07		
+1304	Emma	White	2023-10-14		0
+1305	Leo	Green	2023-01-08	unknown	false
+1306	Emma	Patel	2023-10-30		0
+1307	Jane	Lee	2023-02-22	unknown	false
+1308	Sara	Black	2023-08-17	53	0
+1309	Bob	Doe	2023-01-13	unknown	
+1310		Brown			false
+1311	John	Black	2023-01-03	unknown	true	extra_col
+1312	Chris	Black	2023-02-11	unknown	true
+1313	Mike	White	2023-06-24		
+1314	John	Lee		30	false
+1315	Raj		2023-02-08		1
+1316	Sara		2023-11-28		false
+1317		Green	2024-04-12		0
+1318	Bob	Smith	2023-08-10	67	
+1319	Sara	White	2023-08-17		true
+1320			2023-05-12		
+1321	Tom	White	2023-07-11		1
+1322	Alice		2023-04-20	unknown	false
+1323		Black	2023-05-22		
+1324	Bob	Black	2023-08-11	unknown	true	extra_col
+1325	Chris	Black	2024-05-12		
+1326	Sara	Johnson	2023-12-13		
+1327	Mike	Doe	2024-02-07	21	0
+1328	Mike		2024-02-05		0
+1329	Chris	Green	2023-04-03	unknown	
+1330	Mike	Black	2024-03-04	unknown	0
+1331	Leo	Johnson	2023-05-14	53	1	extra_col
+1332	Nina	Johnson	2023-06-07		1
+1333	Sara	Brown	2024-02-02	46	
+1334	Jane	Lee	2024-04-10		
+1335	Raj	Smith		59	
+1336	Tom	Johnson	2024-01-12	60	true	extra_col
+1337	Leo		2024-01-02	unknown	0
+1338	Tom	Smith	2023-08-17	unknown	1
+1339	Bob	Patel	2023-12-01	unknown	0
+1340	Emma	Smith	2023-09-21	51	false
+1341	Alice	White	2023-09-16	31	1
+1342	Bob	Smith	2023-12-24	unknown	
+1343	John	Smith	2023-05-27	52	1
+1344	Chris		2024-03-31		
+1345	Mike	Doe	2024-01-18	73	
+1346	Chris	Patel	2023-07-10	unknown	true
+1347	Nina	Smith	2023-04-16	33	1
+1348	Alice	White	2024-02-21		
+1349	Jane	Doe	2023-08-31		
+1350	John	Patel	2024-01-13	48	true
+1351	Nina	Johnson	2023-01-11	unknown	true	extra_col
+1352	Alice	Smith			
+1353	Mike	Lee	2024-05-05		false
+1354	Tom	Smith	2023-04-14	unknown	
+1355	John	Smith	2024-03-16		
+1356	Emma				false
+1357	John	Green			false
+1358	Raj	Patel			
+1359		White		unknown	
+1360	Emma	Black	2023-05-26		
+1361	Tom	Black	2024-01-07	unknown	
+1362	Raj	Black	2023-08-18		false
+1363	Leo	Smith	2023-10-27	unknown	
+1364	John	Lee	2023-10-30	58	
+1365	Raj	Smith	2023-11-19		
+1366	Emma	Lee	2023-08-01		0	extra_col
+1367	Alice		2023-04-10		
+1368	Leo	Smith	2023-11-27	44	
+1369	Sara		2023-10-01	42	0
+1370	John		2024-02-06	unknown	
+1371	Tom	Black	2023-12-28		1
+1372	Nina		2023-04-04		
+1373		Lee	2024-04-21	unknown	false
+1374		Smith	2023-01-06		true
+1375	Sara	Lee	2023-09-27	unknown	false	extra_col
+1376	Sara		2023-05-22		0
+1377	Bob	Doe	2024-04-21		
+1378	Raj	Doe	2024-04-10	35	false
+1379	Jane		2023-06-05	67	1
+1380	Tom	Smith	2024-01-08	unknown	1
+1381	Raj		2023-04-21		false
+1382	Chris	Smith	2023-01-25		false
+1383	Sara	Lee	2023-02-13		true
+1384	John	White	2023-01-24	40	0
+1385	John	Brown	2023-11-23	unknown	
+1386	Leo	White	2024-02-08	28	true
+1387	Leo	Lee	2023-09-23	unknown	true
+1388	Sara	Green	2024-01-17		0
+1389		Smith	2023-07-17		true
+1390	Chris	Lee	2024-01-13		0
+1391	Bob	Johnson	2023-12-10		
+1392	Chris	Brown			1
+1393	Mike	Brown	2024-02-25	unknown	0
+1394	Leo				
+1395	John	Patel	2024-04-16		0
+1396	Mike	Smith	2023-12-15	unknown	0
+1397	Mike	Patel	2024-01-10	unknown	
+1398	Alice		2024-03-19		
+1399	Tom	Black		unknown	true
+1400	Chris	Lee	2023-11-10	45	false
+1401	Leo		2024-03-21		
+1402		Smith	2023-03-11		true
+1403	Sara	White	2023-04-27	65	0
+1404		Black	2024-03-13		true
+1405	Jane	White	2024-05-06		false
+1406	Alice	Green	2023-12-05		
+1407	Tom	Johnson			false
+1408	John	Smith	2024-01-19		
+1409			2023-05-08	27	true
+1410			2023-06-27	unknown	
+1411	Chris	White	2024-04-17		
+1412	Nina	Brown	2023-11-02	unknown	true
+1413			2024-03-21	77	
+1414	Sara	Lee	2023-03-15	unknown	
+1415	Leo		2023-09-26	unknown	true
+1416	Leo	Patel	2023-07-31	38	true
+1417	Sara	Green	2023-02-27		false
+1418	Mike		2023-08-09	55	0
+1419	Jane		2024-03-15		0
+"unterminated,quote,here
+1421	Chris	Black	2023-10-02	unknown	false
+1422	Raj	Green	2023-09-28		true
+1423	Raj	Lee	2023-04-17	78	1
+1424	Bob	Johnson	2023-12-20	unknown	0
+1425	Nina	Johnson	2023-10-20	unknown	false
+1426	Chris	Smith		74	1
+1427	Alice		2023-10-05	unknown	false
+1428	John	Johnson	2023-11-22	48	
+1429	Sara	Patel	2023-03-21	unknown	0
+1430	Jane	Smith		unknown	true
+1431		Doe	2024-04-23	22	
+1432	Mike	White	2023-04-29	39	
+1433	Raj	Lee	2024-04-27	65	0
+1434				18	
+1435	Mike				
+1436	Emma	Patel	2023-07-21	18	
+1437	John	Brown	2023-02-01	66	0
+1438	John	Patel	2023-10-19		0
+1439	Alice		2024-01-05	66	
+1440	Emma		2023-09-12	30	0
+1441	Alice	Doe	2023-10-28	unknown	true
+1442	Tom	White			
+1443	Sara		2023-02-19	unknown	
+1444	Sara	White	2023-02-20	unknown	1
+1445	Mike	Smith	2023-03-25		
+,,,
+1447	Leo	Lee	2024-05-05	34	1
+1448	Leo		2023-10-18	unknown	
+1449	Raj	Lee		unknown	true
+1450	John	Patel	2024-02-24	77	true
+1451		Johnson	2023-12-11		0
+1452	Leo	Green	2023-09-12	unknown	0
+1453	Tom	Green	2023-12-22		true
+1454	John	Johnson	2023-02-10	unknown	0
+1455	Emma	Doe	2023-12-10		false
+1456		White		unknown	true
+1457	Bob			70	1
+1458	Mike	Lee	2023-09-18		false
+1459	Bob	White			true
+1460	Bob	Johnson	2023-06-23	57	false
+1461	Leo	White	2024-03-26	unknown	true
+1462		Smith	2024-01-04	65	true
+1463	Alice	White		unknown	0
+1464	Bob	White	2024-04-20	unknown	false
+1465	Jane	Patel	2023-11-23	40	false	extra_col
+1466		Smith	2023-01-10	26	
+1467	Alice	Smith	2023-03-19	unknown	true
+1468	Sara	Brown	2024-01-01		true
+1469			2023-01-03	unknown	1
+1470	Nina	Lee	2023-04-24	71	true
+1471	Chris	Black	2023-01-24	unknown	1
+1472	Raj	Black	2023-09-07		1
+1473	Emma		2024-01-24	36	1
+1474		Patel	2023-06-22		true
+1475	Bob	White	2023-06-13	32	1
+123|MISMATCH|EXTRA|COLS|HERE|oops
+1477	Leo	Lee	2023-05-07	75	1	extra_col
+1478	John	Brown	2023-05-22		false
+1479	Mike			unknown	false
+1480	Alice	Smith	2023-05-13	unknown		extra_col
+1481	Jane		2023-06-13	unknown	1
+1482	John		2023-07-05		
+1483	Emma	Smith			0
+1484	Mike	White		unknown	
+1485	Alice	Black	2023-06-21	75	
+1486	Nina	Black	2023-02-17	38	0
+1487	Sara	Lee	2023-12-06	30	0
+1488	Jane	Patel	2024-05-07	30	false
+1489	Raj		2023-07-16	unknown	true
+1490		Smith	2024-02-29		
+1491	John	Doe		51	false
+1492		Patel	2024-01-30	unknown	
+1493		Doe			false
+1494	Chris	Lee	2023-03-25	unknown	false
+1495		Black	2024-04-10		
+1496		Doe	2023-01-20	70	0	extra_col
+1497	Sara	Patel	2023-06-05		false
+1498	Alice	Doe	2023-05-30		true
+1499	Leo	Doe	2024-04-14		false
+1500	Leo		2024-03-25		

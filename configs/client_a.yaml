@@ -1,0 +1,49 @@
+client_id: client_a
+
+customers:
+  file: customers_2024_01.txt
+  delimiter: ","
+  header: true
+  quote: '"'
+  columns: [customer_id, first_name, last_name, email, phone, signup_ts, status, loyalty_points]
+  column_map:
+    customer_id: source_customer_id
+    first_name: first_name
+    last_name: last_name
+    email: email
+    phone: phone
+    status: status
+  date_fields:
+    signup_ts:
+      target: signup_date
+      format: "yyyy-MM-dd'T'HH:mm:ss"
+      type: date
+  int_fields:
+    loyalty_points: loyalty_points
+  required_fields: [source_customer_id]
+
+transactions:
+  file: transactions_2024_01.txt
+  delimiter: ","
+  header: true
+  quote: '"'
+  columns: [transaction_id, customer_id, amount, currency, channel, created_ts, discount_code, is_refund]
+  column_map:
+    transaction_id: source_transaction_id
+    customer_id: source_customer_id
+    currency: currency
+    channel: channel
+    discount_code: discount_code
+  decimal_fields:
+    amount: amount
+  date_fields:
+    created_ts:
+      target: transaction_ts
+      format: "yyyy-MM-dd'T'HH:mm:ss"
+      type: timestamp
+  boolean_fields:
+    is_refund:
+      target: is_refund
+      true_values: ["true", "1"]
+      false_values: ["false", "0"]
+  required_fields: [source_transaction_id, source_customer_id, amount]
