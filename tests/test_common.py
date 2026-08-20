@@ -1,18 +1,11 @@
-"""Unit tests for pipeline.common: config loading and path resolution.
-
-Regression tests for a real bug hit running on Databricks serverless: a
-notebook step that copied configs onto DBFS produced 0-byte files there
-(serverless has no /dbfs FUSE mount, which that copy path relied on),
-and yaml.safe_load() on an empty file returns None rather than raising --
-which surfaced several calls later as a generic
-"TypeError: argument of type 'NoneType' is not iterable" instead of
-pointing at the actual problem.
+"""Unit tests for pipeline.common: config loading, path resolution, Volume
+setup, and the Spark-local-path fix for reading a Workspace checkout.
 """
 from unittest.mock import MagicMock
 
 import pytest
 
-from pipeline.common import ensure_volume, load_client_config, resolve_paths
+from pipeline.common import ensure_volume, load_client_config, resolve_paths, spark_local_path
 
 
 def test_load_client_config_empty_file_raises_clear_error(tmp_path):
@@ -35,13 +28,14 @@ def test_resolve_paths_defaults_source_to_base_path():
 
 
 def test_resolve_paths_source_path_only_affects_configs_and_input():
-    # Mirrors the Databricks notebook: BASE_PATH (DBFS) for output,
+    # Mirrors the Databricks notebook: BASE_PATH (a Volume) for output,
     # source_path (the repo checkout) for configs/input_files.
-    paths = resolve_paths("dbfs:/tmp/client_ingestion", source_path="/Workspace/Users/me/repo")
+    base_path = "/Volumes/workspace/client_ingestion/client_ingestion"
+    paths = resolve_paths(base_path, source_path="/Workspace/Users/me/repo")
     assert paths["configs"] == "/Workspace/Users/me/repo/configs"
     assert paths["input"] == "/Workspace/Users/me/repo/input_files"
-    assert paths["raw"] == "dbfs:/tmp/client_ingestion/output/raw"
-    assert paths["curated"] == "dbfs:/tmp/client_ingestion/output/curated"
+    assert paths["raw"] == f"{base_path}/output/raw"
+    assert paths["curated"] == f"{base_path}/output/curated"
 
 
 def test_ensure_volume_creates_catalog_schema_volume_and_returns_path():
@@ -66,3 +60,20 @@ def test_ensure_volume_tolerates_catalog_creation_failure():
 
     assert path == "/Volumes/workspace/s/v"
     assert spark.sql.call_count == 3
+
+
+def test_spark_local_path_prefixes_workspace_paths():
+    # A Repo/Git-folder checkout's input_files needs an explicit file:
+    # scheme for Spark to read it as a local file (this is exactly the
+    # FAILED_READ_FILE error hit without it).
+    path = "/Workspace/Users/me/repo/input_files/client_a/customers_2024_01.txt"
+    assert spark_local_path(path) == f"file:{path}"
+
+
+def test_spark_local_path_leaves_other_paths_untouched():
+    for path in (
+        "/Volumes/workspace/schema/volume/input_files/client_a/c.txt",
+        "C:/Users/me/client-ingestion-pipeline/input_files/client_a/c.txt",
+        "./input_files/client_a/c.txt",
+    ):
+        assert spark_local_path(path) == path

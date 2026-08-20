@@ -24,13 +24,11 @@
 dbutils.widgets.text("catalog", "workspace", "Unity Catalog catalog")
 dbutils.widgets.text("schema", "client_ingestion", "Schema (created if missing)")
 dbutils.widgets.text("volume", "client_ingestion", "Volume (created if missing)")
-dbutils.widgets.text("base_path", "", "BASE_PATH override (blank = auto /Volumes path)")
 dbutils.widgets.text("repo_root", "", "Repo root (blank = auto-detect)")
 
 CATALOG = dbutils.widgets.get("catalog")
 SCHEMA = dbutils.widgets.get("schema")
 VOLUME = dbutils.widgets.get("volume")
-BASE_PATH_OVERRIDE = dbutils.widgets.get("base_path").strip()
 REPO_ROOT_OVERRIDE = dbutils.widgets.get("repo_root").strip()
 
 # COMMAND ----------
@@ -38,12 +36,9 @@ REPO_ROOT_OVERRIDE = dbutils.widgets.get("repo_root").strip()
 # MAGIC %md
 # MAGIC ## 1. Locate the repo checkout
 # MAGIC
-# MAGIC `configs/` and `input_files/` are read directly from here -- **not**
-# MAGIC copied onto BASE_PATH first. Serverless compute has no `/dbfs` FUSE
-# MAGIC mount, so a `dbutils.fs.cp` from a `file:/Workspace/...` source can
-# MAGIC silently land as 0-byte files there; reading Workspace files directly
-# MAGIC (plain Python for the tiny YAML configs, Spark's normal file reader for
-# MAGIC the CSVs) sidesteps that entirely and is one less moving part besides.
+# MAGIC `configs/` and `input_files/` are read directly from here: plain
+# MAGIC Python for the tiny YAML configs, Spark's normal file reader for the
+# MAGIC CSVs. Nothing gets copied anywhere first -- one less moving part.
 
 # COMMAND ----------
 
@@ -70,25 +65,19 @@ sys.path.insert(0, repo_root)
 # MAGIC %md
 # MAGIC ## 2. Point pipeline output at a Unity Catalog Volume
 # MAGIC
-# MAGIC Newer workspaces -- serverless-only and free-tier ones especially --
-# MAGIC disable the public DBFS root entirely (`[DBFS_DISABLED] Public DBFS
-# MAGIC root is disabled`). Volumes are the portable replacement and work the
-# MAGIC same way on serverless compute and classic clusters; creating the
-# MAGIC schema/volume with `IF NOT EXISTS` keeps this safe to re-run, same as
-# MAGIC every other layer. (Catalog creation is attempted too but silently
-# MAGIC skipped on failure -- that needs metastore-admin privilege most users
-# MAGIC won't have, and the default `workspace` catalog already exists in any
-# MAGIC Unity Catalog workspace.)
+# MAGIC Volumes work the same way on serverless compute and classic clusters,
+# MAGIC so this is where every run writes bronze/silver/gold. The schema and
+# MAGIC volume are created with `IF NOT EXISTS`, so this is safe to re-run.
+# MAGIC (Catalog creation is attempted too but silently skipped on failure --
+# MAGIC that needs metastore-admin privilege most users won't have, and the
+# MAGIC default `workspace` catalog already exists in any Unity Catalog
+# MAGIC workspace.)
 
 # COMMAND ----------
 
 from pipeline.common import ensure_volume
 
-if BASE_PATH_OVERRIDE:
-    BASE_PATH = BASE_PATH_OVERRIDE
-else:
-    BASE_PATH = ensure_volume(spark, CATALOG, SCHEMA, VOLUME)
-
+BASE_PATH = ensure_volume(spark, CATALOG, SCHEMA, VOLUME)
 print("BASE_PATH:", BASE_PATH)
 
 # COMMAND ----------
@@ -125,7 +114,7 @@ for client_id in client_ids:
 
 from run import main
 
-gold_counts = main(BASE_PATH, output_format="delta", spark=spark, source_path=repo_root)
+gold_counts = main(BASE_PATH, spark, source_path=repo_root)
 gold_counts
 
 # COMMAND ----------

@@ -129,7 +129,7 @@ def refine_entity(bronze_df, entity_cfg):
     return clean_df, quarantine_df
 
 
-def run_refine(spark, client_configs, raw_dir, refined_dir, quarantine_dir, output_format="delta"):
+def run_refine(spark, client_configs, raw_dir, refined_dir, quarantine_dir):
     """Refine every entity for every client. Returns result dicts for
     reporting/logging."""
     results = []
@@ -137,15 +137,13 @@ def run_refine(spark, client_configs, raw_dir, refined_dir, quarantine_dir, outp
         for entity_name in ("customers", "transactions"):
             if entity_name not in cfg:
                 continue
-            bronze_df = read_table(
-                spark, f"{raw_dir}/{client_id}/{entity_name}", output_format
-            )
+            bronze_df = read_table(spark, f"{raw_dir}/{client_id}/{entity_name}")
             clean_df, quarantine_df = refine_entity(bronze_df, cfg[entity_name])
 
             clean_path = f"{refined_dir}/{client_id}/{entity_name}"
             quarantine_path = f"{quarantine_dir}/{client_id}/{entity_name}"
-            write_table(clean_df, clean_path, output_format=output_format)
-            write_table(quarantine_df, quarantine_path, output_format=output_format)
+            write_table(clean_df, clean_path)
+            write_table(quarantine_df, quarantine_path)
 
             results.append(
                 {

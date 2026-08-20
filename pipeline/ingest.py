@@ -17,7 +17,7 @@ back to exactly where it came from.
 from pyspark.sql import functions as F
 from pyspark.sql.types import StringType, StructField, StructType
 
-from pipeline.common import CORRUPT_COL, write_table
+from pipeline.common import CORRUPT_COL, spark_local_path, write_table
 
 
 def _raw_schema(columns):
@@ -29,7 +29,7 @@ def _raw_schema(columns):
 def read_raw(spark, client_id, entity_name, entity_cfg, input_dir):
     """Read one client/entity file into a bronze DataFrame with lineage columns."""
     schema = _raw_schema(entity_cfg["columns"])
-    file_path = f"{input_dir}/{client_id}/{entity_cfg['file']}"
+    file_path = spark_local_path(f"{input_dir}/{client_id}/{entity_cfg['file']}")
 
     df = (
         spark.read.format("csv")
@@ -52,18 +52,16 @@ def read_raw(spark, client_id, entity_name, entity_cfg, input_dir):
     )
 
 
-def ingest_client_entity(
-    spark, client_id, entity_name, entity_cfg, input_dir, raw_dir, output_format="delta"
-):
+def ingest_client_entity(spark, client_id, entity_name, entity_cfg, input_dir, raw_dir):
     """Read one client/entity file and write it to the bronze layer. Returns
     (dataframe, output_path, row_count) for the caller to log/inspect."""
     df = read_raw(spark, client_id, entity_name, entity_cfg, input_dir)
     out_path = f"{raw_dir}/{client_id}/{entity_name}"
-    write_table(df, out_path, output_format=output_format)
+    write_table(df, out_path)
     return df, out_path, df.count()
 
 
-def run_ingest(spark, client_configs, input_dir, raw_dir, output_format="delta"):
+def run_ingest(spark, client_configs, input_dir, raw_dir):
     """Ingest every entity for every client. client_configs is
     {client_id: full_yaml_config}. Returns a list of result dicts for
     reporting/logging."""
@@ -73,7 +71,7 @@ def run_ingest(spark, client_configs, input_dir, raw_dir, output_format="delta")
             if entity_name not in cfg:
                 continue
             _, out_path, row_count = ingest_client_entity(
-                spark, client_id, entity_name, cfg[entity_name], input_dir, raw_dir, output_format
+                spark, client_id, entity_name, cfg[entity_name], input_dir, raw_dir
             )
             results.append(
                 {
