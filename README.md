@@ -49,11 +49,11 @@ is the Databricks-native driver that calls it.
 2. Open `notebooks/00_run_pipeline.py`. Nothing to attach or configure —
    it runs on **serverless compute**, which provides `spark` (Delta Lake
    already built in) before the first cell runs.
-3. **Run All.** The notebook reads `configs/` and `input_files/` straight
-   from the repo checkout (auto-detected from the notebook's own path), and
-   writes pipeline output to a Unity Catalog Volume it creates if missing
+3. **Run All.** The notebook creates a Unity Catalog Volume if missing
    (`workspace.client_ingestion.client_ingestion` by default — the
-   catalog/schema/volume widgets override this).
+   catalog/schema/volume widgets override this), stages `configs/` and
+   `input_files/` from the repo checkout (auto-detected from the
+   notebook's own path) onto it, and writes pipeline output there too.
 4. Re-running is safe — every layer writes with `mode("overwrite")`, the
    schema/volume creation is `IF NOT EXISTS`, and nothing depends on
    pre-existing state.
@@ -130,21 +130,21 @@ nothing for this pipeline to set up — `notebooks/00_run_pipeline.py` just
 passes that session straight through. `tests/conftest.py` builds its own
 throwaway local session purely for pytest, entirely separately.
 
-**Pipeline output lives on a Unity Catalog Volume.** `pipeline/common.py:
-ensure_volume()` creates the target schema/volume with `CREATE ... IF NOT
-EXISTS` (catalog creation is attempted too, but failures are swallowed —
-that needs metastore-admin privilege most users won't have, and the
-default `workspace` catalog already exists) and hands back a `/Volumes/...`
-path that behaves the same on serverless compute and classic clusters.
-`source_path` (configs/input_files) stays completely separate from
-`BASE_PATH` (output) — it reads straight from the repo checkout instead.
-
-**Spark reads of a Workspace checkout need an explicit `file:` scheme.**
-Plain Python file I/O (config loading) handles `/Workspace/...` paths
-correctly with no prefix, but Spark's CSV reader needs one explicitly.
-`pipeline/common.py:spark_local_path()` prefixes exactly `/Workspace/...`
-paths with `file:` before Spark reads them — an unambiguous, Databricks-
-reserved prefix, so it never touches any other kind of path.
+**Pipeline output — and its input — lives on a Unity Catalog Volume, not
+the repo checkout.** `pipeline/common.py:ensure_volume()` creates the
+target schema/volume with `CREATE ... IF NOT EXISTS` (catalog creation is
+attempted too, but failures are swallowed — that needs metastore-admin
+privilege most users won't have, and the default `workspace` catalog
+already exists) and hands back a `/Volumes/...` path that behaves the same
+on serverless compute and classic clusters. Serverless compute runs
+Spark's actual query execution on separate infrastructure from the
+notebook's own Python process, so `spark.read` can't see `/Workspace/...`
+files at all — only the notebook's own Python calls (config loading) can.
+The notebook stages `configs/`/`input_files/` onto the Volume with
+`dbutils.fs.cp` first (a driver-side utility, not a distributed Spark job,
+so it *can* see Workspace files) and passes that staged location as
+`source_path`, so everything Spark reads — source and output alike — comes
+from the one place it can reliably reach.
 
 ## How this handles change
 
@@ -191,3 +191,10 @@ reserved prefix, so it never touches any other kind of path.
   `try_to_timestamp`/`try_to_date`, and the name-splitter uses `F.get`
   instead of plain array indexing, specifically to preserve
   quarantine-not-crash behavior under ANSI mode.
+- **Serverless compute can't run `spark.read`/`spark.write` against
+  `/Workspace/...` paths at all**, no matter how the path is written —
+  Spark's query execution runs on infrastructure separate from the
+  notebook's own Python process, which is the only thing with access to
+  Workspace files directly. `dbutils.fs.cp`, a driver-side utility rather
+  than a distributed Spark job, is what bridges the two (see the Volume
+  design decision above).
